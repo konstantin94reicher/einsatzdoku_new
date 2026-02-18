@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Einsatzdokumentation</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body> <!-- bc: #E6E5FE = Flieder leicht -->
+    <header>
+      <h1>Einsatzdokumentation</h1>
+      <nav>
+        <ul>
+          <li id="dokumentationGenerieren">Dokumentation generieren</li>  <!-- bc: #462346 Abendstimmung // hover: #AAAAFA Flieder -->
+          <li id="Startseite">Startseite</li> <!-- bc: #462346 Abendstimmung // hover: #AAAAFA Flieder -->
+          <li id="eingabenZurücksetzen">Alle Eingaben zurücksetzen</li> <!-- bc: #462346 Abendstimmung // hover: #AAAAFA Flieder -->
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container"> <!-- bc: #F3F1EF Nebelgrau leicht -->
+        <div class="navbar"></div>
+        <div class="contentContainer">
+          <div class="einsatzkategorie">
+            <div class="einsatzkategorieChild" id="einsatzkategorieHeader">
+              Allgemeine Einsatzinfos
+            </div>
+            <div class="einsatzkategorieChild" id="einsatzkategorieList">
+              <label class="einsatzinfo"><input type="checkbox" name="einsatzkategorie" value="Internistischer Patient" onclick="">Internistischer Patient</label>
+              <label class="einsatzinfo"><input type="checkbox" name="einsatzkategorie" value="Traumatologischer Patient" onclick="">Traumatologischer Patient</label>
+              <label class="einsatzinfo"><input type="checkbox" name="einsatzkategorie" value="Pädiatrischer Patient" onclick="">Pädiatrischer Patient</label>
+              <label class="einsatzinfo"><input type="checkbox" name="einsatzkategorie" value="Geriatrischer Patient" onclick="">Geriatrischer Patient</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,115 @@
+:root {
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: #e6e5fe;
+}
+
+h1 {
+  text-align: center;
+  margin: 8;
+}
+
+nav > ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+nav > ul > li {
+  font-size: large;
+  padding: 20px;
+  min-width: 300px;
+  box-sizing: border-box;
+  border: 1px;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #462346;
+  color: white;
+}
+
+nav > ul > li:hover {
+  background-color: #aaaafa;
+  color: black;
+  cursor: pointer;
+}
+
+nav > ul > li:active {
+  background-color: #462346;
+  color: white;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  gap: 10px;
+  height: 80vh;
+  margin: 10px;
+}
+
+.navbar,
+.contentContainer {
+  border: 1px;
+  border-radius: 10px;
+  background-color: #f3f1ef;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  flex: 1;
+}
+
+.contentContainer {
+  flex: 5;
+}
+
+.einsatzkategorie {
+  padding: 5px;
+  height: 75px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+#einsatzkategorieHeader {
+  font-size: large;
+  font-weight: bold;
+  padding: 5px;
+}
+
+#einsatzkategorieList {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 20px;
+}
+
+#einsatzkategorieList input[type="checkbox"] {
+  display: none;
+}
+
+.einsatzinfo {
+  display: block;
+  flex: 1;
+  text-align: center;
+  padding: 10px 0;
+  background-color: transparent;
+  color: black;
+  background-color: #d6d1ca;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border: 0.5px lightgray solid;
+  border-top: none;
+  border-radius: 10px;
+}
+
+.einsatzinfo:has(input[type="checkbox"]:checked) {
+  background-color: #aaaafa;
+  color: black;
+  border-radius: 10px;
+}
