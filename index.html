@@ -20,17 +20,94 @@
 
     <main>
       <div class="container"> <!-- bc: #F3F1EF Nebelgrau leicht -->
-        <div class="navbar"></div>
+        <div class="navbar">
+          <ul class="navItem">
+            <li id="sss-gi">SSS & GI</li>
+            <li id="primary">Primary Assessment</li>
+            <li id="secondary">Secondary Assessment</li>
+            <li id="weitereDetails">weitere Details</li>
+          </ul>
+        </div>
         <div class="contentContainer">
           <div class="einsatzkategorie">
             <div class="einsatzkategorieChild" id="einsatzkategorieHeader">
-              Allgemeine Einsatzinfos
+              <h2>Allgemeine Einsatzinfos</h2>
             </div>
             <div class="einsatzkategorieChild" id="einsatzkategorieList">
               <label class="einsatzinfo"><input type="checkbox" name="einsatzkategorie" value="Internistischer Patient" onclick="">Internistischer Patient</label>
               <label class="einsatzinfo"><input type="checkbox" name="einsatzkategorie" value="Traumatologischer Patient" onclick="">Traumatologischer Patient</label>
               <label class="einsatzinfo"><input type="checkbox" name="einsatzkategorie" value="Pädiatrischer Patient" onclick="">Pädiatrischer Patient</label>
               <label class="einsatzinfo"><input type="checkbox" name="einsatzkategorie" value="Geriatrischer Patient" onclick="">Geriatrischer Patient</label>
+            </div>
+          </div>
+          <!-- radio-wrapper bc:checked #82D282 Frischgrün -->
+          <div class="formContent">
+            <div class="formContainer" id="sss"> 
+              <div class="formChild" id="sicherheit">
+                <h3>Sicherheit</h3>
+                  <div class="radio-wrapper"><label for="sicherheit-1"><input type="radio" id="sicherheit-1" name="sicherheit" value="BO sicher"> BO sicher</label></div>
+                  <div class="radio-wrapper"><label for="sicherheit-2"><input type="radio" id="sicherheit-2" name="sicherheit" value="BO unsicher"> BO unsicher</label></div>
+                  <div class="radio-wrapper"><label for="sicherheit-3"><input type="radio" id="sicherheit-3" name="sicherheit" value="Sukkurs"> Sukkurs</label></div>
+                <!--<div class="radio-wrapper">
+                  <label for="example-33"><input id="example-33" type="radio" name="radio-examples"> Radio 33 </label>
+                </div> -->
+              </div>
+              <div class="formChild" id="einsatzstelle">
+                <h3>Einsatzstelle</h3>
+                <div class="custom-select" data-name="einsatzstelle">
+                  <div class="custom-select-trigger">Bitte wählen</div>
+                  <div class="custom-options">
+                    <div class="custom-option" data-value="Wohnung">Wohnung</div>
+                    <div class="custom-option" data-value="EFH">EFH</div>
+                    <div class="custom-option" data-value="Öffentlicher Platz">Öffentlicher Platz</div>
+                    <div class="custom-option" data-value="Öffentliche Verkehrsfläche">Öffentliche Verkehrsfläche</div>
+                    <div class="custom-option" data-value="Öffentliches Verkehrsmittel">Öffentliches Verkehrsmittel</div>
+                    <div class="custom-option" data-value="Klinik">Klinik</div>
+                    <div class="custom-option" data-value="Ordination">Ordination</div>
+                    <div class="custom-option" data-value="Arbeitsplatz">Arbeitsplatz</div>
+                    <div class="custom-option" data-value="Kindergarten">Kindergarten</div>
+                    <div class="custom-option" data-value="Schule">Schule</div>
+                    <div class="custom-option" data-value="Heim">Heim</div>
+                    <div class="custom-option" data-value="Sonstiges">Sonstiges</div>
+                  </div>
+                  <input type="hidden" name="einsatzstelle">
+                </div>
+              </div>
+              <div class="formChild" id="anwesendeKraefte">
+                <h3>Anwesende Einsatzkräfte</h3>
+                <div class="checkbox-wrapper"><label for="anwesendeKraefte-1"><input type="checkbox" id="anwesendeKraefte-1" name="anwesendeKraefte" value="LPD"> LPD</label></div>
+                <div class="checkbox-wrapper"><label for="anwesendeKraefte-2"><input type="checkbox" id="anwesendeKraefte-2" name="anwesendeKraefte" value="FW"> FW</label></div>
+                <div class="checkbox-wrapper"><label for="anwesendeKraefte-3"><input type="checkbox" id="anwesendeKraefte-3" name="anwesendeKraefte" value="RD" onclick="toggleMeasures('RDanwesend-section', this.checked)"> RD</label></div>
+                <div class="checkbox-wrapper"><label for="anwesendeKraefte-4"><input type="checkbox" id="anwesendeKraefte-4" name="anwesendeKraefte" value="sonstige" onclick="toggleMeasures('sonstigeKraefte-section', this.checked)"> Sonstige</label></div>
+                <div class="hiddenSection" id="RDanwesend-section">
+                  <br><hr><br>
+                  <label for="rdErsteintreffend">ersteintreffendes RM</label>
+                  <div class="text-wrapper"><input type="text" name="rdErsteintreffend" id="rdErsteintreffend" placeholder="Text eingeben"></div><br>
+                  <label for="rdWeitere">weitere anwesende RM</label>
+                  <div class="text-wrapper"><input type="text" name="rdWeitere" id="rdWeitere" placeholder="Text eingeben"></div>
+                </div>
+                <div class="hiddenSection" id="sonstigeKraefte-section">
+                  <br><hr><br>
+                  <label for="sonstigeKraefte">sonstige Einsatzkräfte</label>
+                  <div class="text-wrapper"><input type="text" name="sonstigeKraefte" id="sonstigeKraefte" placeholder="Text eingeben"></div>
+                </div>
+              </div>
+              <div class="formChild" id="vorbehandelndeKraefte">
+                <h3>vorbehandelnde Kräfte</h3>
+                <div class="checkbox-wrapper"><label for="vorbehandelndeKraefte-1"><input type="checkbox" id="vorbehandelndeKraefte-1" name="vorbehandelndeKraefte" value="LPD"> LPD</label></div>
+                <div class="checkbox-wrapper"><label for="vorbehandelndeKraefte-2"><input type="checkbox" id="vorbehandelndeKraefte-2" name="vorbehandelndeKraefte" value="FW"> FW</label></div>
+                <div class="checkbox-wrapper"><label for="vorbehandelndeKraefte-3"><input type="checkbox" id="vorbehandelndeKraefte-3" name="vorbehandelndeKraefte" value="Ersthelfer"> Ersthelfer</label></div>
+                <div class="checkbox-wrapper"><label for="vorbehandelndeKraefte-4"><input type="checkbox" id="vorbehandelndeKraefte-4" name="vorbehandelndeKraefte" value="Heimhilfe / Pflegekraft"> Heimhilfe / Pflegekraft</label></div>
+                <div class="checkbox-wrapper"><label for="vorbehandelndeKraefte-5"><input type="checkbox" id="vorbehandelndeKraefte-5" name="vorbehandelndeKraefte" value="Sonstige" onclick="toggleMeasures('vorbehandeltSonstige-section', this.checked)"> Sonstige</label></div>
+                <div class="hiddenSection" id="vorbehandeltSonstige-section">
+                  <br><hr><br>
+                  <label for="vorbehandeltSonstige">sonstige Ersthelfer</label>
+                  <div class="text-wrapper"><input type="text" name="vorbehandeltSonstige" id="vorbehandeltSonstige" placeholder="Text eingeben"></div>
+                </div>
+              </div>
+            </div>
+            <div class="formContainer" id="gi">
+
             </div>
           </div>
         </div>
