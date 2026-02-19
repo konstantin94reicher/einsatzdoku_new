@@ -6,7 +6,8 @@ body {
   margin: 0;
   background-color: #e6e5fe;
   height: 100vh;
-  overflow: hidden;
+  overflow-x: scroll;
+  overflow-y: hidden;
 }
 main {
   height: 85%;
@@ -179,18 +180,36 @@ nav > ul > li:active {
   display: none;
 }
 
-.formContainer:active {
+.formContainer.active {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-evenly;
 }
 
 .formChild {
   padding: 10px;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  /* flex-direction: column; */
 }
 
-.formChild h3 {
-  text-align: center;
+.formChild :first-child {
+  /* margin-right: auto; */
+  flex: 0.5; 
+}
+
+/* .formChild :not(:first-child) {
+  flex: 3;
+} */
+
+/* .formChildBox h3 {
+  text-align: start;
+} */
+
+.formChildBox {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .radio-wrapper label,

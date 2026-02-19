@@ -77,6 +77,7 @@ function createDynamicNav(containerSelector, items = []) {
     li.textContent = itemText;
     li.classList.add("nav-item");
     li.dataset.index = index;
+    li.id = itemText.toLowerCase();
     ul.appendChild(li);
   });
 
@@ -88,21 +89,21 @@ const navConfig = {
     sssGi: ["SSS", "GI"],
     primary: ["A", "B", "C", "D", "E"],
     secondary: ["SAMPLER", "OPQRST"],
-    weitereDetails: ["Transport", "Notkompetenzen", "Diagnostik"]
+    weitereDetails: ["Transport", "Notkompetenzen", "Diagnostik"],
   },
 
   pädiatrisch: {
     sssGi: ["SSS", "PBD"],
     primary: ["A", "B", "C", "D", "E"],
     secondary: ["SAMPLER", "OPQRST"],
-    weitereDetails: ["Transport", "Notkompetenzen", "Diagnostik"]
+    weitereDetails: ["Transport", "Notkompetenzen", "Diagnostik"],
   },
 
   geriatrisch: {
     sssGi: ["SSS", "GI", "GEMS"],
     primary: ["A", "B", "C", "D", "E"],
     secondary: ["SAMPLER", "OPQRST"],
-    weitereDetails: ["Transport", "Notkompetenzen", "Diagnostik"]
+    weitereDetails: ["Transport", "Notkompetenzen", "Diagnostik"],
   },
 };
 
@@ -141,3 +142,25 @@ function toggleNavbar() {
     weitereDetails.classList.add("hiddenSection");
   }
 }
+
+document.addEventListener("click", function (e) {
+  const navItem = e.target.closest(".nav-item");
+  if (!navItem) return;
+
+  document
+    .querySelectorAll(".nav-item")
+    .forEach((i) => i.classList.remove("active"));
+
+  document
+    .querySelectorAll(".formContainer")
+    .forEach((c) => c.classList.remove("active"));
+
+  const contentId = navItem.id + "-content";
+  const content = document.getElementById(contentId);
+
+  if (content) {
+    content.classList.add("active");
+  }
+
+  navItem.classList.add("active");
+});
