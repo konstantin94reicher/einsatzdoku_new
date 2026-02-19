@@ -45,7 +45,7 @@
             <div class="formContainer active" id="sss-content"> 
               <div class="formChild" id="sicherheit">
                 <div class="formChildBox">
-                  <h3>Sicherheit</h3>
+                  <h5>Sicherheit</h5>
                 </div>
                 <div class="formChildBox">
                   <div class="radio-wrapper"><label for="sicherheit-1"><input type="radio" id="sicherheit-1" name="sicherheit" value="BO sicher"> BO sicher</label></div>
@@ -58,7 +58,7 @@
               </div>
               <div class="formChild" id="einsatzstelle">
                 <div class="formChildBox">
-                  <h3>Einsatzstelle</h3>
+                  <h5>Einsatzstelle</h5>
                 </div>
                 <div class="formChildBox">
                   <div class="custom-select" data-name="einsatzstelle">
@@ -82,35 +82,48 @@
                 </div>
               </div>
               <div class="formChild" id="anwesendeKraefte">
-                <h3>Anwesende Einsatzkräfte</h3>
-                <div class="checkbox-wrapper"><label for="anwesendeKraefte-1"><input type="checkbox" id="anwesendeKraefte-1" name="anwesendeKraefte" value="LPD"> LPD</label></div>
-                <div class="checkbox-wrapper"><label for="anwesendeKraefte-2"><input type="checkbox" id="anwesendeKraefte-2" name="anwesendeKraefte" value="FW"> FW</label></div>
-                <div class="checkbox-wrapper"><label for="anwesendeKraefte-3"><input type="checkbox" id="anwesendeKraefte-3" name="anwesendeKraefte" value="RD" onclick="toggleMeasures('RDanwesend-section', this.checked)"> RD</label></div>
-                <div class="checkbox-wrapper"><label for="anwesendeKraefte-4"><input type="checkbox" id="anwesendeKraefte-4" name="anwesendeKraefte" value="sonstige" onclick="toggleMeasures('sonstigeKraefte-section', this.checked)"> Sonstige</label></div>
-                <div class="hiddenSection" id="RDanwesend-section">
-                  <br><hr><br>
-                  <label for="rdErsteintreffend">ersteintreffendes RM</label>
-                  <div class="text-wrapper"><input type="text" name="rdErsteintreffend" id="rdErsteintreffend" placeholder="Text eingeben"></div><br>
-                  <label for="rdWeitere">weitere anwesende RM</label>
-                  <div class="text-wrapper"><input type="text" name="rdWeitere" id="rdWeitere" placeholder="Text eingeben"></div>
+                <div class="formChildBox">
+                  <h5>Anwesende Einsatzkräfte</h5>
                 </div>
-                <div class="hiddenSection" id="sonstigeKraefte-section">
-                  <br><hr><br>
-                  <label for="sonstigeKraefte">sonstige Einsatzkräfte</label>
-                  <div class="text-wrapper"><input type="text" name="sonstigeKraefte" id="sonstigeKraefte" placeholder="Text eingeben"></div>
-                </div>
+                <div class="formChildBox">
+                  <div class="checkbox-wrapper"><label for="anwesendeKraefte-1"><input type="checkbox" id="anwesendeKraefte-1" name="anwesendeKraefte" value="LPD"> LPD</label></div>
+                  <div class="checkbox-wrapper"><label for="anwesendeKraefte-2"><input type="checkbox" id="anwesendeKraefte-2" name="anwesendeKraefte" value="FW"> FW</label></div>
+                  <div class="checkbox-wrapper"><label for="anwesendeKraefte-3"><input type="checkbox" id="anwesendeKraefte-3" name="anwesendeKraefte" value="RD" onclick="toggleMeasures('RDanwesend-section', this.checked)"> RD</label></div>
+                  <div class="checkbox-wrapper"><label for="anwesendeKraefte-4"><input type="checkbox" id="anwesendeKraefte-4" name="anwesendeKraefte" value="sonstige" onclick="toggleMeasures('sonstigeKraefte-section', this.checked)"> Sonstige</label></div>
+                  <div class="hiddenSection" id="RDanwesend-section">
+                    <div>
+                      <label for="rdErsteintreffend">ersteintreffendes RM</label>
+                      <div class="text-wrapper"><input type="text" name="rdErsteintreffend" id="rdErsteintreffend" placeholder="Text eingeben"></div><br>
+                    </div>
+                    <div>
+                      <label for="rdWeitere">weitere anwesende RM</label>
+                      <div class="text-wrapper"><input type="text" name="rdWeitere" id="rdWeitere" placeholder="Text eingeben"></div>
+                    </div>
+                  </div>
+                  <div class="hiddenSection" id="sonstigeKraefte-section">
+                    <div>
+                      <label for="sonstigeKraefte">sonstige Einsatzkräfte</label>
+                      <div class="text-wrapper"><input type="text" name="sonstigeKraefte" id="sonstigeKraefte" placeholder="Text eingeben"></div>
+                    </div>
+                  </div>
+              </div>
               </div>
               <div class="formChild" id="vorbehandelndeKraefte">
-                <h3>vorbehandelnde Kräfte</h3>
-                <div class="checkbox-wrapper"><label for="vorbehandelndeKraefte-1"><input type="checkbox" id="vorbehandelndeKraefte-1" name="vorbehandelndeKraefte" value="LPD"> LPD</label></div>
-                <div class="checkbox-wrapper"><label for="vorbehandelndeKraefte-2"><input type="checkbox" id="vorbehandelndeKraefte-2" name="vorbehandelndeKraefte" value="FW"> FW</label></div>
-                <div class="checkbox-wrapper"><label for="vorbehandelndeKraefte-3"><input type="checkbox" id="vorbehandelndeKraefte-3" name="vorbehandelndeKraefte" value="Ersthelfer"> Ersthelfer</label></div>
-                <div class="checkbox-wrapper"><label for="vorbehandelndeKraefte-4"><input type="checkbox" id="vorbehandelndeKraefte-4" name="vorbehandelndeKraefte" value="Heimhilfe / Pflegekraft"> Heimhilfe / Pflegekraft</label></div>
-                <div class="checkbox-wrapper"><label for="vorbehandelndeKraefte-5"><input type="checkbox" id="vorbehandelndeKraefte-5" name="vorbehandelndeKraefte" value="Sonstige" onclick="toggleMeasures('vorbehandeltSonstige-section', this.checked)"> Sonstige</label></div>
-                <div class="hiddenSection" id="vorbehandeltSonstige-section">
-                  <br><hr><br>
-                  <label for="vorbehandeltSonstige">sonstige Ersthelfer</label>
-                  <div class="text-wrapper"><input type="text" name="vorbehandeltSonstige" id="vorbehandeltSonstige" placeholder="Text eingeben"></div>
+                <div class="formChildBox">
+                  <h5>vorbehandelnde Kräfte</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="checkbox-wrapper"><label for="vorbehandelndeKraefte-1"><input type="checkbox" id="vorbehandelndeKraefte-1" name="vorbehandelndeKraefte" value="LPD"> LPD</label></div>
+                  <div class="checkbox-wrapper"><label for="vorbehandelndeKraefte-2"><input type="checkbox" id="vorbehandelndeKraefte-2" name="vorbehandelndeKraefte" value="FW"> FW</label></div>
+                  <div class="checkbox-wrapper"><label for="vorbehandelndeKraefte-3"><input type="checkbox" id="vorbehandelndeKraefte-3" name="vorbehandelndeKraefte" value="Ersthelfer"> Ersthelfer</label></div>
+                  <div class="checkbox-wrapper"><label for="vorbehandelndeKraefte-4"><input type="checkbox" id="vorbehandelndeKraefte-4" name="vorbehandelndeKraefte" value="Heimhilfe / Pflegekraft"> Heimhilfe / Pflegekraft</label></div>
+                  <div class="checkbox-wrapper"><label for="vorbehandelndeKraefte-5"><input type="checkbox" id="vorbehandelndeKraefte-5" name="vorbehandelndeKraefte" value="Sonstige" onclick="toggleMeasures('vorbehandeltSonstige-section', this.checked)"> Sonstige</label></div>
+                  <div class="hiddenSection" id="vorbehandeltSonstige-section">
+                    <div>
+                      <label for="vorbehandeltSonstige">sonstige Ersthelfer</label>
+                      <div class="text-wrapper"><input type="text" name="vorbehandeltSonstige" id="vorbehandeltSonstige" placeholder="Text eingeben"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

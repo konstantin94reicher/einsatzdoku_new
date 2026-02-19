@@ -38,8 +38,9 @@ function toggleMeasures(sectionId, show) {
   const section = document.getElementById(sectionId);
   if (section) {
     if (show) {
-      section.style.display = "block";
+      section.style.display = "flex";
       section.style.width = "100%";
+      section.style.gap = "5px"; 
     } else {
       section.style.display = "none";
     }
