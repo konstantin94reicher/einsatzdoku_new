@@ -83,6 +83,33 @@ nav > ul > li:active {
   font-weight: 600;
 }
 
+.nav-item {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 10px;
+  gap: 20px;
+  font-weight: 400;
+}
+
+.dynamic-nav {
+  padding-left: 5px;
+}
+
+.navSubItem {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 5px;
+  margin: 0;
+  gap: 20px;
+  font-weight: 400;
+}
+
 .navItem > li:hover {
   cursor: pointer;
 }
@@ -280,3 +307,4 @@ nav > ul > li:active {
 .hiddenSection {
   display: none;
 }
+
