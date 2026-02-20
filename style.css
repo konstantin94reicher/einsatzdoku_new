@@ -205,12 +205,17 @@ nav > ul > li:active {
   padding-top: 10px;
 }
 
-.formChildBox {
+.formChildBox,
+.formChildBoxLargeWrapper {
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
   /* border: 1px solid black; */
   min-width: 225px;
+}
+
+.formChildBoxLargeWrapper .checkbox-wrapper label {
+  min-width: 300px;
 }
 
 .radio-wrapper label,
