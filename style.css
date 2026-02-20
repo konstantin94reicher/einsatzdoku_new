@@ -187,12 +187,14 @@ nav > ul > li:active {
 }
 
 .formContent {
-  height: 100%;
   margin-top: 10px;
   border-radius: 10px;
   background-color: white;
   display: flex;
   flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
 }
 
 .formContainer {
@@ -204,7 +206,6 @@ nav > ul > li:active {
   flex-direction: column;
   gap: 10px;
   padding-top: 20px;
-  /* justify-content: space-evenly; */
 }
 
 .formChild {
@@ -228,8 +229,13 @@ nav > ul > li:active {
   min-width: 225px;
 }
 
+
 .formChildBoxLargeWrapper .checkbox-wrapper label {
-  min-width: 300px;
+  min-width: 250px;
+}
+
+.formChildBoxLargeWrapper .radio-wrapper label {
+  min-width: 250px;
 }
 
 .radio-wrapper label,
@@ -240,13 +246,13 @@ nav > ul > li:active {
   background: #fff;
   padding: 5px 15px;
   margin: 0;
-  border: 1px solid #eeeeee;
+  border: 2px solid #eeeeee;
   border-radius: 5px;
   -webkit-transition: all 0.1s linear;
   -moz-transition: all 0.1s linear;
   transition: all 0.1s linear;
   line-height: 1.55;
-  color: #737373;
+  color: black;
   min-width: 150px;
   max-width: 100%;
 }
@@ -269,27 +275,36 @@ nav > ul > li:active {
   background: #fff;
   padding: 5px 15px;
   margin: 0;
-  border: 1px solid #eeeeee;
+  border: 2px solid #eeeeee;
   transition: all 0.1s linear;
   line-height: 1.55;
-  color: #737373;
+  color: black;
   min-width: 500px;
   max-width: 100%;
   outline: none;
 }
 
+.text-wrapper input[type="number"] {
+  min-width: 50px;
+}
+
+.text-wrapper.slim input[type="text"] {
+  min-width: 0;
+  width: 150px;
+}
+
 /* Aktiv (wie checked) */
 .text-wrapper input[type="text"]:focus,
 .text-wrapper input[type="number"]:focus {
-  border: 1px solid #82d282;
-  color: #737373;
+  border: 2px solid #82d282;
+  color: black;
 }
 
 /* Optional: Wenn Feld Inhalt hat */
 .text-wrapper input[type="text"]:not(:placeholder-shown),
 .text-wrapper input[type="number"]:not(:placeholder-shown) {
   border-color: #82d282;
-  color: #737373;
+  color: black;
 }
 
 .custom-select {
@@ -306,7 +321,7 @@ nav > ul > li:active {
   padding: 5px 15px;
   border: 1px solid #eeeeee;
   line-height: 1.55;
-  color: #737373;
+  color: black;
   cursor: pointer;
   transition: all 0.1s linear;
 }
@@ -334,7 +349,7 @@ nav > ul > li:active {
   padding: 5px 15px;
   cursor: pointer;
   transition: all 0.1s linear;
-  color: #737373;
+  color: black;
   margin: 5px;
 }
 
