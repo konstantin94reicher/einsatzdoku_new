@@ -183,6 +183,7 @@ nav > ul > li:active {
   background-color: #aaaafa;
   color: black;
   border-radius: 10px;
+  font-weight: bold;
 }
 
 .formContent {
@@ -261,7 +262,8 @@ nav > ul > li:active {
   color: white;
 }
 
-.text-wrapper input[type="text"] {
+.text-wrapper input[type="text"],
+.text-wrapper input[type="number"] {
   display: inline-flex;
   align-items: center;
   background: #fff;
@@ -277,15 +279,17 @@ nav > ul > li:active {
 }
 
 /* Aktiv (wie checked) */
-.text-wrapper input[type="text"]:focus {
+.text-wrapper input[type="text"]:focus,
+.text-wrapper input[type="number"]:focus {
   border: 1px solid #82d282;
   color: #737373;
 }
 
 /* Optional: Wenn Feld Inhalt hat */
-.text-wrapper input[type="text"]:not(:placeholder-shown) {
-  color: #737373;
+.text-wrapper input[type="text"]:not(:placeholder-shown),
+.text-wrapper input[type="number"]:not(:placeholder-shown) {
   border-color: #82d282;
+  color: #737373;
 }
 
 .custom-select {
