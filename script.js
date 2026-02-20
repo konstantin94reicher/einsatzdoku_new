@@ -106,6 +106,13 @@ const navConfig = {
     secondary: ["SAMPLER", "OPQRST"],
     weitereDetails: ["Transport", "Notkompetenzen", "Diagnostik"],
   },
+
+  traumatologisch: {
+    sssGi: ["SSS", "GI"],
+    primary: ["x", "A", "B", "C", "D", "E"],
+    secondary: ["SAMPLER", "OPQRST"],
+    weitereDetails: ["Transport", "Notkompetenzen", "Diagnostik"],
+  },
 };
 
 function toggleNavbar() {
@@ -117,6 +124,8 @@ function toggleNavbar() {
     config = navConfig.pädiatrisch;
   } else if (einsatztyp.geriatrisch) {
     config = navConfig.geriatrisch;
+  } else if (einsatztyp.traumatologisch) {
+    config = navConfig.traumatologisch;
   }
 
   createDynamicNav("#sss-gi", config.sssGi);

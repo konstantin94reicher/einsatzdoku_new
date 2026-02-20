@@ -29,7 +29,7 @@
           </ul>
         </div>
         <div class="contentContainer">
-          <div class="einsatzkategorie">
+          <div class="einsatzkategorie"> <!-- Einsatzkategorie: intern / trauma / päd. / geriatrisch -->
             <div class="einsatzkategorieChild" id="einsatzkategorieHeader">
               <h2>Allgemeine Einsatzinfos</h2>
             </div>
@@ -150,7 +150,7 @@
                 </div>
               </div>
             </div>
-            <div class="formContainer active" id="gi-content">
+            <div class="formContainer" id="gi-content">
               <div class="formChild" id="gesamteindruck">
                 <div class="formChildBox">
                   <h5>Gesamteindruck</h5>
@@ -208,6 +208,191 @@
                 </div>
                 <div class="formChildBox">
                   <div class="text-wrapper"><input type="text" name="giSonstige" id="giSonstige" placeholder="Text eingeben"></div>
+                </div>
+              </div>
+            </div>
+            <!-- (.radio-wrapper>label[for="blutung-$"]>input:radio#blutung-$[name="blutung"][value])*2 -->
+            <!-- (.checkbox-wrapper>label[for="blutung-$"]>input:checkbox#blutung-$[name="blutung"][value])*2 -->
+            <!-- .formChild#blutungZusatz>.formChildBox>h5^.formChildBox -->
+            <!-- <div class="text-wrapper"><input type="text" name="blutungWeitere" id="blutungWeitere" placeholder="Text eingeben"></div> -->
+            <div class="formContainer" id="x-content">
+              <div class="formChild" id="blutung">
+                <div class="formChildBox">
+                  <h5>bedrohliche Blutung?</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="radio-wrapper"><label for="blutung-1"><input type="radio" name="blutung" id="blutung-1" value="Ja">Ja</label></div>
+                  <div class="radio-wrapper"><label for="blutung-2"><input type="radio" name="blutung" id="blutung-2" value="Nein">Nein</label></div>
+                </div>
+              </div>
+              <div class="formChild" id="blutungZusatz">
+                <div class="formChildBox">
+                  <h5>Maßnahmen</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="checkbox-wrapper"><label for="blutungZusatz-1"><input type="checkbox" name="blutungZusatz" id="blutungZusatz-1" value="Tourniquet"> Tourniquet</label></div>
+                  <div class="checkbox-wrapper"><label for="blutungZusatz-2"><input type="checkbox" name="blutungZusatz" id="blutungZusatz-2" value="Emergency Bandage"> Emergency Bandage</label></div>
+                  <div class="checkbox-wrapper"><label for="blutungZusatz-3"><input type="checkbox" name="blutungZusatz" id="blutungZusatz-3" value="Woundpacking"> Woundpacking</label></div>
+                  <div class="checkbox-wrapper"><label for="blutungZusatz-4"><input type="checkbox" name="blutungZusatz" id="blutungZusatz-4" value="Blood Sweep"> Blood Sweep</label></div>
+                  <div class="checkbox-wrapper"><label for="blutungZusatz-5"><input type="checkbox" name="blutungZusatz" id="blutungZusatz-5" value="Beckenschlinge + Druckkörper"> Beckenschlinge + Druckkörper</label></div>
+                  <div class="checkbox-wrapper"><label for="blutungZusatz-6"><input type="checkbox" name="blutungZusatz" id="blutungZusatz-6" value="Druckverband"> Druckverband</label></div>
+                  <div class="checkbox-wrapper"><label for="blutungZusatz-7"><input type="checkbox" name="blutungZusatz" id="blutungZusatz-7" value="manuelle Kompression des zuführenden Gefäßes"> manuelle Kompression des zuführenden Gefäßes</label></div>
+                </div>
+              </div>
+              <div class="formChild" id="blutungBemerkungen">
+                <div class="formChildBox">
+                  <h5>weitere Bemerkungen</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="text-wrapper"><input type="text" name="blutungWeitere" id="blutungWeitere" placeholder="Text eingeben"></div>
+                </div>
+              </div>
+            </div>
+            <div class="formContainer active" id="a-content">
+              <div class="formChild" id="airway">
+                <div class="formChildBox">
+                  <h5>Atemwege</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="radio-wrapper"><label for="airway-1"><input type="radio" name="airway" id="airway-1" value="frei"> frei</label></div>
+                  <div class="radio-wrapper"><label for="airway-2"><input type="radio" name="airway" id="airway-2" value="gefährdet"> gefährdet</label></div>
+                  <div class="radio-wrapper"><label for="airway-2"><input type="radio" name="airway" id="airway-2" value="verlegt"> verlegt</label></div>
+                </div>
+              </div>
+              <div class="formChild" id="airwaymanagement">
+                <div class="formChildBox">
+                  <h5>Atemwegsmanagement</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="checkbox-wrapper"><label for="airwaymanagement-1"><input type="checkbox" name="airwaymanagement" id="airwaymanagement-1" value="Esmarch Handgriff"> Esmarch Handgriff</label></div>
+                  <div class="checkbox-wrapper"><label for="airwaymanagement-2"><input type="checkbox" name="airwaymanagement" id="airwaymanagement-2" value="Chin Lift"> Chin Lift</label></div>
+                  <div class="checkbox-wrapper"><label for="airwaymanagement-3"><input type="checkbox" name="airwaymanagement" id="airwaymanagement-3" value="manuelles Freimachen der Atemwege"> manuelles Freimachen der Atemwege</label></div>
+                  <div class="checkbox-wrapper"><label for="airwaymanagement-4"><input type="checkbox" name="airwaymanagement" id="airwaymanagement-4" value="Rückenschläge lt. Fremdkörperalgorithmus"> Rückenschläge lt. Fremdkörperalgorithmus</label></div>
+                  <div class="checkbox-wrapper"><label for="airwaymanagement-5"><input type="checkbox" name="airwaymanagement" id="airwaymanagement-5" value="Heimlich Manöver"> Heimlich Manöver</label></div>
+                  <div class="checkbox-wrapper"><label for="airwaymanagement-6"><input type="checkbox" name="airwaymanagement" id="airwaymanagement-6" value="Absaugen der Atemwege"> Absaugen der Atemwege</label></div>
+                  <div class="checkbox-wrapper"><label for="airwaymanagement-7"><input type="checkbox" name="airwaymanagement" id="airwaymanagement-7" value="Guedel Tubus"> Guedel Tubus</label></div>
+                  <div class="checkbox-wrapper"><label for="airwaymanagement-8"><input type="checkbox" name="airwaymanagement" id="airwaymanagement-8" value="Wendl Tubus"> Wendl Tubus</label></div>
+                  <div class="checkbox-wrapper"><label for="airwaymanagement-9"><input type="checkbox" name="airwaymanagement" id="airwaymanagement-9" value="Intubation mittels SGA"> Intubation mittels SGA</label></div>
+                  <div class="checkbox-wrapper"><label for="airwaymanagement-10"><input type="checkbox" name="airwaymanagement" id="airwaymanagement-10" value="endotracheale Intubation"> endotracheale Intubation</label></div>
+                  <div class="checkbox-wrapper"><label for="airwaymanagement-11"><input type="checkbox" name="airwaymanagement" id="airwaymanagement-11" value="chirurgische Atemwegssicherung"> chirurgische Atemwegssicherung</label></div>
+                </div>
+              </div>
+              <div class="formChild" id="airwayBemerkungen">
+                <div class="formChildBox">
+                  <h5>weitere Bemerkungen</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="text-wrapper"><input type="text" name="airwayWeitere" id="airwayWeitere" placeholder="Text eingeben"></div>
+                </div>
+              </div>
+            </div>
+            <div class="formContainer" id="b-content">
+              <div class="formChild" id="">
+                <div class="formChildBox">
+                  <h5></h5>
+                </div>
+                <div class="formChildBox">
+
+                </div>
+              </div>
+            </div>
+            <div class="formContainer" id="c-content">
+              <div class="formChild" id="">
+                <div class="formChildBox">
+                  <h5></h5>
+                </div>
+                <div class="formChildBox">
+
+                </div>
+              </div>
+            </div>
+            <div class="formContainer" id="d-content">
+              <div class="formChild" id="">
+                <div class="formChildBox">
+                  <h5></h5>
+                </div>
+                <div class="formChildBox">
+
+                </div>
+              </div>
+            </div>
+            <div class="formContainer" id="e-content">
+              <div class="formChild" id="">
+                <div class="formChildBox">
+                  <h5></h5>
+                </div>
+                <div class="formChildBox">
+
+                </div>
+              </div>
+            </div>
+            <div class="formContainer" id="sampler-content">
+              <div class="formChild" id="">
+                <div class="formChildBox">
+                  <h5></h5>
+                </div>
+                <div class="formChildBox">
+
+                </div>
+              </div>
+            </div>
+            <div class="formContainer" id="opqrst-content">
+              <div class="formChild" id="">
+                <div class="formChildBox">
+                  <h5></h5>
+                </div>
+                <div class="formChildBox">
+
+                </div>
+              </div>
+            </div>
+            <div class="formContainer" id="transport-content">
+              <div class="formChild" id="">
+                <div class="formChildBox">
+                  <h5></h5>
+                </div>
+                <div class="formChildBox">
+
+                </div>
+              </div>
+            </div>
+            <div class="formContainer" id="notkompetenzen-content">
+              <div class="formChild" id="">
+                <div class="formChildBox">
+                  <h5></h5>
+                </div>
+                <div class="formChildBox">
+
+                </div>
+              </div>
+            </div>
+            <div class="formContainer" id="diagnostik-content">
+              <div class="formChild" id="">
+                <div class="formChildBox">
+                  <h5></h5>
+                </div>
+                <div class="formChildBox">
+
+                </div>
+              </div>
+            </div>
+            <div class="formContainer" id="content">
+              <div class="formChild" id="">
+                <div class="formChildBox">
+                  <h5></h5>
+                </div>
+                <div class="formChildBox">
+
+                </div>
+              </div>
+            </div>
+            <div class="formContainer" id="content">
+              <div class="formChild" id="">
+                <div class="formChildBox">
+                  <h5></h5>
+                </div>
+                <div class="formChildBox">
+                  
                 </div>
               </div>
             </div>
