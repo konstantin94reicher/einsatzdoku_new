@@ -86,6 +86,11 @@ nav > ul > li:active {
   margin: 0;
   gap: 20px;
   font-weight: 600;
+  min-width: 200px;
+}
+
+.navItem li {
+  width: 100%;
 }
 
 .nav-item {
@@ -94,9 +99,17 @@ nav > ul > li:active {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-top: 10px;
+  padding: 10px 0 10px 10px;
   gap: 20px;
   font-weight: 400;
+  border-radius: 10px;
+}
+
+.nav-item.active {
+  background-color: white;
+  width: 100%;
+  font-weight: 600;
+  font-size: 1.1em;
 }
 
 .dynamic-nav {
