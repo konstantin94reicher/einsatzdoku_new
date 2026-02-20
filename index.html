@@ -42,7 +42,7 @@
           </div>
           <!-- radio-wrapper bc:checked #82D282 Frischgrün -->
           <div class="formContent">
-            <div class="formContainer active" id="sss-content"> 
+            <div class="formContainer" id="sss-content"> 
               <div class="formChild" id="sicherheit">
                 <div class="formChildBox">
                   <h5>Sicherheit</h5>
@@ -55,6 +55,14 @@
                 <!--<div class="radio-wrapper">
                   <label for="example-33"><input id="example-33" type="radio" name="radio-examples"> Radio 33 </label>
                 </div> -->
+              </div>
+              <div class="formChild" id="psa">
+                <div class="formChildBox">
+                  <h5>PSA</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="checkbox-wrapper"><label for="psa-1"><input type="checkbox" id="psa-1" name="psa" value="PSA laut aktuell gültigem Hygienehandbuch"> PSA laut aktuell gültigem Hygienehandbuch</label></div>
+                </div>
               </div>
               <div class="formChild" id="einsatzstelle">
                 <div class="formChildBox">
@@ -77,7 +85,14 @@
                       <div class="custom-option" data-value="Heim">Heim</div>
                       <div class="custom-option" data-value="Sonstiges">Sonstiges</div>
                     </div>
-                    <input type="hidden" name="einsatzstelle">
+                    <!-- onchange="toggleMeasures('einsatzstelleSonstiges-section', this.value, 'Sonstiges')" -->
+                    <input type="hidden" name="einsatzstelle" >
+                  </div>
+                  <div class="hiddenSection" id="einsatzstelleSonstiges-section">
+                    <div>
+                      <label for="einsatzstelleSonstiges">Einsatzstelle angeben</label>
+                      <div class="text-wrapper"><input type="text" name="einsatzstelleSonstiges" id="einsatzstelleSonstiges" placeholder="Text eingeben"></div><br>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -126,9 +141,75 @@
                   </div>
                 </div>
               </div>
+              <div class="formChild" id="sssWeitere">
+                <div class="formChildBox">
+                  <h5>weitere Bemerkungen</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="text-wrapper"><input type="text" name="sssSonstige" id="sssSonstige" placeholder="Text eingeben"></div>
+                </div>
+              </div>
             </div>
-            <div class="formContainer" id="gi-content">
-
+            <div class="formContainer active" id="gi-content">
+              <div class="formChild" id="gesamteindruck">
+                <div class="formChildBox">
+                  <h5>Gesamteindruck</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="radio-wrapper"><label for="gesamteindruck-1"><input type="radio" id="gesamteindruck-1" name="gesamteindruck" value="kritisch"> kritisch</label></div>
+                  <div class="radio-wrapper"><label for="gesamteindruck-2"><input type="radio" id="gesamteindruck-2" name="gesamteindruck" value="potentiell kritisch"> potentiell kritisch</label></div>
+                  <div class="radio-wrapper"><label for="gesamteindruck-3"><input type="radio" id="gesamteindruck-3" name="gesamteindruck" value="nicht kritisch"> nicht kritisch</label></div>
+                </div>
+              </div>
+              <div class="formChild" id="auffinden">
+                <div class="formChildBox">
+                  <h5>Auffinden des Patienten</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="radio-wrapper"><label for="auffinden-1"><input type="radio" id="auffinden-1" name="auffinden" value="gehend"> gehend</label></div>
+                  <div class="radio-wrapper"><label for="auffinden-2"><input type="radio" id="auffinden-2" name="auffinden" value="sitzend"> sitzend</label></div>
+                  <div class="radio-wrapper"><label for="auffinden-3"><input type="radio" id="auffinden-3" name="auffinden" value="liegend"> liegend</label></div>
+                </div>
+              </div>
+              <div class="formChild" id="bewusstsein">
+                <div class="formChildBox">
+                  <h5>Bewusstsein</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="radio-wrapper"><label for="bewusstsein-1"><input type="radio" id="bewusstsein-1" name="bewusstsein" value="wach"> wach</label></div>
+                  <div class="radio-wrapper"><label for="bewusstsein-2"><input type="radio" id="bewusstsein-2" name="bewusstsein" value="getrübt"> getrübt</label></div>
+                  <div class="radio-wrapper"><label for="bewusstsein-3"><input type="radio" id="bewusstsein-3" name="bewusstsein" value="bewusstlos"> bewusstlos</label></div>
+                </div>
+              </div>
+              <div class="formChild" id="atmung">
+                <div class="formChildBox">
+                  <h5>Atmung</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="radio-wrapper"><label for="atmung-1"><input type="radio" id="atmung-1" name="atmung" value="unauffällig"> unauffällig</label></div>
+                  <div class="radio-wrapper"><label for="atmung-2"><input type="radio" id="atmung-2" name="atmung" value="auffällig/insuffizient"> auffällig/insuffizient</label></div>
+                  <div class="radio-wrapper"><label for="atmung-3"><input type="radio" id="atmung-3" name="atmung" value="keine Atemtätigkeit ersichtlich"> keine Atemtätigkeit ersichtlich</label></div>
+                </div>
+              </div>
+              <div class="formChild" id="haut">
+                <div class="formChildBox">
+                  <h5>Haut</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="checkbox-wrapper"><label for="haut-1"><input type="checkbox" id="haut-1" name="haut" value="rosig"> rosig</label></div>
+                  <div class="checkbox-wrapper"><label for="haut-2"><input type="checkbox" id="haut-2" name="haut" value="blass"> blass</label></div>
+                  <div class="checkbox-wrapper"><label for="haut-3"><input type="checkbox" id="haut-3" name="haut" value="zyanotisch"> zyanotisch</label></div>
+                  <div class="checkbox-wrapper"><label for="haut-3"><input type="checkbox" id="haut-3" name="haut" value="starke Blutung erkennbar"> starke Blutung erkennbar</label></div>
+                </div>
+              </div>
+              <div class="formChild" id="giWeitere">
+                <div class="formChildBox">
+                  <h5>weitere Bemerkungen</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="text-wrapper"><input type="text" name="giSonstige" id="giSonstige" placeholder="Text eingeben"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -228,7 +228,7 @@ nav > ul > li:active {
   transition: all 0.1s linear;
   line-height: 1.55;
   color: #737373;
-  min-width: 100px;
+  min-width: 120px;
   max-width: 100%;
 }
 
@@ -253,7 +253,7 @@ nav > ul > li:active {
   transition: all 0.1s linear;
   line-height: 1.55;
   color: #737373;
-  min-width: 200px;
+  min-width: 500px;
   max-width: 100%;
   outline: none;
 }
@@ -261,12 +261,12 @@ nav > ul > li:active {
 /* Aktiv (wie checked) */
 .text-wrapper input[type="text"]:focus {
   border: 1px solid #82d282;
-  color: white;
+  color: #737373;
 }
 
 /* Optional: Wenn Feld Inhalt hat */
 .text-wrapper input[type="text"]:not(:placeholder-shown) {
-  color: white;
+  color: #737373;
   border-color: #82d282;
 }
 
