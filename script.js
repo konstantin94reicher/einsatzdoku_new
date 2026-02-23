@@ -109,7 +109,7 @@ const navConfig = {
 
   traumatologisch: {
     sssGi: ["SSS", "GI"],
-    primary: ["x", "A", "B", "C", "D", "E"],
+    primary: ["x", "A", "B", "C", "D", "E", "Trauma"],
     secondary: ["SAMPLER", "OPQRST"],
     weitereDetails: ["Transport", "Notkompetenzen", "Diagnostik"],
   },

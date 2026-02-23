@@ -543,7 +543,7 @@
                 </div>
               </div>
             </div>
-            <div class="formContainer active" id="d-content"> <!-- D - Disability -->
+            <div class="formContainer" id="d-content"> <!-- D - Disability -->
 
               <!-- Unauffällig -->
               <div class="formChild" id="d-unauffaellig">
@@ -827,6 +827,194 @@
                     <div class="text-wrapper">
                       <input type="text" name="lagerungSonstige" id="lagerungSonstige" placeholder="Text eingeben...">
                     </div>
+                  </div>
+                </div>
+              </div>
+            
+            </div>
+            <div class="formContainer active" id="trauma-content">
+
+              <!-- Unauffällig -->
+              <!-- Unauffällig -->
+              <div class="formChild" id="trauma-unauffaellig">
+                <div class="formChildBox"></div>
+                <div class="formChildBox unauffaellig">
+                  <div class="checkbox-wrapper unauffaellig">
+                    <label for="trauma-unauffaellig-1">
+                      <input type="checkbox" name="trauma-unauffaellig" id="trauma-unauffaellig-1" value="TraumaUnauffällig"> unauffällig
+                    </label>
+                  </div>
+                </div>
+              </div>
+            
+              <!-- ===================== B - Breathing ===================== -->
+            
+              <div class="formChild">
+                <div class="formChildBox">
+                  <h5>Thorax</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="radio-wrapper"><label for="trauma-thorax-1"><input type="radio" name="traumaThorax" id="trauma-thorax-1" value="Thorax stabil">stabil</label></div>
+                  <div class="radio-wrapper"><label for="trauma-thorax-2"><input type="radio" name="traumaThorax" id="trauma-thorax-2" value="Thorax instabil">instabil</label></div>
+                  <div class="text-wrapper"><input type="text" name="traumaBWeitere" id="traumaBWeitere" placeholder="Thorax - weitere Bemerkungen ..."></div>
+                </div>
+              </div>
+              
+              <!-- ===================== C - Circulation ===================== -->
+            
+              <div class="formChild">
+                <div class="formChildBox">
+                  <h5>Abdomen</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="radio-wrapper"><label for="trauma-abdomen-1"><input type="radio" name="traumaAbdomen" id="trauma-abdomen-1" value="Abdomen weich"> weich</label></div>
+                  <div class="radio-wrapper"><label for="trauma-abdomen-2"><input type="radio" name="traumaAbdomen" id="trauma-abdomen-2" value="Abdomen druckdolent"> druckdolent</label></div>
+                  <div class="radio-wrapper"><label for="trauma-abdomen-3"><input type="radio" name="traumaAbdomen" id="trauma-abdomen-3" value="Abdomen Abwehrspannung"> Abwehrspannung</label></div>
+                </div>
+              </div>
+            
+              <div class="formChild">
+                <div class="formChildBox">
+                  <h5>Oberschenkel</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="radio-wrapper"><label for="trauma-oberschenkel-1"><input type="radio" name="traumaOberschenkel" id="trauma-oberschenkel-1" value="Oberschenkel stabil"> stabil</label></div>
+                  <div class="radio-wrapper"><label for="trauma-oberschenkel-2"><input type="radio" name="traumaOberschenkel" id="trauma-oberschenkel-2" value="Oberschenkel instabil"> instabil</label></div>
+                </div>
+              </div>
+            
+              <div class="formChild">
+                <div class="formChildBox">
+                  <h5>Becken</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="radio-wrapper"><label for="trauma-becken-1"><input type="radio" name="traumaBecken" id="trauma-becken-1" value="Becken stabil"> stabil</label></div>
+                  <div class="radio-wrapper"><label for="trauma-becken-2"><input type="radio" name="traumaBecken" id="trauma-becken-2" value="Becken instabil"> instabil</label></div>
+                </div>
+              </div>
+            
+              <div class="formChild" id="trauma-c-weitere">
+                <div class="formChildBox">
+                  <h5>weitere Bemerkungen (C)</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="text-wrapper">
+                    <input type="text" name="traumaCWeitere" id="traumaCWeitere" placeholder="Text eingeben...">
+                  </div>
+                </div>
+              </div>
+            
+              <!-- ===================== D - Disability ===================== -->
+            
+              <div class="formChild">
+                <div class="formChildBox">
+                  <h5>MILS</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="radio-wrapper"><label for="trauma-mils-1"><input type="radio" name="traumaMILS" id="trauma-mils-1" value="keine MILS durchgeführt"> Nein</label></div>
+                  <div class="radio-wrapper"><label for="trauma-mils-2"><input type="radio" name="traumaMILS" id="trauma-mils-2" value="MILS durchgeführt"> Ja</label></div>
+                </div>
+              </div>
+            
+              <!-- Immobilisierung -->
+              <div class="formChild">
+                <div class="formChildBox">
+                  <h5>Immobilisierung</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="radio-wrapper">
+                    <label for="trauma-immo-1">
+                      <input type="radio" name="traumaImmo" id="trauma-immo-1" value="Nein"
+                             onclick="toggleMeasures('immo-section', false)">
+                      Nein
+                    </label>
+                  </div>
+                  <div class="radio-wrapper">
+                    <label for="trauma-immo-2">
+                      <input type="radio" name="traumaImmo" id="trauma-immo-2" value="Ja"
+                             onclick="toggleMeasures('immo-section', true)">
+                      Ja
+                    </label>
+                  </div>
+                </div>
+              </div>
+            
+              <!-- Hidden Immobilisierung Details -->
+              <div class="hiddenSection" id="immo-section">
+            
+                <div class="formChild">
+                  <div class="formChildBox">
+                    <h5>Indikation</h5>
+                  </div>
+                  <div class="formChildBox">
+                    <div class="radio-wrapper">
+                      <label for="immo-indikation-1">
+                        <input type="radio" name="immoIndikation" id="immo-indikation-1"
+                               value="Verletzungsmuster / Unfallkinematik"
+                               onclick="toggleMeasures('nexus-section', false)">
+                        Verletzungsmuster / Unfallkinematik
+                      </label>
+                    </div>
+                    <div class="radio-wrapper">
+                      <label for="immo-indikation-2">
+                        <input type="radio" name="immoIndikation" id="immo-indikation-2"
+                               value="NEXUS-Kriterien"
+                               onclick="toggleMeasures('nexus-section', true)">
+                        NEXUS-Kriterien
+                      </label>
+                    </div>
+                  </div>
+                </div>
+            
+              </div>
+            
+              <!-- Hidden NEXUS -->
+              <div class="hiddenSection" id="nexus-section">
+                <div class="formChild">
+                  <div class="formChildBox">
+                    <h5>NEXUS Kriterien</h5>
+                  </div>
+                  <div class="formChildBox">
+                    <div class="checkbox-wrapper"><label><input type="checkbox" name="nexus" value="Druckempfindlichkeit WS"> Druckempfindlichkeit / Schmerzen / Parästhesien bei Palpation der WS</label></div>
+                    <div class="checkbox-wrapper"><label><input type="checkbox" name="nexus" value="fokal-neurologische Störung"> fokal-neurologische sensorische / motorische Störung</label></div>
+                    <div class="checkbox-wrapper"><label><input type="checkbox" name="nexus" value="Bewusstseinstrübung"> Bewusstseinstrübung</label></div>
+                    <div class="checkbox-wrapper"><label><input type="checkbox" name="nexus" value="schwere Intoxikation"> schwere Intoxikation (Alkohol, Drogen, Med.)</label></div>
+                    <div class="checkbox-wrapper"><label><input type="checkbox" name="nexus" value="ablenkende Verletzungen"> ablenkende schmerzende Verletzungen</label></div>
+                  </div>
+                </div>
+              </div>
+            
+              <!-- Schädel -->
+              <div class="formChild">
+                <div class="formChildBox">
+                  <h5>Sturz auf den Schädel?</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="radio-wrapper"><label for="trauma-schaedel-1"><input type="radio" name="traumaSchaedel" id="trauma-schaedel-1" value="kein Sturz auf den Schädel"> Nein</label></div>
+                  <div class="radio-wrapper"><label for="trauma-schaedel-2"><input type="radio" name="traumaSchaedel" id="trauma-schaedel-2" value="Sturz auf den Schädel"> Ja</label></div>
+                  <div class="radio-wrapper"><label for="trauma-schaedel-3"><input type="radio" name="traumaSchaedel" id="trauma-schaedel-3" value="nicht erhebbar"> nicht erhebbar</label></div>
+                </div>
+              </div>
+            
+              <!-- Unfallhergang -->
+              <div class="formChild">
+                <div class="formChildBox">
+                  <h5>Unfallhergang erinnerlich?</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="radio-wrapper"><label for="trauma-uhg-1"><input type="radio" name="traumaUHG" id="trauma-uhg-1" value="Unfallhergang erinnerlich"> Ja</label></div>
+                  <div class="radio-wrapper"><label for="trauma-uhg-2"><input type="radio" name="traumaUHG" id="trauma-uhg-2" value="Unfallhergang nicht erinnerlich"> Nein</label></div>
+                  <div class="radio-wrapper"><label for="trauma-uhg-3"><input type="radio" name="traumaUHG" id="trauma-uhg-3" value="nicht erhebbar"> nicht erhebbar</label></div>
+                </div>
+              </div>
+            
+              <div class="formChild" id="trauma-d-weitere">
+                <div class="formChildBox">
+                  <h5>weitere Bemerkungen (D)</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="text-wrapper">
+                    <input type="text" name="traumaDWeitere" id="traumaDWeitere" placeholder="Text eingeben...">
                   </div>
                 </div>
               </div>
