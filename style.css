@@ -86,7 +86,7 @@ nav > ul > li:active {
   margin: 0;
   gap: 20px;
   font-weight: 600;
-  min-width: 200px;
+  min-width: 160px;
 }
 
 .navItem li {
@@ -141,7 +141,7 @@ nav > ul > li:active {
   height: 75px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
   align-items: center;
   justify-content: center;
   font-size: 1.1em;
@@ -165,6 +165,7 @@ nav > ul > li:active {
 }
 
 .einsatzinfo {
+  font-size: small;
   display: block;
   flex: 1;
   text-align: center;
@@ -204,7 +205,7 @@ nav > ul > li:active {
 .formContainer.active {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
   padding-top: 20px;
 }
 
@@ -229,22 +230,39 @@ nav > ul > li:active {
   min-width: 225px;
 }
 
+.formChildBox.unauffaellig {
+  flex: 1;
+}
+
+.formChildBox.unauffaellig .checkbox-wrapper {
+  width: 50%;
+}
+
+.formChildBoxLargeWrapper {
+  flex: 1;
+}
+
 
 .formChildBoxLargeWrapper .checkbox-wrapper label {
-  min-width: 250px;
+  min-width: 200px;
 }
 
 .formChildBoxLargeWrapper .radio-wrapper label {
-  min-width: 250px;
+  min-width: 120px;
+}
+
+.formChildBoxLargeWrapper.column div .radio-wrapper label {
+  width: 80%;
 }
 
 .radio-wrapper label,
 .checkbox-wrapper label {
-  /* font-size: small; */
+  font-size: smaller;
+  font-weight: 600;
   display: inline-flex;
   align-items: center;
   background: #fff;
-  padding: 5px 15px;
+  padding: 2px 15px;
   margin: 0;
   border: 2px solid #eeeeee;
   border-radius: 5px;
@@ -253,8 +271,7 @@ nav > ul > li:active {
   transition: all 0.1s linear;
   line-height: 1.55;
   color: black;
-  min-width: 150px;
-  max-width: 100%;
+  min-width: 120px;
 }
 
 .radio-wrapper input,
@@ -266,6 +283,7 @@ nav > ul > li:active {
 .checkbox-wrapper label:has(input:checked) {
   background: #82d282;
   color: white;
+  border: 2px solid #82d282;
 }
 
 .text-wrapper input[type="text"],
@@ -273,15 +291,21 @@ nav > ul > li:active {
   display: inline-flex;
   align-items: center;
   background: #fff;
-  padding: 5px 15px;
+  padding: 2px 15px;
   margin: 0;
   border: 2px solid #eeeeee;
   transition: all 0.1s linear;
   line-height: 1.55;
   color: black;
+  font-size: x-small;
   min-width: 500px;
-  max-width: 100%;
   outline: none;
+}
+
+.checkbox-wrapper.unauffaellig label {
+  width: 100%;
+  font-size: small;
+  justify-content: center;
 }
 
 .text-wrapper input[type="number"] {
@@ -291,6 +315,24 @@ nav > ul > li:active {
 .text-wrapper.slim input[type="text"] {
   min-width: 0;
   width: 150px;
+}
+
+.radio-wrapper.width230 {
+  width: 100%;
+}
+
+.radio-wrapper.width230 label {
+  max-width: 100%;
+  padding-right: 0;
+}
+
+.radio-wrapper.width165 {
+  width: 100%;
+}
+
+.radio-wrapper.width165 label {
+  max-width: 100%;
+  padding-right: 0;
 }
 
 /* Aktiv (wie checked) */
@@ -317,6 +359,7 @@ nav > ul > li:active {
 
 /* Geschlossenes Feld */
 .custom-select-trigger {
+  font-size: smaller;
   background: #fff;
   padding: 5px 15px;
   border: 1px solid #eeeeee;
@@ -334,6 +377,7 @@ nav > ul > li:active {
 
 /* Dropdown */
 .custom-options {
+  font-size: smaller;
   position: absolute;
   left: 0;
   right: 0;
@@ -346,7 +390,7 @@ nav > ul > li:active {
 
 /* Option */
 .custom-option {
-  padding: 5px 15px;
+  padding: 8px 15px;
   cursor: pointer;
   transition: all 0.1s linear;
   color: black;
@@ -366,4 +410,16 @@ nav > ul > li:active {
 
 .hiddenSection {
   display: none;
+}
+
+#gcsFirstChild,
+#gcsSecondChild,
+#pupillenFirstChild,
+#pupillenSecondChild {
+  flex: 1;  
+}
+
+#gcsThirdChild,
+#pupillenThirdChild {
+  flex: 1.5;
 }

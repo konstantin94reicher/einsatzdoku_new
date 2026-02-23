@@ -151,6 +151,16 @@
               </div>
             </div>
             <div class="formContainer" id="gi-content">
+              <div class="formChild" id="gi-unauffaellig">
+                <div class="formChildBox"></div>
+                <div class="formChildBox unauffaellig">
+                  <div class="checkbox-wrapper unauffaellig">
+                    <label for="gi-unauffaellig-1">
+                      <input type="checkbox" name="gi-unauffaellig" id="gi-unauffaellig-1" value="GIUnauffällig"> unauffällig
+                    </label>
+                  </div>
+                </div>
+              </div>
               <div class="formChild" id="gesamteindruck">
                 <div class="formChildBox">
                   <h5>Gesamteindruck</h5>
@@ -217,6 +227,16 @@
             <!-- <div class="text-wrapper"><input type="text" name="blutungWeitere" id="blutungWeitere" placeholder="Text eingeben"></div> -->
             <!-- .hiddenSection#section>div -->
             <div class="formContainer" id="x-content"> <!-- x - critical bleeding -->
+              <div class="formChild" id="x-unauffaellig">
+                <div class="formChildBox"></div>
+                <div class="formChildBox unauffaellig">
+                  <div class="checkbox-wrapper unauffaellig">
+                    <label for="x-unauffaellig-1">
+                      <input type="checkbox" name="x-unauffaellig" id="x-unauffaellig-1" value="XUnauffällig"> unauffällig
+                    </label>
+                  </div>
+                </div>
+              </div>
               <div class="formChild" id="blutung">
                 <div class="formChildBox">
                   <h5>bedrohliche Blutung?</h5>
@@ -250,6 +270,16 @@
               </div>
             </div>
             <div class="formContainer" id="a-content"> <!-- A - Airway -->
+              <div class="formChild" id="a-unauffaellig">
+                <div class="formChildBox"></div>
+                <div class="formChildBox unauffaellig">
+                  <div class="checkbox-wrapper unauffaellig">
+                    <label for="a-unauffaellig-1">
+                      <input type="checkbox" name="a-unauffaellig" id="a-unauffaellig-1" value="AUnauffällig"> unauffällig
+                    </label>
+                  </div>
+                </div>
+              </div>
               <div class="formChild" id="airway">
                 <div class="formChildBox">
                   <h5>Atemwege</h5>
@@ -288,6 +318,16 @@
               </div>
             </div>
             <div class="formContainer" id="b-content"> <!-- B - Breathing -->
+              <div class="formChild" id="b-unauffaellig">
+                <div class="formChildBox"></div>
+                <div class="formChildBox unauffaellig">
+                  <div class="checkbox-wrapper unauffaellig">
+                    <label for="b-unauffaellig-1">
+                      <input type="checkbox" name="b-unauffaellig" id="b-unauffaellig-1" value="BUnauffällig"> unauffällig
+                    </label>
+                  </div>
+                </div>
+              </div>
               <div class="formChild" id="">
                 <div class="formChildBox">
                   <h5>Atemfrequenz</h5>
@@ -388,34 +428,35 @@
                 </div>
               </div>
             </div>
-            <div class="formContainer active" id="c-content"> <!-- C - Circulation -->
-              <div class="formChild" id="hautfarbe">
-                <div class="formChildBox">
-                  <h5>Hautfarbe</h5>
-                </div>
-                <div class="formChildBox">
-                  <div class="radio-wrapper"><label for="hautfarbe-1"><input type="radio" name="hautfarbe" id="hautfarbe-1" value="rosig"> rosig</label></div>
-                  <div class="radio-wrapper"><label for="hautfarbe-2"><input type="radio" name="hautfarbe" id="hautfarbe-2" value="blass"> blass</label></div>
-                  <div class="radio-wrapper"><label for="hautfarbe-3"><input type="radio" name="hautfarbe" id="hautfarbe-3" value="Zyanose"> Zyanose</label></div>
-                </div>
-              </div>
-              <div class="formChild" id="hautbeschaffenheit">
-                <div class="formChildBox">
-                  <h5>Hautbeschaffenheit</h5>
-                </div>
-                <div class="formChildBox">
-                  <div class="formChildBox">
-                    <div class="radio-wrapper"><label for="hautbeschaffenheit-1"><input type="radio" name="hautbeschaffenheit" id="hautbeschaffenheit-1" value="trocken"> trocken</label></div>
-                    <div class="radio-wrapper"><label for="hautbeschaffenheit-2"><input type="radio" name="hautbeschaffenheit" id="hautbeschaffenheit-2" value="schweißig"> schweißig</label></div>
+            <div class="formContainer" id="c-content"> <!-- C - Circulation -->
+              <div class="formChild" id="c-unauffaellig">
+                <div class="formChildBox"></div>
+                <div class="formChildBox unauffaellig">
+                  <div class="checkbox-wrapper unauffaellig">
+                    <label for="c-unauffaellig-1">
+                      <input type="checkbox" name="c-unauffaellig" id="c-unauffaellig-1" value="CUnauffällig"> unauffällig
+                    </label>
                   </div>
                 </div>
               </div>
-              <div class="formChild" id="hauttemperatur">
+              <div class="formChild" id="hautfarbe">
                 <div class="formChildBox">
-                  <h5>Hauttemperatur</h5>
+                  <h5>Haut</h5>
                 </div>
                 <div class="formChildBox">
-                  <div class="formChildBox">
+                  <div>
+                    <strong>Farbe</strong>
+                    <div class="radio-wrapper"><label for="hautfarbe-1"><input type="radio" name="hautfarbe" id="hautfarbe-1" value="rosig"> rosig</label></div>
+                    <div class="radio-wrapper"><label for="hautfarbe-2"><input type="radio" name="hautfarbe" id="hautfarbe-2" value="blass"> blass</label></div>
+                    <div class="radio-wrapper"><label for="hautfarbe-3"><input type="radio" name="hautfarbe" id="hautfarbe-3" value="Zyanose"> Zyanose</label></div>
+                  </div>
+                  <div>
+                    <strong>Beschaffenheit</strong>
+                    <div class="radio-wrapper"><label for="hautbeschaffenheit-1"><input type="radio" name="hautbeschaffenheit" id="hautbeschaffenheit-1" value="trocken"> trocken</label></div>
+                    <div class="radio-wrapper"><label for="hautbeschaffenheit-2"><input type="radio" name="hautbeschaffenheit" id="hautbeschaffenheit-2" value="schweißig"> schweißig</label></div>
+                  </div>
+                  <div>
+                    <strong>Temperatur</strong>
                     <div class="radio-wrapper"><label for="hauttemperatur-1"><input type="radio" name="hauttemperatur" id="hauttemperatur-1" value="warm"> warm</label></div>
                     <div class="radio-wrapper"><label for="hauttemperatur-2"><input type="radio" name="hauttemperatur" id="hauttemperatur-2" value="kalt"> kalt</label></div>
                   </div>
@@ -502,25 +543,294 @@
                 </div>
               </div>
             </div>
-            <div class="formContainer" id="d-content">
-              <div class="formChild" id="">
-                <div class="formChildBox">
-                  <h5></h5>
-                </div>
-                <div class="formChildBox">
+            <div class="formContainer active" id="d-content"> <!-- D - Disability -->
 
+              <!-- Unauffällig -->
+              <div class="formChild" id="d-unauffaellig">
+                <div class="formChildBox"></div>
+                <div class="formChildBox unauffaellig">
+                  <div class="checkbox-wrapper unauffaellig">
+                    <label for="d-unauffaellig-1">
+                      <input type="checkbox" name="d-unauffaellig" id="d-unauffaellig-1" value="DUnauffällig"> unauffällig
+                    </label>
+                  </div>
                 </div>
               </div>
+            
+              <!-- AVPU -->
+              <div class="formChild" id="d-avpu">
+                <div class="formChildBox">
+                  <h5>AVPU</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="radio-wrapper"><label for="avpu-1"><input type="radio" name="avpu" id="avpu-1" value="Alert"> Alert</label></div>
+                  <div class="radio-wrapper"><label for="avpu-2"><input type="radio" name="avpu" id="avpu-2" value="Voice"> Voice</label></div>
+                  <div class="radio-wrapper"><label for="avpu-3"><input type="radio" name="avpu" id="avpu-3" value="Pain"> Pain</label></div>
+                  <div class="radio-wrapper"><label for="avpu-4"><input type="radio" name="avpu" id="avpu-4" value="Unresponsive"> Unresponsive</label></div>
+                </div>
+              </div>
+            
+              <!-- GCS -->
+              <div class="formChild" id="d-gcs">
+                <div class="formChildBox">
+                  <h5>GCS <span id="gcs-result">-</span> / 15</h5>
+                </div>
+                <div class="formChildBoxLargeWrapper column">
+            
+                  <div id="gcsFirstChild">
+                    <strong>Augenöffnung</strong>
+                    <div class="radio-wrapper"><label for="gcs-eyes-1"><input type="radio" name="gcs-eyes" id="gcs-eyes-1" value="4" onclick="calculateGCS()"> Spontan (4)</label></div>
+                    <div class="radio-wrapper"><label for="gcs-eyes-2"><input type="radio" name="gcs-eyes" id="gcs-eyes-2" value="3" onclick="calculateGCS()"> Auf Ansprache (3)</label></div>
+                    <div class="radio-wrapper"><label for="gcs-eyes-3"><input type="radio" name="gcs-eyes" id="gcs-eyes-3" value="2" onclick="calculateGCS()"> Auf Schmerzreiz (2)</label></div>
+                    <div class="radio-wrapper"><label for="gcs-eyes-4"><input type="radio" name="gcs-eyes" id="gcs-eyes-4" value="1" onclick="calculateGCS()"> Keine Reaktion (1)</label></div>
+                  </div>
+                  <div id="gcsSecondChild">
+                    <strong>Verbale Reaktion</strong>
+                    <div class="radio-wrapper width165"><label for="gcs-verbal-1"><input type="radio" name="gcs-verbal" id="gcs-verbal-1" value="5" onclick="calculateGCS()"> Orientiert (5)</label></div>
+                    <div class="radio-wrapper width165"><label for="gcs-verbal-2"><input type="radio" name="gcs-verbal" id="gcs-verbal-2" value="4" onclick="calculateGCS()"> Verwirrt (4)</label></div>
+                    <div class="radio-wrapper width165"><label for="gcs-verbal-3"><input type="radio" name="gcs-verbal" id="gcs-verbal-3" value="3" onclick="calculateGCS()"> Unpassende Worte (3)</label></div>
+                    <div class="radio-wrapper width165"><label for="gcs-verbal-4"><input type="radio" name="gcs-verbal" id="gcs-verbal-4" value="2" onclick="calculateGCS()"> Unverständliche Laute (2)</label></div>
+                    <div class="radio-wrapper width165"><label for="gcs-verbal-5"><input type="radio" name="gcs-verbal" id="gcs-verbal-5" value="1" onclick="calculateGCS()"> Keine Antwort (1)</label></div>
+                  </div>
+                  <div id="gcsThirdChild">
+                    <strong>Motorische Reaktion</strong>
+                    <div class="radio-wrapper width230"><label for="gcs-motor-1"><input type="radio" name="gcs-motor" id="gcs-motor-1" value="6" onclick="calculateGCS()"> Befolgt Aufforderungen (6)</label></div>
+                    <div class="radio-wrapper width230"><label for="gcs-motor-2"><input type="radio" name="gcs-motor" id="gcs-motor-2" value="5" onclick="calculateGCS()"> Gezielte Abwehrbewegung (5)</label></div>
+                    <div class="radio-wrapper width230"><label for="gcs-motor-3"><input type="radio" name="gcs-motor" id="gcs-motor-3" value="4" onclick="calculateGCS()"> Ungezielte Abwehrbewegung (4)</label></div>
+                    <div class="radio-wrapper width230"><label for="gcs-motor-4"><input type="radio" name="gcs-motor" id="gcs-motor-4" value="3" onclick="calculateGCS()"> Beugebewegung auf Schmerzreiz (3)</label></div>
+                    <div class="radio-wrapper width230"><label for="gcs-motor-5"><input type="radio" name="gcs-motor" id="gcs-motor-5" value="2" onclick="calculateGCS()"> Streckbewegung auf Schmerzreiz (2)</label></div>
+                    <div class="radio-wrapper width230"><label for="gcs-motor-6"><input type="radio" name="gcs-motor" id="gcs-motor-6" value="1" onclick="calculateGCS()"> Keine Reaktion (1)</label></div>
+                  </div>
+                </div>
+              </div>
+            
+              <!-- Pupillen -->
+              <div class="formChild" id="d-pupillen">
+                <div class="formChildBox">
+                  <h5>Pupillen</h5>
+                </div>
+                <div class="formChildBoxLargeWrapper column">
+                  <div id="pupillenFirstChild">
+                    <strong>Isokorie</strong>
+                    <div class="radio-wrapper"><label for="pupillen-1"><input type="radio" name="isokorie" id="pupillen-1" value="isokor"> isokor</label></div>
+                    <div class="radio-wrapper"><label for="pupillen-2"><input type="radio" name="isokorie" id="pupillen-2" value="anisokor"> anisokor</label></div>
+                  </div>
+                  <div id="pupillenSecondChild">
+                    <strong>Lichtreaktion</strong>
+                    <div class="radio-wrapper"><label for="lichtreaktion-1"><input type="radio" name="lichtreaktion" id="lichtreaktion-1" value="prompte Lichtreaktion"> prompte Lichtreaktion</label></div>
+                    <div class="radio-wrapper"><label for="lichtreaktion-2"><input type="radio" name="lichtreaktion" id="lichtreaktion-2" value="verzögerte Lichtreaktion"> verzögerte Lichtreaktion</label></div>
+                    <div class="radio-wrapper"><label for="lichtreaktion-3"><input type="radio" name="lichtreaktion" id="lichtreaktion-3" value="keine Lichtreaktion"> keine Lichtreaktion</label></div>
+                  </div>
+                  <div id="pupillenThirdChild">
+                    <strong>Pupillengröße</strong>
+                    <div class="radio-wrapper"><label for="pupillengroesse-1"><input type="radio" name="pupillengroesse" id="pupillengroesse-1" value="mittelweit"> mittelweit</label></div>
+                    <div class="radio-wrapper"><label for="pupillengroesse-2"><input type="radio" name="pupillengroesse" id="pupillengroesse-2" value="weit"> weit</label></div>
+                    <div class="radio-wrapper"><label for="pupillengroesse-3"><input type="radio" name="pupillengroesse" id="pupillengroesse-3" value="eng"> eng</label></div>
+                    <div class="radio-wrapper"><label for="pupillengroesse-4"><input type="radio" name="pupillengroesse" id="pupillengroesse-4" value="entrundet"> entrundet</label></div>
+                  </div>    
+                </div>
+              </div>
+            
+              <!-- Herdblick -->
+              <div class="formChild" id="d-herdblick">
+                <div class="formChildBox">
+                  <h5>Herdblick</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="radio-wrapper"><label for="herdblick-1"><input type="radio" name="herdblick" id="herdblick-1" value="kein Herdblick"> kein Herdblick</label></div>
+                  <div class="radio-wrapper"><label for="herdblick-2"><input type="radio" name="herdblick" id="herdblick-2" value="Herdblick links"> Herdblick links</label></div>
+                  <div class="radio-wrapper"><label for="herdblick-3"><input type="radio" name="herdblick" id="herdblick-3" value="Herdblick rechts"> Herdblick rechts</label></div>
+                </div>
+              </div>
+            
+              <!-- APSS / MDS -->
+              <div class="formChild" id="d-apss-mds">
+                <div class="formChildBox">
+                  <h5>APSS / MDS</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="radio-wrapper"><label for="apss-1"><input type="radio" name="apss" id="apss-1" value="APSS negativ"> APSS negativ</label></div>
+                  <div class="radio-wrapper"><label for="apss-2"><input type="radio" name="apss" id="apss-2" value="APSS positiv"> APSS positiv</label></div>
+            
+                  <br>
+            
+                  <div class="radio-wrapper"><label for="mds-1"><input type="radio" name="mds" id="mds-1" value="MDS unauffällig"> MDS unauffällig</label></div>
+                  <div class="radio-wrapper"><label for="mds-2"><input type="radio" name="mds" id="mds-2" value="MDS auffällig"> MDS auffällig</label></div>
+                </div>
+              </div>
+            
+              <!-- Weitere Bemerkungen -->
+              <div class="formChild" id="d-weitere">
+                <div class="formChildBox">
+                  <h5>weitere Bemerkungen</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="text-wrapper">
+                    <input type="text" name="disabilityWeitere" id="disabilityWeitere" placeholder="Text eingeben">
+                  </div>
+                </div>
+              </div>
+            
             </div>
-            <div class="formContainer" id="e-content">
-              <div class="formChild" id="">
+            <div class="formContainer" id="e-content"> <!-- E - Environment -->
+
+              <!-- Entscheidung -->
+              <div class="formChild" id="e-entscheidung">
                 <div class="formChildBox">
-                  <h5></h5>
+                  <h5>Entscheidung</h5>
                 </div>
                 <div class="formChildBox">
-
+                  <div class="radio-wrapper">
+                    <label for="entscheidung-1">
+                      <input type="radio" name="entscheidung" id="entscheidung-1" value="NICHT KRITISCH"> nicht kritisch
+                    </label>
+                  </div>
+                  <div class="radio-wrapper">
+                    <label for="entscheidung-2">
+                      <input type="radio" name="entscheidung" id="entscheidung-2" value="KRITISCH"> kritisch
+                    </label>
+                  </div>
                 </div>
               </div>
+            
+              <!-- Leitsymptom -->
+              <div class="formChild" id="e-leitsymptom">
+                <div class="formChildBox">
+                  <h5>Leitsymptom</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="text-wrapper">
+                    <input type="text" name="leitsymptom" id="leitsymptom" placeholder="Text eingeben...">
+                  </div>
+                </div>
+              </div>
+            
+              <!-- suspekte Körperstellen -->
+              <div class="formChild" id="e-suspekte-koerperstellen">
+                <div class="formChildBox">
+                  <h5>suspekte Körperstellen</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="radio-wrapper">
+                    <label for="suspekt-1">
+                      <input type="radio" name="suspekt" id="suspekt-1" value="keine weiteren Auffälligkeiten"
+                             onclick="toggleMeasures('suspect-section', false)">
+                      keine Auffälligkeiten
+                    </label>
+                  </div>
+                  <div class="radio-wrapper">
+                    <label for="suspekt-2">
+                      <input type="radio" name="suspekt" id="suspekt-2" value="Auffälligkeiten"
+                             onclick="toggleMeasures('suspect-section', true)">
+                      Auffälligkeiten
+                    </label>
+                  </div>
+                </div>
+              </div>
+            
+              <!-- Hidden suspect details -->
+              <div class="hiddenSection" id="suspect-section">
+                <div class="formChild" id="e-suspekt-details">
+                  <div class="formChildBox">
+                    <h5>Details</h5>
+                  </div>
+                  <div class="formChildBox">
+                    <div class="text-wrapper">
+                      <input type="text" name="suspektDetails" id="suspektDetails" placeholder="Text eingeben...">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <!-- Wärmeerhalt -->
+              <div class="formChild" id="e-waermeerhalt">
+                <div class="formChildBox">
+                  <h5>Wärmeerhalt</h5>
+                </div>
+                <div class="formChildBoxLargeWrapper">
+            
+                  <div class="checkbox-wrapper">
+                    <label for="waermeerhalt-1">
+                      <input type="checkbox" name="waermeerhalt" id="waermeerhalt-1" value="Aludecke"> Aludecke
+                    </label>
+                  </div>
+            
+                  <div class="checkbox-wrapper">
+                    <label for="waermeerhalt-2">
+                      <input type="checkbox" name="waermeerhalt" id="waermeerhalt-2" value="Rettungsdecke"> Rettungsdecke
+                    </label>
+                  </div>
+            
+                  <div class="checkbox-wrapper">
+                    <label for="waermeerhalt-3">
+                      <input type="checkbox" name="waermeerhalt" id="waermeerhalt-3" value="starkes Beheizen des Patientenraums">
+                      starkes Beheizen des Patientenraums
+                    </label>
+                  </div>
+            
+                  <div class="checkbox-wrapper">
+                    <label for="waermeerhalt-4">
+                      <input type="checkbox" name="waermeerhalt" id="waermeerhalt-4" value="erwärmte Infusionslösung">
+                      Verabreichen einer erwärmten Infusionslösung
+                    </label>
+                  </div>
+            
+                  <div class="checkbox-wrapper">
+                    <label for="waermeerhalt-5">
+                      <input type="checkbox" name="waermeerhalt" id="waermeerhalt-5" value="sonstiges"
+                             onclick="toggleMeasures('waermeerhaltSonstiges-section', this.checked)">
+                      sonstiges
+                    </label>
+                  </div>
+            
+                </div>
+              </div>
+            
+              <!-- Hidden Wärmeerhalt Sonstiges -->
+              <div class="hiddenSection" id="waermeerhaltSonstiges-section">
+                <div class="formChild" id="e-waermeerhalt-sonstiges">
+                  <div class="formChildBox">
+                    <h5>Sonstiges</h5>
+                  </div>
+                  <div class="formChildBox">
+                    <div class="text-wrapper">
+                      <input type="text" name="waermeerhaltSonstiges" id="waermeerhaltSonstiges" placeholder="Text eingeben...">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <!-- Spezielle Lagerung -->
+              <div class="formChild" id="e-lagerung">
+                <div class="formChildBox">
+                  <h5>spezielle Lagerung</h5>
+                </div>
+                <div class="formChildBox">
+            
+                  <div class="radio-wrapper"><label for="lagerung-1"><input type="radio" name="lagerung" id="lagerung-1" value="flach liegend" onclick="toggleMeasures('sonstigeLagerung-section', false)"> flach liegend</label></div>
+                  <div class="radio-wrapper"><label for="lagerung-2"><input type="radio" name="lagerung" id="lagerung-2" value="stabile Seitenlage" onclick="toggleMeasures('sonstigeLagerung-section', false)"> stabile Seitenlage</label></div>
+                  <div class="radio-wrapper"><label for="lagerung-3"><input type="radio" name="lagerung" id="lagerung-3" value="Lagerung nach Fritsch" onclick="toggleMeasures('sonstigeLagerung-section', false)"> Lagerung nach Fritsch</label></div>
+                  <div class="radio-wrapper"><label for="lagerung-4"><input type="radio" name="lagerung" id="lagerung-4" value="Rückenlage mit Knierolle" onclick="toggleMeasures('sonstigeLagerung-section', false)"> Rückenlage mit Knierolle</label></div>
+                  <div class="radio-wrapper"><label for="lagerung-5"><input type="radio" name="lagerung" id="lagerung-5" value="Linksseitenlage" onclick="toggleMeasures('sonstigeLagerung-section', false)"> Linksseitenlage</label></div>
+                  <div class="radio-wrapper"><label for="lagerung-6"><input type="radio" name="lagerung" id="lagerung-6" value="Sonstige" onclick="toggleMeasures('sonstigeLagerung-section', true)"> Sonstige</label></div>
+            
+                </div>
+              </div>
+            
+              <!-- Hidden Sonstige Lagerung -->
+              <div class="hiddenSection" id="sonstigeLagerung-section">
+                <div class="formChild" id="e-lagerung-sonstige">
+                  <div class="formChildBox">
+                    <h5>Details</h5>
+                  </div>
+                  <div class="formChildBox">
+                    <div class="text-wrapper">
+                      <input type="text" name="lagerungSonstige" id="lagerungSonstige" placeholder="Text eingeben...">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
             </div>
             <div class="formContainer" id="sampler-content">
               <div class="formChild" id="">
