@@ -1072,7 +1072,7 @@
                   <h5>Letzte(r)</h5>
                 </div>
               </div>
-              <div class="formChild">
+              <div class="formChild"> <!-- Mahlzeit -->
                 <div class="formChildBox"> 
                   <h5>Mahlzeit</h5>
                 </div>
@@ -1092,7 +1092,7 @@
                   </div>
                 </div>
               </div>
-              <div class="formChild">
+              <div class="formChild"> <!-- Flüssigkeit -->
                 <div class="formChildBox">
                   <h5>Flüssigkeitszufuhr</h5>
                 </div>
@@ -1106,7 +1106,7 @@
                   </div>
                 </div>
               </div>
-              <div class="formChild">
+              <div class="formChild"> <!-- Stuhl -->
                 <div class="formChildBox">
                   <h5>Stuhl</h5>
                 </div>
@@ -1128,7 +1128,7 @@
                   </div>
                 </div>
               </div>
-              <div class="formChild">
+              <div class="formChild"> <!-- Harn -->
                 <div class="formChildBox">
                   <h5>Harn</h5>
                 </div>
@@ -1149,10 +1149,11 @@
                   </div>
                 </div>
               </div>
-            </div>
-            
-              <div class="formChild">
-                <div class="formChildBox"><h5>Ereignis</h5></div>
+              
+              <div class="formChild"> <!-- Ereignis -->
+                <div class="formChildBox">
+                  <h5>Ereignis</h5>
+                </div>
                 <div class="formChildBox">
                   <div class="text-wrapper">
                     <textarea name="ereignis" placeholder="auslösendes Ereignis ..."></textarea>
@@ -1160,26 +1161,13 @@
                 </div>
               </div>
             
-              <!-- Risikofaktoren -->
-            
-              <div class="formChild">
+              <div class="formChild"> <!-- Risikofaktoren -->
                 <div class="formChildBox"><h5>Risikofaktoren</h5></div>
                 <div class="formChildBox">
             
-                  <div class="radio-wrapper">
-                    <label><input type="radio" name="risikoStatus" value="Ja"
-                                  onclick="toggleMeasures('risk-section', true)"> Ja</label>
-                  </div>
-            
-                  <div class="radio-wrapper">
-                    <label><input type="radio" name="risikoStatus" value="Keine"
-                                  onclick="toggleMeasures('risk-section', false)"> Keine</label>
-                  </div>
-            
-                  <div class="radio-wrapper">
-                    <label><input type="radio" name="risikoStatus" value="nicht erhebbar"
-                                  onclick="toggleMeasures('risk-section', false)"> nicht erhebbar</label>
-                  </div>
+                  <div class="radio-wrapper"> <label><input type="radio" name="risikoStatus" value="Ja" onclick="toggleMeasures('risk-section', true)"> Ja</label> </div>              
+                  <div class="radio-wrapper"> <label><input type="radio" name="risikoStatus" value="Keine" onclick="toggleMeasures('risk-section', false)"> Keine</label> </div>
+                  <div class="radio-wrapper"> <label><input type="radio" name="risikoStatus" value="nicht erhebbar" onclick="toggleMeasures('risk-section', false)"> nicht erhebbar</label> </div>
             
                   <div class="hiddenSection" id="risk-section">
                     <div class="checkbox-wrapper"><label><input type="checkbox" name="risiken" value="MCI"> MCI</label></div>
@@ -1187,14 +1175,7 @@
                     <div class="checkbox-wrapper"><label><input type="checkbox" name="risiken" value="Rauchen"> Rauchen</label></div>
                     <div class="checkbox-wrapper"><label><input type="checkbox" name="risiken" value="chron. Äthylismus"> chron. Äthylismus</label></div>
                     <div class="checkbox-wrapper"><label><input type="checkbox" name="risiken" value="Adipositas"> Adipositas</label></div>
-            
-                    <div class="checkbox-wrapper">
-                      <label>
-                        <input type="checkbox" name="risiken" value="sonstige"
-                               onclick="toggleMeasures('risk-sonstige', this.checked)">
-                        sonstige
-                      </label>
-                    </div>
+                    <div class="checkbox-wrapper"> <label> <input type="checkbox" name="risiken" value="sonstige" onclick="toggleMeasures('risk-sonstige', this.checked)"> sonstige </label> </div>
             
                     <div class="hiddenSection" id="risk-sonstige">
                       <div class="text-wrapper">
@@ -1205,20 +1186,16 @@
             
                 </div>
               </div>
-            
-              <!-- Secondary Assessment -->
-            
               <div class="formChild">
                 <div class="formChildBox"><h5>Secondary Assessment – weitere Bemerkungen</h5></div>
                 <div class="formChildBox">
                   <div class="text-wrapper">
                     <input type="text" name="secondaryBemerkung"
-                           placeholder="weitere Bemerkungen ...">
+                            placeholder="weitere Bemerkungen ...">
                   </div>
                 </div>
               </div>
             </div>
-
             <div class="formContainer" id="opqrst-content"> <!-- OPQRST -->
               <div class="formChild">
                 <div class="formChildBox">
@@ -1317,56 +1294,6 @@
                 </div>
                 <div class="formChildBox">
                   <div class="text-wrapper"><input type="text" name="splattTrauma" placeholder="Welche physischen und psychischen Probleme sind durch den Sturz entstanden?"></div>
-                </div>
-              </div>
-            </div>
-            <div class="formContainer" id="transport-content">
-              <div class="formChild" id="">
-                <div class="formChildBox">
-                  <h5></h5>
-                </div>
-                <div class="formChildBox">
-
-                </div>
-              </div>
-            </div>
-            <div class="formContainer" id="notkompetenzen-content">
-              <div class="formChild" id="">
-                <div class="formChildBox">
-                  <h5></h5>
-                </div>
-                <div class="formChildBox">
-
-                </div>
-              </div>
-            </div>
-            <div class="formContainer" id="diagnostik-content">
-              <div class="formChild" id="">
-                <div class="formChildBox">
-                  <h5></h5>
-                </div>
-                <div class="formChildBox">
-
-                </div>
-              </div>
-            </div>
-            <div class="formContainer" id="content">
-              <div class="formChild" id="">
-                <div class="formChildBox">
-                  <h5></h5>
-                </div>
-                <div class="formChildBox">
-
-                </div>
-              </div>
-            </div>
-            <div class="formContainer" id="content">
-              <div class="formChild" id="">
-                <div class="formChildBox">
-                  <h5></h5>
-                </div>
-                <div class="formChildBox">
-                  
                 </div>
               </div>
             </div>
