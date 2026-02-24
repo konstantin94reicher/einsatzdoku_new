@@ -287,7 +287,8 @@ nav > ul > li:active {
 }
 
 .text-wrapper input[type="text"],
-.text-wrapper input[type="number"] {
+.text-wrapper input[type="number"],
+.text-wrapper textarea {
   display: inline-flex;
   align-items: center;
   background: #fff;
@@ -300,6 +301,11 @@ nav > ul > li:active {
   font-size: x-small;
   min-width: 500px;
   outline: none;
+}
+
+.text-wrapper textarea {
+  min-height: 50px;
+  font-family: sans-serif;
 }
 
 .checkbox-wrapper.unauffaellig label {
@@ -422,4 +428,15 @@ nav > ul > li:active {
 #gcsThirdChild,
 #pupillenThirdChild {
   flex: 1.5;
+}
+
+#traumaBC,
+#traumaD {
+  display: flex;
+  flex: 1;
+}
+
+#traumaBC > div,
+#traumaD > div {
+  flex: 1;
 }

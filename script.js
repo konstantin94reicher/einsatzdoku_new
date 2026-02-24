@@ -40,7 +40,7 @@ function toggleMeasures(sectionId, show) {
     if (show) {
       section.style.display = "flex";
       section.style.width = "100%";
-      section.style.gap = "5px"; 
+      section.style.gap = "5px";
     } else {
       section.style.display = "none";
     }
@@ -113,6 +113,13 @@ const navConfig = {
     secondary: ["SAMPLER", "OPQRST"],
     weitereDetails: ["Transport", "Notkompetenzen", "Diagnostik"],
   },
+
+  traumaGeriatrisch: {
+    sssGi: ["SSS", "GI", "GEMS"],
+    primary: ["x", "A", "B", "C", "D", "E", "Trauma"],
+    secondary: ["SAMPLER", "OPQRST", "SPLATT"],
+    weitereDetails: ["Transport", "Notkompetenzen", "Diagnostik"],
+  },
 };
 
 function toggleNavbar() {
@@ -122,6 +129,8 @@ function toggleNavbar() {
 
   if (einsatztyp.pädiatrisch) {
     config = navConfig.pädiatrisch;
+  } else if (einsatztyp.traumatologisch && einsatztyp.geriatrisch) {
+    config = navConfig.traumaGeriatrisch;
   } else if (einsatztyp.geriatrisch) {
     config = navConfig.geriatrisch;
   } else if (einsatztyp.traumatologisch) {
