@@ -438,5 +438,87 @@ nav > ul > li:active {
 
 #traumaBC > div,
 #traumaD > div {
+  flex-grow: 1;
+}
+
+.infotext {
+  font-size: x-small;
+  font-weight: lighter;
+  font-style: italic;
+}
+
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid #ccc;
+  padding: 5px;
+  min-width: 300px;
+  max-width: 90%;
+  position: relative;
+}
+
+.tag-container:has(input[type="text"]:focus) {
+  border: 2px solid #82d282;
+  color: black;
+}
+
+.tag-container input[type="text"] {
+  border: none;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  border: none;
+}
+
+.tag {
+  background: #e0e0e0;
+  padding: 3px 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.tag .remove {
+  margin-left: 6px;
+  cursor: pointer;
+  color: red;
+}
+
+.tag-input {
+  border: none;
+  outline: none;
   flex: 1;
+  min-width: 100px;
+  padding: 5px;
+}
+
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  list-style: none;
+  background: white;
+  /* border: 1px solid #ccc; */
+  margin: 0;
+  padding: 0;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.suggestions li {
+  padding: 5px 10px;
+  cursor: pointer;
+  overflow: auto;
+}
+
+.suggestions li:hover {
+  background-color: #f0f0f0;
+}
+.suggestions li.active {
+  background-color: #cce5ff;
 }

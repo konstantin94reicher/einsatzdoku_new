@@ -183,3 +183,122 @@ document.addEventListener("click", function (e) {
 
   navItem.classList.add("active");
 });
+
+
+document.querySelectorAll('.tag-wrapper').forEach(initTagInput);
+
+function initTagInput(wrapper) {
+  const input = wrapper.querySelector('.tag-input');
+  const tagsContainer = wrapper.querySelector('.tags');
+  const suggestionsBox = wrapper.querySelector('.suggestions');
+  const output = wrapper.querySelector('.output');
+
+  const whitelist = JSON.parse(wrapper.dataset.whitelist || '[]');
+  let tags = [];
+  let selectedSuggestionIndex = -1;
+
+  input.addEventListener('keydown', function (e) {
+    const items = suggestionsBox.querySelectorAll('li');
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (items.length > 0) {
+        selectedSuggestionIndex = (selectedSuggestionIndex + 1) % items.length;
+        highlightSuggestion(items);
+      }
+      return;
+    }
+
+    if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (items.length > 0) {
+        selectedSuggestionIndex = (selectedSuggestionIndex - 1 + items.length) % items.length;
+        highlightSuggestion(items);
+      }
+      return;
+    }
+
+    if (e.key === 'Enter' && selectedSuggestionIndex >= 0) {
+      e.preventDefault();
+      const selected = items[selectedSuggestionIndex];
+      if (selected) {
+        addTag(selected.textContent);
+        input.value = '';
+        suggestionsBox.innerHTML = '';
+        selectedSuggestionIndex = -1;
+      }
+      return;
+    }
+
+    if (e.key === 'Enter' || e.key === ',') {
+      e.preventDefault();
+      const value = input.value.trim();
+      if (value && !tags.includes(value)) {
+        addTag(value);
+      }
+      input.value = '';
+      suggestionsBox.innerHTML = '';
+      selectedSuggestionIndex = -1;
+    }
+
+    if (e.key === 'Backspace' && input.value === '') {
+      if (tags.length > 0) {
+        tags.pop();
+        const lastTagEl = tagsContainer.querySelector('.tag:last-child');
+        if (lastTagEl) tagsContainer.removeChild(lastTagEl);
+        updateOutput();
+      }
+    }
+  });
+
+  input.addEventListener('input', function () {
+    selectedSuggestionIndex = -1;
+    const query = input.value.toLowerCase();
+    suggestionsBox.innerHTML = '';
+    if (query.length > 0) {
+      const filtered = whitelist.filter(item =>
+        item.toLowerCase().startsWith(query) && !tags.includes(item)
+      );
+      filtered.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        li.addEventListener('click', () => {
+          addTag(item);
+          input.value = '';
+          suggestionsBox.innerHTML = '';
+        });
+        suggestionsBox.appendChild(li);
+      });
+    }
+  });
+
+  function highlightSuggestion(items) {
+    items.forEach((item, index) => {
+      item.classList.toggle('active', index === selectedSuggestionIndex);
+    });
+  }
+
+  function addTag(text) {
+    tags.push(text);
+    const tagEl = document.createElement('div');
+    tagEl.className = 'tag';
+    tagEl.textContent = text;
+
+    const removeBtn = document.createElement('span');
+    removeBtn.className = 'remove';
+    removeBtn.textContent = '×';
+    removeBtn.addEventListener('click', () => {
+      tagsContainer.removeChild(tagEl);
+      tags = tags.filter(t => t !== text);
+      updateOutput();
+    });
+
+    tagEl.appendChild(removeBtn);
+    tagsContainer.appendChild(tagEl);
+    updateOutput();
+  }
+
+  function updateOutput() {
+    output.textContent = tags.join(', ');
+  }
+}
