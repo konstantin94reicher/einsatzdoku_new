@@ -483,6 +483,7 @@
                 </div>
               </div>
               <div class="hiddenSection" id="pulse-section">
+                <hr>
                 <div class="formChild" id="pulsZentral">
                   <div class="formChildBox">
                     <h5>Puls zentral</h5>
@@ -1066,7 +1067,7 @@
               </div>
             </div>
 
-            <div class="formContainer active" id="ler-content"> <!-- samp - LER -->
+            <div class="formContainer" id="ler-content"> <!-- samp - LER -->
               <div class="formChild">
                 <div class="formChildBox">
                   <h5>Letzte(r)</h5>
@@ -1085,11 +1086,8 @@
                     <div class="text-wrapper"><input type="text" name="mahlzeitDetails" id="mahlzeitDetails" placeholder="Auffälligkeiten eingeben ..."></div>
                   </div>
                   <br>
-                  <div class="text-wrapper">
-                    <label for="mahlzeit-stunden">letzte Mahlzeit vor</label>
-                    <input type="number" id="mahlzeit-stunden" name="mahlzeitStunden">
-                    <span>Stunden</span>
-                  </div>
+                  <!-- <div class="text-wrapper"><input type="number" name="af" id="af" placeholder="AF/min eingeben"></div> -->
+                  <div class="text-wrapper"><span for="mahlzeit-stunden">letzte Mahlzeit vor&emsp;&emsp;</span><input type="number" id="mahlzeit-stunden" name="mahlzeitStunden" placeholder="..."><span>&emsp;&emsp;Stunden</span></div>
                 </div>
               </div>
               <div class="formChild"> <!-- Flüssigkeit -->
@@ -1187,7 +1185,7 @@
                 </div>
               </div>
               <div class="formChild">
-                <div class="formChildBox"><h5>Secondary Assessment – weitere Bemerkungen</h5></div>
+                <div class="formChildBox"><h5>Weitere Bemerkungen</h5></div>
                 <div class="formChildBox">
                   <div class="text-wrapper">
                     <input type="text" name="secondaryBemerkung"
@@ -1294,6 +1292,79 @@
                 </div>
                 <div class="formChildBox">
                   <div class="text-wrapper"><input type="text" name="splattTrauma" placeholder="Welche physischen und psychischen Probleme sind durch den Sturz entstanden?"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="formContainer active" id="transport-content">
+              <div class="formChild">
+                <div class="formChildBox">
+                  <h5>Transport zum Fahrzeug</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="radio-wrapper"> <label><input type="radio" name="TranspRM" value="kein Transport" onclick="toggleMeasures('transport-section', false); toggleMeasures('transportSonstige-section', false)"> kein Transport</label> </div>
+                  <div class="radio-wrapper"> <label><input type="radio" name="TranspRM" value="gehend" onclick="toggleMeasures('transport-section', true); toggleMeasures('transportSonstige-section', false)"> gehend</label> </div>
+                  <div class="radio-wrapper"> <label><input type="radio" name="TranspRM" value="sitzend" onclick="toggleMeasures('transport-section', true); toggleMeasures('transportSonstige-section', false)"> sitzend</label> </div>
+                  <div class="radio-wrapper"> <label><input type="radio" name="TranspRM" value="liegend" onclick="toggleMeasures('transport-section', true); toggleMeasures('transportSonstige-section', false)"> liegend</label> </div>
+                  <div class="radio-wrapper"> <label><input type="radio" name="TranspRM" value="mittels Spineboard" onclick="toggleMeasures('transport-section', true); toggleMeasures('transportSonstige-section', false)"> Spineboard</label> </div>
+                  <div class="radio-wrapper"> <label><input type="radio" name="TranspRM" value="mittels Vakuummatratze" onclick="toggleMeasures('transport-section', true); toggleMeasures('transportSonstige-section', false)"> Vakuummatratze</label> </div>
+                  <div class="radio-wrapper"> <label><input type="radio" name="TranspRM" value="mittels Tragetuch" onclick="toggleMeasures('transport-section', true); toggleMeasures('transportSonstige-section', false)"> Tragetuch</label> </div>
+                  <div class="radio-wrapper"> <label><input type="radio" name="TranspRM" value="Sonstiges" onclick="toggleMeasures('transport-section', true); toggleMeasures('transportSonstige-section', true)"> Sonstiges</label> </div>
+                  <div id="transportSonstige-section" style="display:none;">
+                    <div class="text-wrapper"> <input type="text" id="transportSonstige" placeholder="sonstige Transportart angeben..." class="custom-input"> </div>
+                  </div>
+                </div>
+              </div>
+              <div class="hiddenSection" id="transport-section">
+                <hr>
+                <div class="formChild">
+                  <div class="formChildBox">
+                    <h5>Transport in Klinik</h5>
+                  </div>
+                  <div class="formChildBox">
+                    <div class="radio-wrapper"><label><input type="radio" name="TranspKlinik" value="sitzend"> sitzend</label></div>
+                    <div class="radio-wrapper"><label><input type="radio" name="TranspKlinik" value="liegend mit erhöhtem OK"> liegend mit erhöhtem OK</label></div>
+                    <div class="radio-wrapper"><label><input type="radio" name="TranspKlinik" value="liegend"> liegend</label></div>
+                    <div class="radio-wrapper"><label><input type="radio" name="TranspKlinik" value="liegend am Spineboard"> liegend am Spineboard</label></div>
+                    <div class="radio-wrapper"><label><input type="radio" name="TranspKlinik" value="liegend in Vakuummatratze"> liegend in Vakuummatratze</label></div>
+                    <div class="radio-wrapper"><label><input type="radio" name="TranspKlinik" value="liegend, mit Kinderrückhaltesystem gesichert"> liegend, mit Kinderrückhaltesystem gesichert</label></div>
+                  </div>
+                </div>
+                <div class="formChild">
+                  <div class="formChildBox">
+                    <h5>Sondersignal</h5>
+                  </div>
+                  <div class="formChildBox">
+                    <div class="radio-wrapper"><label><input type="radio" name="TranspSoSi" value="mit Sondersignal"> mit Sondersignal</label></div>
+                    <div class="radio-wrapper"><label><input type="radio" name="TranspSoSi" value="ohne Sondersignal"> ohne Sondersignal</label></div>
+                  </div>
+                </div>
+                <div class="formChild">
+                  <div class="formChildBox">
+                    <h5>Aviso</h5>
+                  </div>
+                  <div class="formChildBox">
+                    <div class="checkbox-wrapper"><label><input type="checkbox" name="Aviso" value="Aviso"onclick="toggleMeasures('aviso-section', this.checked)">Aviso</label></div>
+                  </div>
+                </div>
+
+                <div class="hiddenSection" id="aviso-section">
+                  <div class="formChild">
+                    <div class="formChildBox">
+                      <h5></h5>
+                    </div>
+                    <div class="formChildBox">
+                      <div class="text-wrapper"><input type="text" id="aviso"placeholder="zutreffende Avisokriterien angeben..."class="custom-input"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="formChild">
+                  <div class="formChildBox">
+                    <h5>NA-Begleitung</h5>
+                  </div>
+                  <div class="formChildBox">
+                    <div class="checkbox-wrapper"><label><input type="checkbox" name="naBegleitung" value="mit NA-Begleitung">mit NA-Begleitung</label></div>
+                  </div>
                 </div>
               </div>
             </div>

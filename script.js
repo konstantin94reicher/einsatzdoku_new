@@ -39,8 +39,10 @@ function toggleMeasures(sectionId, show) {
   if (section) {
     if (show) {
       section.style.display = "flex";
+      section.style.flexDirection = "column";
       section.style.width = "100%";
       section.style.gap = "5px";
+      section.style.flexWrap = "wrap";
     } else {
       section.style.display = "none";
     }
@@ -89,35 +91,35 @@ const navConfig = {
   default: {
     sssGi: ["SSS", "GI"],
     primary: ["A", "B", "C", "D", "E"],
-    secondary: ["SAMPLER", "OPQRST"],
+    secondary: ["SAMP", "LER", "OPQRST"],
     weitereDetails: ["Transport", "Notkompetenzen", "Diagnostik"],
   },
 
   pädiatrisch: {
     sssGi: ["SSS", "PBD"],
     primary: ["A", "B", "C", "D", "E"],
-    secondary: ["SAMPLER", "OPQRST"],
+    secondary: ["SAMP", "LER", "OPQRST"],
     weitereDetails: ["Transport", "Notkompetenzen", "Diagnostik"],
   },
 
   geriatrisch: {
     sssGi: ["SSS", "GI", "GEMS"],
     primary: ["A", "B", "C", "D", "E"],
-    secondary: ["SAMPLER", "OPQRST"],
+    secondary: ["SAMP", "LER", "OPQRST"],
     weitereDetails: ["Transport", "Notkompetenzen", "Diagnostik"],
   },
 
   traumatologisch: {
     sssGi: ["SSS", "GI"],
     primary: ["x", "A", "B", "C", "D", "E", "Trauma"],
-    secondary: ["SAMPLER", "OPQRST"],
+    secondary: ["SAMP", "LER", "OPQRST"],
     weitereDetails: ["Transport", "Notkompetenzen", "Diagnostik"],
   },
 
   traumaGeriatrisch: {
     sssGi: ["SSS", "GI", "GEMS"],
     primary: ["x", "A", "B", "C", "D", "E", "Trauma"],
-    secondary: ["SAMPLER", "OPQRST", "SPLATT"],
+    secondary: ["SAMP", "LER", "OPQRST", "SPLATT"],
     weitereDetails: ["Transport", "Notkompetenzen", "Diagnostik"],
   },
 };

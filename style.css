@@ -26,6 +26,15 @@ h5 {
   font-size: medium;
 }
 
+span {
+  font-size: x-small;
+}
+
+hr {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 nav > ul {
   list-style-type: none;
   display: flex;
@@ -303,6 +312,8 @@ nav > ul > li:active {
   outline: none;
 }
 
+
+
 .text-wrapper textarea {
   min-height: 50px;
   font-family: sans-serif;
@@ -316,6 +327,10 @@ nav > ul > li:active {
 
 .text-wrapper input[type="number"] {
   min-width: 50px;
+}
+
+#mahlzeit-stunden {
+  max-width: 35px;
 }
 
 .text-wrapper.slim input[type="text"] {
@@ -522,3 +537,4 @@ nav > ul > li:active {
 .suggestions li.active {
   background-color: #cce5ff;
 }
+
