@@ -1296,7 +1296,7 @@
               </div>
             </div>
 
-            <div class="formContainer active" id="transport-content">
+            <div class="formContainer" id="transport-content">
               <div class="formChild">
                 <div class="formChildBox">
                   <h5>Transport zum Fahrzeug</h5>
@@ -1311,7 +1311,7 @@
                   <div class="radio-wrapper"> <label><input type="radio" name="TranspRM" value="mittels Tragetuch" onclick="toggleMeasures('transport-section', true); toggleMeasures('transportSonstige-section', false)"> Tragetuch</label> </div>
                   <div class="radio-wrapper"> <label><input type="radio" name="TranspRM" value="Sonstiges" onclick="toggleMeasures('transport-section', true); toggleMeasures('transportSonstige-section', true)"> Sonstiges</label> </div>
                   <div id="transportSonstige-section" style="display:none;">
-                    <div class="text-wrapper"> <input type="text" id="transportSonstige" placeholder="sonstige Transportart angeben..." class="custom-input"> </div>
+                    <div class="text-wrapper"> <input type="text" id="transportSonstige" placeholder="sonstige Transportart angeben..."></div>
                   </div>
                 </div>
               </div>
@@ -1364,6 +1364,186 @@
                   </div>
                   <div class="formChildBox">
                     <div class="checkbox-wrapper"><label><input type="checkbox" name="naBegleitung" value="mit NA-Begleitung">mit NA-Begleitung</label></div>
+                  </div>
+                </div>
+              </div>
+            </div>  
+            <div class="formContainer active" id="medikamentengabe-content">
+              <div class="formChild">
+                <div class="formChildBox">
+                  <h5>verabreichte Medikation</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="checkbox-wrapper"><label><input type="checkbox" id="medVerabreichtAzml1" onclick="toggleMeasures('azml1-section', this.checked)" > AZML 1 </label></div>
+                  <div class="checkbox-wrapper"><label><input type="checkbox" id="medVerabreichtAzml2" onclick="toggleMeasures('azml2-section', this.checked)" > AZML 2 </label></div>
+                  <div class="checkbox-wrapper"><label><input type="checkbox" id="medVerabreichtTeleNa" onclick="toggleMeasures('teleNA-section', this.checked)" > nach Freigabe Tele-NA </label></div>
+                  <div class="checkbox-wrapper"><label><input type="checkbox" id="medVerabreichtNa" onclick="toggleMeasures('medGabeNA-section', this.checked)" > durch NA </label></div>
+                </div>
+              </div>
+              <div class="hiddenSection" id="azml1-section">
+                <hr>
+                <div class="formChild">
+                  <div class="formChildBox">
+                    <h5>AZML 1</h5>
+                    <!-- Liste 1
+                        ASS p.o.
+                        Diazepam rektal
+                        Esketamin i.n.
+                        Epinephrin Autoinjektor i.m.
+                        Epinephrin inhalativ
+                        Methoxyfluran inhalativ
+                        Midazolam i.n.
+                        Naloxon i.n.
+                        Paracetamol rektal
+                        Prednisolon rektal
+                        Combivent inhalativ
+                        Salbutamol inhalativ
+                        Sucralfat p.o. -->
+                  </div>
+                  <div class="formChildBox">
+                    <!-- <div class="med-row">
+                      <label class="med-label"> <input type="checkbox" name="medVerabreicht" value="ASS p.o." onchange="toggleMedInput(this)"> ASS p.o. </label>
+                      <input type="text" class="med-input" placeholder="Dosierung, Uhrzeit, sonstige Info...">
+                    </div>
+                    <div class="med-row">
+                      <label class="med-label"> <input type="checkbox" name="medVerabreicht" value="Diazepam rektal" onchange="toggleMedInput(this)"> Diazepam rektal </label>
+                      <input type="text" class="med-input" placeholder="Dosierung, Uhrzeit, sonstige Info...">
+                    </div>
+                    <div class="med-row">
+                      <label class="med-label"> <input type="checkbox" name="medVerabreicht" value="Esketamin i.n." onchange="toggleMedInput(this)"> Esketamin i.n. </label>
+                      <input type="text" class="med-input" placeholder="Dosierung, Uhrzeit, sonstige Info...">
+                    </div>
+                    <div class="med-row">
+                      <label class="med-label"> <input type="checkbox" name="medVerabreicht" value="Epinephrin Autoinjektor i.m." onchange="toggleMedInput(this)"> Epinephrin Autoinjektor i.m. </label>
+                      <input type="text" class="med-input" placeholder="Dosierung, Uhrzeit, sonstige Info...">
+                    </div>
+                    <div class="med-row">
+                      <label class="med-label"> <input type="checkbox" name="medVerabreicht" value="Epinephrin inhalativ" onchange="toggleMedInput(this)"> Epinephrin inhalativ </label>
+                      <input type="text" class="med-input" placeholder="Dosierung, Uhrzeit, sonstige Info...">
+                    </div>
+                    <div class="med-row">
+                      <label class="med-label"> <input type="checkbox" name="medVerabreicht" value="Methoxyfluran inhalativ" onchange="toggleMedInput(this)"> Methoxyfluran inhalativ </label>
+                      <input type="text" class="med-input" placeholder="Dosierung, Uhrzeit, sonstige Info...">
+                    </div> -->
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="ASS p.o." onchange="handleSelection(this)"> ASS p.o. </label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Diazepam rektal" onchange="handleSelection(this)"> Diazepam rektal </label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Esketamin i.n." onchange="handleSelection(this)"> Esketamin i.n. </label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Epinephrin Autoinjektor i.m." onchange="handleSelection(this)"> Epinephrin Autoinjektor i.m. </label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Epinephrin inhalativ" onchange="handleSelection(this)"> Epinephrin inhalativ </label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Methoxyfluran inhalativ" onchange="handleSelection(this)"> Methoxyfluran inhalativ </label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Midazolam i.n." onchange="handleSelection(this)"> Midazolam i.n. </label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Naloxon i.n." onchange="handleSelection(this)"> Naloxon i.n. </label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Paracetamol rektal" onchange="handleSelection(this)"> Paracetamol rektal </label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Prednisolon rektal" onchange="handleSelection(this)"> Prednisolon rektal </label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Combivent inhalativ" onchange="handleSelection(this)"> Combivent inhalativ </label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Salbutamol inhalativ" onchange="handleSelection(this)"> Salbutamol inhalativ </label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Sucralfat p.o." onchange="handleSelection(this)"> Sucralfat p.o. </label> </div>
+                  </div>
+                </div>
+                <!-- <div class="hiddenSection" id="azml1Verabreicht-section">
+                  <div class="formChild">
+                    <div class="formChildBox">
+                      <h5>verabreicht</h5>
+                    </div>
+                    <div class="formChildBox">
+                      <div class="selected-meds-container">
+                        <div id="selectedMedsList"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+              </div>
+              <div class="hiddenSection" id="azml2-section">
+                <hr>
+                <div class="formChild">
+                  <div class="formChildBox">
+                    <h5>AZML 2</h5>
+                    <!-- Liste 2
+                      ASS i.v.
+                      Amiodaron i.v.
+                      Diphenhydramin i.v.
+                      Epinephrin i.v.
+                      Epinephrin i.m.
+                      Esketamin i.v.
+                      Flumazenil i.v.
+                      Glucose 10% i.v.
+                      kristalloide Infusionslösung i.v.
+                      Midazolam i.v.
+                      Naloxon i.v.
+                      Ondansetron i.v.
+                      Oxytocin i.v.
+                      Paracetamol i.v.
+                      Triamcinolon i.v.
+                      Urapidil i.v.
+                    -->
+                  </div>
+                  <div class="formChildBox">
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="ASS i.v." onchange="handleSelection(this)"> ASS i.v.</label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Amiodaron i.v." onchange="handleSelection(this)"> Amiodaron i.v.</label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Diphenhydramin i.v." onchange="handleSelection(this)"> Diphenhydramin i.v.</label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Epinephrin i.v." onchange="handleSelection(this)"> Epinephrin i.v.</label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Epinephrin i.m." onchange="handleSelection(this)"> Epinephrin i.m.</label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Esketamin i.v." onchange="handleSelection(this)"> Esketamin i.v.</label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Flumazenil i.v." onchange="handleSelection(this)"> Flumazenil i.v.</label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Glucose 10% i.v." onchange="handleSelection(this)"> Glucose 10% i.v.</label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="kristalloide Infusionslösung i.v." onchange="handleSelection(this)"> kristalloide Infusionslösung i.v.</label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Midazolam i.v." onchange="handleSelection(this)"> Midazolam i.v.</label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Naloxon i.v." onchange="handleSelection(this)"> Naloxon i.v.</label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Ondansetron i.v." onchange="handleSelection(this)"> Ondansetron i.v.</label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Oxytocin i.v." onchange="handleSelection(this)"> Oxytocin i.v.</label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Paracetamol i.v." onchange="handleSelection(this)"> Paracetamol i.v.</label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Triamcinolon i.v." onchange="handleSelection(this)"> Triamcinolon i.v.</label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Urapidil i.v." onchange="handleSelection(this)"> Urapidil i.v.</label> </div>
+                  </div>
+                </div>
+              </div>
+              <div class="hiddenSection" id="teleNA-section">
+                <hr>
+                <div class="formChild">
+                  <div class="formChildBox">
+                    <h5>nach Freigabe Tele-NA</h5>
+                    <!-- Liste
+                        Atropin i.v.
+                        Epinephrin (Supra-Blitz) i.v.
+                        Heparin i.v.
+                        Midazolam i.v.
+                        Morphin i.v.
+                        Phenylephrin i.v.
+                        Ticagrelor p.o. 
+                    -->
+                  </div>
+                  <div class="formChildBox">
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Atropin i.v." onchange="handleSelection(this)"> Atropin i.v.</label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Epinephrin (Supra-Blitz) i.v." onchange="handleSelection(this)"> Epinephrin (Supra-Blitz) i.v.</label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Heparin i.v." onchange="handleSelection(this)"> Heparin i.v.</label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Midazolam i.v." onchange="handleSelection(this)"> Midazolam i.v.</label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Morphin i.v." onchange="handleSelection(this)"> Morphin i.v.</label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Phenylephrin i.v." onchange="handleSelection(this)"> Phenylephrin i.v.</label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" value="Ticagrelor p.o." onchange="handleSelection(this)"> Ticagrelor p.o.</label> </div>
+                  </div>
+                </div>
+              </div>
+              <div class="hiddenSection" id="medGabeNA-section">
+                <hr>
+                <div class="formChild">
+                  <div class="formChildBox">
+                    <h5>durch NA</NAv></h5>
+                  </div>
+                  <div class="formChildBox">
+                    <div class="text-wrapper"> <textarea id="medGabeNA" placeholder="verabreichte Medikation angeben ..."></textarea> </div>
+                  </div>
+                </div>
+              </div>              
+              <div class="hiddenSection" id="azmlVerabreicht-section">
+                <hr>
+                <div class="formChild">
+                  <div class="formChildBox">
+                    <h5>verabreicht</h5>
+                  </div>
+                  <div class="formChildBox">
+                    <div class="selected-meds-container">
+                      <div id="selectedMedsList"></div>
+                    </div>
                   </div>
                 </div>
               </div>

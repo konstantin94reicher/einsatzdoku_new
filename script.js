@@ -92,35 +92,60 @@ const navConfig = {
     sssGi: ["SSS", "GI"],
     primary: ["A", "B", "C", "D", "E"],
     secondary: ["SAMP", "LER", "OPQRST"],
-    weitereDetails: ["Transport", "Notkompetenzen", "Diagnostik"],
+    weitereDetails: [
+      "Transport",
+      "Medikamentengabe",
+      "Notkompetenzen",
+      "Diagnostik",
+    ],
   },
 
   pädiatrisch: {
     sssGi: ["SSS", "PBD"],
     primary: ["A", "B", "C", "D", "E"],
     secondary: ["SAMP", "LER", "OPQRST"],
-    weitereDetails: ["Transport", "Notkompetenzen", "Diagnostik"],
+    weitereDetails: [
+      "Transport",
+      "Medikamentengabe",
+      "Notkompetenzen",
+      "Diagnostik",
+    ],
   },
 
   geriatrisch: {
     sssGi: ["SSS", "GI", "GEMS"],
     primary: ["A", "B", "C", "D", "E"],
     secondary: ["SAMP", "LER", "OPQRST"],
-    weitereDetails: ["Transport", "Notkompetenzen", "Diagnostik"],
+    weitereDetails: [
+      "Transport",
+      "Medikamentengabe",
+      "Notkompetenzen",
+      "Diagnostik",
+    ],
   },
 
   traumatologisch: {
     sssGi: ["SSS", "GI"],
     primary: ["x", "A", "B", "C", "D", "E", "Trauma"],
     secondary: ["SAMP", "LER", "OPQRST"],
-    weitereDetails: ["Transport", "Notkompetenzen", "Diagnostik"],
+    weitereDetails: [
+      "Transport",
+      "Medikamentengabe",
+      "Notkompetenzen",
+      "Diagnostik",
+    ],
   },
 
   traumaGeriatrisch: {
     sssGi: ["SSS", "GI", "GEMS"],
     primary: ["x", "A", "B", "C", "D", "E", "Trauma"],
     secondary: ["SAMP", "LER", "OPQRST", "SPLATT"],
-    weitereDetails: ["Transport", "Notkompetenzen", "Diagnostik"],
+    weitereDetails: [
+      "Transport",
+      "Medikamentengabe",
+      "Notkompetenzen",
+      "Diagnostik",
+    ],
   },
 };
 
@@ -186,23 +211,22 @@ document.addEventListener("click", function (e) {
   navItem.classList.add("active");
 });
 
-
-document.querySelectorAll('.tag-wrapper').forEach(initTagInput);
+document.querySelectorAll(".tag-wrapper").forEach(initTagInput);
 
 function initTagInput(wrapper) {
-  const input = wrapper.querySelector('.tag-input');
-  const tagsContainer = wrapper.querySelector('.tags');
-  const suggestionsBox = wrapper.querySelector('.suggestions');
-  const output = wrapper.querySelector('.output');
+  const input = wrapper.querySelector(".tag-input");
+  const tagsContainer = wrapper.querySelector(".tags");
+  const suggestionsBox = wrapper.querySelector(".suggestions");
+  const output = wrapper.querySelector(".output");
 
-  const whitelist = JSON.parse(wrapper.dataset.whitelist || '[]');
+  const whitelist = JSON.parse(wrapper.dataset.whitelist || "[]");
   let tags = [];
   let selectedSuggestionIndex = -1;
 
-  input.addEventListener('keydown', function (e) {
-    const items = suggestionsBox.querySelectorAll('li');
+  input.addEventListener("keydown", function (e) {
+    const items = suggestionsBox.querySelectorAll("li");
 
-    if (e.key === 'ArrowDown') {
+    if (e.key === "ArrowDown") {
       e.preventDefault();
       if (items.length > 0) {
         selectedSuggestionIndex = (selectedSuggestionIndex + 1) % items.length;
@@ -211,63 +235,64 @@ function initTagInput(wrapper) {
       return;
     }
 
-    if (e.key === 'ArrowUp') {
+    if (e.key === "ArrowUp") {
       e.preventDefault();
       if (items.length > 0) {
-        selectedSuggestionIndex = (selectedSuggestionIndex - 1 + items.length) % items.length;
+        selectedSuggestionIndex =
+          (selectedSuggestionIndex - 1 + items.length) % items.length;
         highlightSuggestion(items);
       }
       return;
     }
 
-    if (e.key === 'Enter' && selectedSuggestionIndex >= 0) {
+    if (e.key === "Enter" && selectedSuggestionIndex >= 0) {
       e.preventDefault();
       const selected = items[selectedSuggestionIndex];
       if (selected) {
         addTag(selected.textContent);
-        input.value = '';
-        suggestionsBox.innerHTML = '';
+        input.value = "";
+        suggestionsBox.innerHTML = "";
         selectedSuggestionIndex = -1;
       }
       return;
     }
 
-    if (e.key === 'Enter' || e.key === ',') {
+    if (e.key === "Enter" || e.key === ",") {
       e.preventDefault();
       const value = input.value.trim();
       if (value && !tags.includes(value)) {
         addTag(value);
       }
-      input.value = '';
-      suggestionsBox.innerHTML = '';
+      input.value = "";
+      suggestionsBox.innerHTML = "";
       selectedSuggestionIndex = -1;
     }
 
-    if (e.key === 'Backspace' && input.value === '') {
+    if (e.key === "Backspace" && input.value === "") {
       if (tags.length > 0) {
         tags.pop();
-        const lastTagEl = tagsContainer.querySelector('.tag:last-child');
+        const lastTagEl = tagsContainer.querySelector(".tag:last-child");
         if (lastTagEl) tagsContainer.removeChild(lastTagEl);
         updateOutput();
       }
     }
   });
 
-  input.addEventListener('input', function () {
+  input.addEventListener("input", function () {
     selectedSuggestionIndex = -1;
     const query = input.value.toLowerCase();
-    suggestionsBox.innerHTML = '';
+    suggestionsBox.innerHTML = "";
     if (query.length > 0) {
-      const filtered = whitelist.filter(item =>
-        item.toLowerCase().startsWith(query) && !tags.includes(item)
+      const filtered = whitelist.filter(
+        (item) => item.toLowerCase().startsWith(query) && !tags.includes(item)
       );
-      filtered.forEach(item => {
-        const li = document.createElement('li');
+      filtered.forEach((item) => {
+        const li = document.createElement("li");
         li.textContent = item;
-        li.addEventListener('click', () => {
+        li.addEventListener("click", () => {
           addTag(item);
-          input.value = '';
-          suggestionsBox.innerHTML = '';
+          input.value = "";
+          suggestionsBox.innerHTML = "";
         });
         suggestionsBox.appendChild(li);
       });
@@ -276,22 +301,22 @@ function initTagInput(wrapper) {
 
   function highlightSuggestion(items) {
     items.forEach((item, index) => {
-      item.classList.toggle('active', index === selectedSuggestionIndex);
+      item.classList.toggle("active", index === selectedSuggestionIndex);
     });
   }
 
   function addTag(text) {
     tags.push(text);
-    const tagEl = document.createElement('div');
-    tagEl.className = 'tag';
+    const tagEl = document.createElement("div");
+    tagEl.className = "tag";
     tagEl.textContent = text;
 
-    const removeBtn = document.createElement('span');
-    removeBtn.className = 'remove';
-    removeBtn.textContent = '×';
-    removeBtn.addEventListener('click', () => {
+    const removeBtn = document.createElement("span");
+    removeBtn.className = "remove";
+    removeBtn.textContent = "×";
+    removeBtn.addEventListener("click", () => {
       tagsContainer.removeChild(tagEl);
-      tags = tags.filter(t => t !== text);
+      tags = tags.filter((t) => t !== text);
       updateOutput();
     });
 
@@ -301,6 +326,67 @@ function initTagInput(wrapper) {
   }
 
   function updateOutput() {
-    output.textContent = tags.join(', ');
+    output.textContent = tags.join(", ");
   }
+}
+
+// function toggleMedInput(checkbox) {
+//   const wrapper = checkbox.closest('.checkbox-wrapper');
+//   const input = wrapper.querySelector('.med-input');
+
+//   if (!input) return; // Sicherheit
+
+//   if (checkbox.checked) {
+//     input.style.display = 'inline-block';
+//   } else {
+//     input.style.display = 'none';
+//     input.value = '';
+//   }
+// }
+
+// function toggleMedInput(checkbox) {
+//   const row = checkbox.closest('.med-row');
+
+//   if (checkbox.checked) {
+//     row.classList.add('active');
+//   } else {
+//     row.classList.remove('active');
+//     const input = row.querySelector('.med-input');
+//     input.value = '';
+//   }
+// }
+
+function handleSelection(checkbox) {
+  const container = document.getElementById("selectedMedsList");
+  const medName = checkbox.value;
+
+  if (checkbox.checked) {
+    // Medikament hinzufügen
+    const row = document.createElement("div");
+    row.classList.add("selected-med-row");
+    row.setAttribute("data-med", medName);
+
+    row.innerHTML = `
+      <div class="selected-med-label">${medName}</div>
+      <div class="text-wrapper"> 
+        <input 
+          type="text" 
+          name="medDetails_${medName}" 
+          placeholder="Dosierung, Uhrzeit, sonstige Info...">
+          </div>
+    `;
+
+    container.appendChild(row);
+  } else {
+    // Medikament entfernen
+    const existing = container.querySelector(`[data-med="${medName}"]`);
+    if (existing) existing.remove();
+  }
+  const allMedCheckboxes = document.querySelectorAll(
+    'input[name="medVerabreicht"]'
+  );
+
+  const anyChecked = Array.from(allMedCheckboxes).some((cb) => cb.checked);
+
+  toggleMeasures("azmlVerabreicht-section", anyChecked);
 }
