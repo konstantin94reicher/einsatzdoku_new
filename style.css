@@ -21,10 +21,13 @@ h1 {
 }
 
 h2,
+h4,
 h5 {
   margin: 2px;
   font-size: medium;
 }
+
+
 
 span {
   font-size: x-small;
@@ -221,7 +224,7 @@ nav > ul > li:active {
 .formChild {
   display: flex;
   /* flex-direction: column; */
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: nowrap;
   padding-left: 10px;
 }
@@ -296,6 +299,7 @@ nav > ul > li:active {
 
 .text-wrapper input[type="text"],
 .text-wrapper input[type="number"],
+.text-wrapper input[type="time"],
 .text-wrapper textarea {
   display: inline-flex;
   align-items: center;
@@ -322,7 +326,8 @@ nav > ul > li:active {
   justify-content: center;
 }
 
-.text-wrapper input[type="number"] {
+.text-wrapper input[type="number"],
+.text-wrapper input[type="time"] {
   min-width: 50px;
 }
 
@@ -355,17 +360,19 @@ nav > ul > li:active {
 
 /* Aktiv (wie checked) */
 .text-wrapper input[type="text"]:focus,
-.text-wrapper input[type="number"]:focus {
+.text-wrapper input[type="number"]:focus,
+.text-wrapper textarea:focus {
   border: 2px solid #82d282;
   color: black;
 }
 
 /* Optional: Wenn Feld Inhalt hat */
-.text-wrapper input[type="text"]:not(:placeholder-shown),
-.text-wrapper input[type="number"]:not(:placeholder-shown) {
+/* .text-wrapper input[type="text"]:not(:placeholder-shown),
+.text-wrapper input[type="number"]:not(:placeholder-shown),
+.text-wrapper textarea:focus {
   border-color: #82d282;
   color: black;
-}
+} */
 
 .text-wrapper input[name^="medDetails_"] {
   min-width: none;
@@ -584,4 +591,13 @@ nav > ul > li:active {
 
 .selected-med-label {
   font-size: x-small;
+}
+
+.lessSpace h5 {
+  font-size: small;
+  margin: 0;
+}
+
+.lessSpace .formChildBox {
+  gap: 2px;
 }
