@@ -38,6 +38,10 @@ hr {
   margin-bottom: 0;
 }
 
+/* strong {
+  margin-bottom: 10px;
+} */
+
 nav > ul {
   list-style-type: none;
   display: flex;
@@ -229,9 +233,25 @@ nav > ul > li:active {
   flex-wrap: nowrap;
   padding-left: 10px;
 }
+
 .formChild:not(:first-child) {
   border-top: 1px solid rgb(211, 211, 211);
   padding-top: 10px;
+}
+
+.formChildBox.sidebar {
+  flex: 0 0 225px;
+  word-break: break-word;
+}
+
+.sidebar h5 {
+  margin: 0;
+  white-space: normal;
+}
+
+.formChildBox.content {
+  flex: 1;
+  min-width: 0;
 }
 
 .formChildBox,
