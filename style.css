@@ -86,6 +86,7 @@ nav > ul > li:active {
 
 .navbar {
   flex: 1;
+  overflow: scroll;
 }
 
 .navItem {
@@ -600,4 +601,9 @@ nav > ul > li:active {
 
 .lessSpace .formChildBox {
   gap: 2px;
+}
+
+.red {
+  color: red;
+  font-weight: bold;
 }

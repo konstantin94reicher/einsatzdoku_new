@@ -1817,53 +1817,182 @@
               </div>
             </div>
 
-            <div class="formContainer active" id="diagnostik-content">
+            <div class="formContainer" id="diagnostik-content">
               <div class="formChild"> <!-- EKG -->
                 <div class="formChildBox">
-                  <h5>EKG</h5>
+                  <h5>Diagnostik</h5>
                 </div>
                 <div class="formChildBox">
-
+                  <div class="checkbox-wrapper"><label><input type="checkbox" id="ekg" onclick="toggleMeasures('ekg-section', this.checked)"> EKG</label></div>
+                  <div class="checkbox-wrapper"><label><input type="checkbox" id="news2"> NEWS-2 Score</label></div>
+                  <div class="checkbox-wrapper"><label><input type="checkbox" id="bga" onclick="toggleMeasures('bga-section', this.checked)"> BGA</label></div>
+                  <div class="checkbox-wrapper"><label><input type="checkbox" id="ibd" onclick="toggleMeasures('ibd-section', this.checked)"> IBD</label></div>
+                  <div class="checkbox-wrapper"><label><input type="checkbox" id="ultraschall" onclick="toggleMeasures('ultraschall-section', this.checked)"> Ultraschall</label></div>
+                  <div class="checkbox-wrapper"><label><input type="checkbox" id="weitere" onclick="toggleMeasures('weitereDiagnostik-section', this.checked)"> weitere</label></div>
                 </div>
               </div>
-              <div class="formChild"> <!-- NEWS-2 Score -->
+              <div class="hiddenSection" id="ekg-section">
+                <hr>
+                <div class="formChild"> <!-- EKG -->
+                  <div class="formChildBox">
+                    <h5>EKG</h5>
+                  </div>
+                  <div class="formChildBox">
+                    <div class="text-wrapper"><textarea placeholder="Text eingeben..." id="ekg"></textarea></div>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="formChild"> 
                 <div class="formChildBox">
                   <h5>NEWS-2 Score</h5>
                 </div>
                 <div class="formChildBox">
 
                 </div>
-              </div>
-              <div class="formChild"> <!-- BGA -->
-                <div class="formChildBox">
-                  <h5>BGA</h5>
-                </div>
-                <div class="formChildBox">
-
-                </div>
-              </div>
-              <div class="formChild"> <!-- IBD -->
-                <div class="formChildBox">
-                  <h5>IBD</h5>
-                </div>
-                <div class="formChildBox">
-
+              </div> -->
+              <div class="hiddenSection" id="bga-section">
+                <hr>
+                <div class="formChild"> <!-- BGA -->
+                  <div class="formChildBox">
+                    <h5>BGA</h5>
+                  </div>
+                  <div class="formChildBox">
+                    <div class="text-wrapper"><textarea placeholder="Text eingeben..." id="bga"></textarea></div>
+                  </div>
                 </div>
               </div>
-              <div class="formChild"> <!-- Ultraschall -->
-                <div class="formChildBox">
-                  <h5>Ultraschall</h5>
-                </div>
-                <div class="formChildBox">
-                  
+              <div class="hiddenSection" id="ibd-section">
+                <hr>
+                <div class="formChild"> <!-- IBD -->
+                  <div class="formChildBox">
+                    <h5>IBD</h5>
+                  </div>
+                  <div class="formChildBox">
+                    <div class="text-wrapper"><textarea placeholder="Text eingeben..." id="ibd"></textarea></div>
+                  </div>
                 </div>
               </div>
-              <div class="formChild"> <!-- weitere Diagnostik -->
+              <div class="hiddenSection" id="ultraschall-section">
+                <hr>
+                <div class="formChild"> <!-- Ultraschall -->
+                  <div class="formChildBox">
+                    <h5>Ultraschall</h5>
+                  </div>
+                  <div class="formChildBox">
+                    <div class="text-wrapper"><textarea placeholder="Text eingeben..." id="ultraschall"></textarea></div>
+                  </div>
+                </div>
+              </div>
+              <div class="hiddenSection" id="weitereDiagnostik-section">
+                <hr>
+                <div class="formChild"> <!-- weitere Diagnostik -->
+                  <div class="formChildBox">
+                    <h5>weitere Diagnostik</h5>
+                  </div>
+                  <div class="formChildBox">
+                    <div class="text-wrapper"><textarea placeholder="Text eingeben..." id="weitereDiagnostik"></textarea></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="formContainer active lessSpace" id="news-2-content"> <!-- NEWS-2 Score -->
+              <div class="formChild">
                 <div class="formChildBox">
-                  <h5>weitere Diagnostik</h5>
+                  <h5>NEWS-2 Score</h5>
+                </div>
+                <div class="formChildBox" id="news2ScoreOutput"><span id="news2Aviso"></span></div>
+              </div>
+              <div class="formChild">
+                <div class="formChildBox">
+                  <h5>Atemfrequenz</h5>
                 </div>
                 <div class="formChildBox">
-                  
+                  <div class="radio-wrapper"><label><input type="radio" name="newsAf" value="3"> ≤8</label></div>
+                  <div class="radio-wrapper"><label><input type="radio" name="newsAf" value="1"> 9–11</label></div>
+                  <div class="radio-wrapper"><label><input type="radio" name="newsAf" value="0"> 12–20</label></div>
+                  <div class="radio-wrapper"><label><input type="radio" name="newsAf" value="2"> 21–24</label></div>
+                  <div class="radio-wrapper"><label><input type="radio" name="newsAf" value="3"> ≥25</label></div>              
+                </div>
+              </div>
+              <div class="formChild">
+                <div class="formChildBox">
+                  <h5>hyperkapnische resp. Insuff.</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="radio-wrapper"><label><input type="radio" name="newsRespInsuff" value="Nein" onclick="toggleMeasures('sättigung-content', false)"> Nein</label></div>
+                  <div class="radio-wrapper"><label><input type="radio" name="newsRespInsuff" value="Ja" onclick="toggleMeasures('sättigung-content', true)"> Ja</label></div>
+                </div>
+              </div>
+              <div class="hiddenSection" id="sättigung-content">
+                <hr>
+                <div class="formChild">
+                  <div class="formChildBox">
+                    <h5>SpO2</h5>
+                  </div>
+                  <div class="formChildBox">
+                    <div class="radio-wrapper"><label><input type="radio" name="newsSättigung" value="3"> ≤83%</label></div>
+                    <div class="radio-wrapper"><label><input type="radio" name="newsSättigung" value="2"> 84–85%</label></div>
+                    <div class="radio-wrapper"><label><input type="radio" name="newsSättigung" value="1"> 86–87%</label></div>
+                    <div class="radio-wrapper"><label><input type="radio" name="newsSättigung" value="0"> 88–92%, ≥93% bei Raumluft</label></div>
+                    <div class="radio-wrapper"><label><input type="radio" name="newsSättigung" value="1"> 93–94% bei O2-Gabe</label></div>
+                    <div class="radio-wrapper"><label><input type="radio" name="newsSättigung" value="2"> 95–96% bei O2-Gabe</label></div>
+                    <div class="radio-wrapper"><label><input type="radio" name="newsSättigung" value="3"> ≥97% bei O2-Gabe</label></div>
+                  </div>
+                </div>
+              </div>
+              <div class="formChild">
+                <div class="formChildBox">
+                  <h5>Raumluft oder O2 Gabe</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="radio-wrapper"><label><input type="radio" name="newsRaumluft" value="0"> Raumluft</label></div>
+                  <div class="radio-wrapper"><label><input type="radio" name="newsRaumluft" value="2"> O2-Gabe</label></div>              
+                </div>
+              </div>
+              <div class="formChild">
+                <div class="formChildBox">
+                  <h5>Temperatur</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="radio-wrapper"><label><input type="radio" name="newsTemperatur" value="3"> ≤35,0°C</label></div>
+                  <div class="radio-wrapper"><label><input type="radio" name="newsTemperatur" value="1"> 35,1–36,0°C</label></div>
+                  <div class="radio-wrapper"><label><input type="radio" name="newsTemperatur" value="0"> 36,1–38,0°C</label></div>
+                  <div class="radio-wrapper"><label><input type="radio" name="newsTemperatur" value="1"> 38,1–39,0°C</label></div>
+                  <div class="radio-wrapper"><label><input type="radio" name="newsTemperatur" value="2"> ≥39,1°C</label></div>              
+                </div>
+              </div>
+              <div class="formChild">
+                <div class="formChildBox">
+                  <h5>systolischer Blutdruck</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="radio-wrapper"><label><input type="radio" name="newsSystBlutdruck" value="3"> ≤90</label></div>
+                  <div class="radio-wrapper"><label><input type="radio" name="newsSystBlutdruck" value="2"> 91–100</label></div>
+                  <div class="radio-wrapper"><label><input type="radio" name="newsSystBlutdruck" value="1"> 101–110</label></div>
+                  <div class="radio-wrapper"><label><input type="radio" name="newsSystBlutdruck" value="0"> 111–219</label></div>
+                  <div class="radio-wrapper"><label><input type="radio" name="newsSystBlutdruck" value="1"> ≥220</label></div>              
+                </div>
+              </div>
+              <div class="formChild">
+                <div class="formChildBox">
+                  <h5>Herzfrequenz</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="radio-wrapper"><label><input type="radio" name="newsHerzfrequenz" value="3"> ≤40</label></div>
+                  <div class="radio-wrapper"><label><input type="radio" name="newsHerzfrequenz" value="1"> 41–50</label></div>
+                  <div class="radio-wrapper"><label><input type="radio" name="newsHerzfrequenz" value="0"> 51–90</label></div>
+                  <div class="radio-wrapper"><label><input type="radio" name="newsHerzfrequenz" value="1"> 91–110</label></div>
+                  <div class="radio-wrapper"><label><input type="radio" name="newsHerzfrequenz" value="2"> 111–130</label></div>
+                  <div class="radio-wrapper"><label><input type="radio" name="newsHerzfrequenz" value="3"> ≥131</label></div>              
+                </div>
+              </div>
+              <div class="formChild">
+                <div class="formChildBox">
+                  <h5>Bewusstsein</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="radio-wrapper"><label><input type="radio" name="newsBewusstsein" value="0"> wach</label></div>
+                  <div class="radio-wrapper"><label><input type="radio" name="newsBewusstsein" value="1"> neu aufgetretene Verwirrung (oder Desorientierung / Agitation), reagiert nur auf Stimme / Schmerz, nicht ansprechbar</label></div>
                 </div>
               </div>
             </div>

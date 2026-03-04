@@ -211,6 +211,58 @@ document.addEventListener("click", function (e) {
   navItem.classList.add("active");
 });
 
+function addNavItem(containerSelector, itemText) {
+  const container = document.querySelector(containerSelector);
+  if (!container) return;
+
+  let ul = container.querySelector(".dynamic-nav");
+
+  // Falls noch keine UL existiert → neu erzeugen
+  if (!ul) {
+    ul = document.createElement("ul");
+    ul.classList.add("dynamic-nav");
+    container.appendChild(ul);
+  }
+
+  // Prüfen, ob Item schon existiert (verhindert Duplikate)
+  const existing = ul.querySelector(`#${itemText.toLowerCase()}`);
+  if (existing) return;
+
+  const li = document.createElement("li");
+  li.textContent = itemText;
+  li.classList.add("nav-item");
+  li.id = itemText.toLowerCase();
+
+  ul.appendChild(li);
+}
+
+document.getElementById("news2").addEventListener("change", function () {
+  if (this.checked) {
+    addNavItem("#weitereDetails", "NEWS-2");
+
+    // Active-Zustände zurücksetzen
+    document
+      .querySelectorAll(".nav-item")
+      .forEach((i) => i.classList.remove("active"));
+
+    document
+      .querySelectorAll(".formContainer")
+      .forEach((c) => c.classList.remove("active"));
+
+    // Zur Section navigieren
+    document.getElementById("news-2-content")?.classList.add("active");
+    document.getElementById("news-2")?.classList.add("active");
+  } else {
+    // OPTIONAL: Wenn deaktiviert → Nav-Item wieder entfernen
+    const navItem = document.getElementById("news-2");
+    if (navItem) navItem.remove();
+
+    // OPTIONAL: Content ausblenden
+    document.getElementById("news-2-content")?.classList.remove("active");
+  }
+});
+
+// Medikamente & Vorerkrankungen Tags
 document.querySelectorAll(".tag-wrapper").forEach(initTagInput);
 
 function initTagInput(wrapper) {
@@ -390,3 +442,44 @@ function handleSelection(checkbox) {
 
   toggleMeasures("azmlVerabreicht-section", anyChecked);
 }
+
+// news-2 Score
+function calculateNEWS2() {
+  let score = 0;
+
+  const fields = [
+    "newsAf",
+    "newsSättigung",
+    "newsRaumluft",
+    "newsTemperatur",
+    "newsSystBlutdruck",
+    "newsHerzfrequenz",
+    "newsBewusstsein",
+  ];
+
+  fields.forEach((name) => {
+    const checked = document.querySelector(`input[name="${name}"]:checked`);
+    if (checked) {
+      score += parseInt(checked.value, 10);
+    }
+  });
+
+  // Ausgabe (z. B. in span oder input)
+  const news2Output = document.getElementById("news2ScoreOutput");
+  const news2Aviso = document.getElementById("news2Aviso");
+
+  news2Output.innerText = score;
+  if (score >= 7) {
+    news2Output.classList.add("red");
+    news2Aviso.innerText = "&rarr; Aviso"
+  } else {
+    news2Output.classList.remove("red");
+  }
+  return score;
+}
+
+document.addEventListener("change", function (e) {
+  if (e.target.matches('input[type="radio"]')) {
+    calculateNEWS2();
+  }
+});
