@@ -27,8 +27,6 @@ h5 {
   font-size: medium;
 }
 
-
-
 span {
   font-size: x-small;
 }
@@ -206,6 +204,7 @@ nav > ul > li:active {
 
 .formContent {
   margin-top: 10px;
+  padding-bottom: 10px;
   border-radius: 10px;
   background-color: white;
   display: flex;
@@ -458,9 +457,28 @@ nav > ul > li:active {
   background: #82d282;
   color: white;
 }
-
+/* 
 .hiddenSection {
   display: none;
+} */
+
+.hiddenSection {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 5px;
+  flex-wrap: wrap;
+
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+.hiddenSection.active {
+  max-height: 500px; /* größer als Inhalt */
+  opacity: 1;
 }
 
 #gcsFirstChild,
@@ -626,4 +644,74 @@ nav > ul > li:active {
 .red {
   color: red;
   font-weight: bold;
+}
+
+/* #sAngehoerige {
+  row-gap: 10px;
+} */
+
+.pflegeContent {
+  margin-top: 10px;
+}
+
+.analgesie-row {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.analgesie-row span {
+  display: inline-block;
+  width: 35px; /* gleiche Breite für alle Labels */
+  font-weight: normal;
+}
+
+.analgesie-row input {
+  display: inline-flex;
+  align-items: center;
+  background: #fff;
+  padding: 2px 15px;
+  margin: 0;
+  border: 2px solid #eeeeee;
+  transition: all 0.1s linear;
+  line-height: 1.55;
+  color: black;
+  font-size: x-small;
+  width: 50px;
+  outline: none;
+}
+
+.analgesie-row input:focus {
+  border: 2px solid #82d282;
+  color: black;
+}
+
+#analgesie {
+  gap: 25px;
+}
+
+.analgesieChild {
+  gap: 2px;
+}
+
+.copyValuesButton {
+  font-size: x-small;
+  margin-top: 5px;
+  padding: 5px;
+  /* box-sizing: border-box; */
+  border: 1px;
+  border-radius: 5px;
+  text-align: center;
+  background-color: #462346;
+  color: white; 
+}
+
+.copyValuesButton:hover {
+  cursor: pointer;
+  background-color: #aaaafa;
+  color: black;
+}
+
+#pentrop-section label {
+  font-size: x-small;
 }

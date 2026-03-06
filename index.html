@@ -324,7 +324,7 @@
             <!-- <div class="text-wrapper"><input type="text" name="blutungWeitere" id="blutungWeitere" placeholder="Text eingeben"></div> -->
             <!-- .hiddenSection#section>div -->
 
-            <div class="formContainer active lessSpace" id="gems-content">
+            <div class="formContainer lessSpace" id="gems-content"> <!-- GEMS -->
               <div class="formChild"> <!-- Veränderung der Anatomie / Physiologie / Kognition / Kommunikation-->
                 <div class="formChildBox sidebar">
                   <h5>Veränderung der Anatomie / Physiologie / Kognition / Kommunikation</h5>
@@ -466,7 +466,7 @@
                 <div class="formChildBox sidebar">
                   <h5>Anwesende Personen bzw. Kontaktpersonen</h5>
                 </div>
-                <div class="formChildBox content">
+                <div class="formChildBox content" id="sAngehoerige">
                   <div class="checkbox-wrapper"><label for="sAngehoerige-1"><input type="checkbox" name="sAngehoerige" id="sAngehoerige-1" value="Angehörige" onclick="toggleMeasures('angehörige-section', this.checked)"> Angehörige</label></div>
                   <div class="checkbox-wrapper"><label for="sAngehoerige-2"><input type="checkbox" name="sAngehoerige" id="sAngehoerige-2" value="Betreuer" onclick="toggleMeasures('angehörige-section', this.checked)"> Betreuer</label></div>
                   <div class="checkbox-wrapper"><label for="sAngehoerige-3"><input type="checkbox" name="sAngehoerige" id="sAngehoerige-3" value="Nachbar" onclick="toggleMeasures('angehörige-section', this.checked)"> Nachbar</label></div>
@@ -474,11 +474,11 @@
                   <div class="checkbox-wrapper"><label for="sAngehoerige-5"><input type="checkbox" name="sAngehoerige" id="sAngehoerige-5" value="Heimhilfe" onclick="toggleMeasures('angehörige-section', this.checked)"> Heimhilfe</label></div>
                   <div class="checkbox-wrapper"><label for="sAngehoerige-6"><input type="checkbox" name="sAngehoerige" id="sAngehoerige-6" value="Sozialdienst" onclick="toggleMeasures('angehörige-section', this.checked)"> Sozialdienst</label></div>
                   <div class="checkbox-wrapper"><label for="sAngehoerige-7"><input type="checkbox" name="sAngehoerige" id="sAngehoerige-7" value="keine weiteren Personen anwesend"> keine</label></div>
-                  <div>
+                  <div class="pflegeContent">
                     <strong>Anzahl der Pflege pro Tag / Woche</strong>
                     <div class="text-wrapper"><input type="text" name="geruchAndere" id="geruchAndere" placeholder="Text eingeben"></div>
                   </div>
-                  <div>
+                  <div class="pflegeContent">
                     <strong>Anzahl der Besuche pro Tag / Woche</strong>
                     <div class="text-wrapper"><input type="text" name="geruchAndere" id="geruchAndere" placeholder="Text eingeben"></div>
                   </div>
@@ -723,21 +723,21 @@
                   <h5>Maßnahmen</h5>
                 </div>
                 <div class="formChildBox">
-                  <div class="checkbox-wrapper"><label for="b-massnahmen-1"><input type="checkbox" name="b-massnahmen" id="b-massnahmen-1" value="O2-Brille" onclick="toggleMeasures('O2-section', this.checked)"> O2-Brille</label></div>
-                  <div class="checkbox-wrapper"><label for="b-massnahmen-2"><input type="checkbox" name="b-massnahmen" id="b-massnahmen-2" value="O2-Maske" onclick="toggleMeasures('O2-section', this.checked)"> O2-Maske</label></div>
-                  <div class="checkbox-wrapper"><label for="b-massnahmen-3"><input type="checkbox" name="b-massnahmen" id="b-massnahmen-3" value="O2-Vernebler" onclick="toggleMeasures('O2-section', this.checked)"> O2-Vernebler</label></div>
+                  <div class="checkbox-wrapper"><label for="b-massnahmen-1"><input type="checkbox" name="b-massnahmen" id="b-massnahmen-1" value="O2-Brille" onclick="toggleMeasures('O2-section', this.checked)"> O&#8322; -Brille</label></div>
+                  <div class="checkbox-wrapper"><label for="b-massnahmen-2"><input type="checkbox" name="b-massnahmen" id="b-massnahmen-2" value="O2-Maske" onclick="toggleMeasures('O2-section', this.checked)"> O&#8322; -Maske</label></div>
+                  <div class="checkbox-wrapper"><label for="b-massnahmen-3"><input type="checkbox" name="b-massnahmen" id="b-massnahmen-3" value="O2-Vernebler" onclick="toggleMeasures('O2-section', this.checked)"> O&#8322; -Vernebler</label></div>
                   <div class="checkbox-wrapper"><label for="b-massnahmen-4"><input type="checkbox" name="b-massnahmen" id="b-massnahmen-4" value="assistierte Beatmung" onclick="toggleMeasures('O2-section', this.checked)"> assistierte Beatmung</label></div>
                   <div class="checkbox-wrapper"><label for="b-massnahmen-5"><input type="checkbox" name="b-massnahmen" id="b-massnahmen-5" value="kontrollierte Beatmung" onclick="toggleMeasures('O2-section', this.checked)"> kontrollierte Beatmung</label></div>
-                  <div class="checkbox-wrapper"><label for="b-massnahmen-6"><input type="checkbox" name="b-massnahmen" id="b-massnahmen-6" value="etCO2-Nasenbrille"> etCO2-Nasenbrille</label></div>
+                  <div class="checkbox-wrapper"><label for="b-massnahmen-6"><input type="checkbox" name="b-massnahmen" id="b-massnahmen-6" value="etCO2-Nasenbrille"> etCO&#8322; -Nasenbrille</label></div>
                 </div>
               </div>
               <div class="hiddenSection" id="O2-section">
                 <div class="formChild" id="o2Gabe">
                   <div class="formChildBox">
-                    <h5>O2 Gabe</h5>
+                    <h5>O<sub>2</sub> Gabe</h5>
                   </div>
                   <div class="formChildBox">
-                    <div class="text-wrapper"><input type="number" name="b-massnahmenO2" id="b-massnahmenO2" placeholder="O2 l/min"></div><br>
+                    <div class="text-wrapper"><input type="number" name="b-massnahmenO2" id="b-massnahmenO2" placeholder="O&#8322; l/min"></div><br>
                   </div>
                 </div>
               </div>
@@ -1634,7 +1634,7 @@
               </div>
             </div>  
             
-            <div class="formContainer" id="medikamentengabe-content"> <!-- Medikamentengabe -->
+            <div class="formContainer active" id="medikamentengabe-content"> <!-- Medikamentengabe -->
               <div class="formChild">
                 <div class="formChildBox">
                   <h5>verabreichte Medikation</h5>
@@ -1696,7 +1696,7 @@
                     <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" id="azml1-3" value="Esketamin i.n." onchange="handleSelection(this)"> Esketamin i.n. </label> </div>
                     <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" id="azml1-4" value="Epinephrin Autoinjektor i.m." onchange="handleSelection(this)"> Epinephrin Autoinjektor i.m. </label> </div>
                     <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" id="azml1-5" value="Epinephrin inhalativ" onchange="handleSelection(this)"> Epinephrin inhalativ </label> </div>
-                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" id="azml1-6" value="Methoxyfluran inhalativ" onchange="handleSelection(this)"> Methoxyfluran inhalativ </label> </div>
+                    <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" id="azml1-6" value="Methoxyfluran inhalativ" onchange="handleSelection(this); toggleMeasures('pentrop-section', this.checked)"> Methoxyfluran inhalativ </label> </div>
                     <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" id="azml1-7" value="Midazolam i.n." onchange="handleSelection(this)"> Midazolam i.n. </label> </div>
                     <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" id="azml1-8" value="Naloxon i.n." onchange="handleSelection(this)"> Naloxon i.n. </label> </div>
                     <div class="checkbox-wrapper"><label> <input type="checkbox" name="medVerabreicht" id="azml1-9" value="Paracetamol rektal" onchange="handleSelection(this)"> Paracetamol rektal </label> </div>
@@ -1763,6 +1763,48 @@
                   </div>
                 </div>
               </div>
+              <div class="hiddenSection" id="analgesie-section">
+                <hr>
+                <div class="formChild">
+                  <div class="formChildBox">
+                    <h5>Analgesie</h5>
+                  </div>
+                  <div class="formChildBox" id="analgesie">
+                    <div class="analgesieChild">
+                      <strong>Erstbefund</strong>
+                      <div class="analgesie-row"><span>NRS</span><input type="number" id="analgesieNRSErstbefund" min="1" max="10"></div>
+                      <div class="analgesie-row"><span>GCS</span><input type="number" id="analgesieGCSErstbefund" min="3" max="15"></div>
+                      <div class="analgesie-row"><span>SpO2</span><input type="number" id="analgesieSpO2Erstbefund"></div>
+                      <div class="analgesie-row"><span>HF</span><input type="number" id="analgesieHFErstbefund"></div>
+                      <div class="analgesie-row"><span>RR</span><input type="text" id="analgesieRRErstbefund"></div>
+                      <div class="analgesie-row"><span>KG</span><input type="number" id="analgesieKGew"></div>
+                    </div>
+                    <div class="analgesieChild">
+                      <strong>5 Minuten nach Applikation</strong><br>
+                      <button class="copyValuesButton" onclick="copyAnalgesieValues('erstbefund', '5min')">Werte aus Erstbefund übernehmen</button>
+                      <div class="analgesie-row"><span>NRS</span><input type="number" id="analgesieNRS5min" min="1" max="10"></div>
+                      <div class="analgesie-row"><span>GCS</span><input type="number" id="analgesieGCS5min" min="3" max="15"></div>
+                      <div class="analgesie-row"><span>SpO2</span><input type="number" id="analgesieSpO25min"></div>
+                      <div class="analgesie-row"><span>HF</span><input type="number" id="analgesieHF5min"></div>
+                      <div class="analgesie-row"><span>RR</span><input type="text" id="analgesieRR5min"></div>
+                      <div class="hiddenSection" id="pentrop-section">
+                        <br>
+                        <label for="analgesieInhalationen5min">Inhalationen</label>
+                        <div class="text-wrapper"><input type="number" id="analgesieInhalationen5min"></div>
+                      </div>
+                    </div>
+                    <div class="analgesieChild">
+                      <strong>Endbefund</strong><br>
+                      <button class="copyValuesButton" onclick="copyAnalgesieValues('erstbefund', 'endbefund')">Werte aus Erstbefund übernehmen</button>
+                      <div class="analgesie-row"><span>NRS</span><input type="number" id="analgesieNRSEndbefund" min="1" max="10"></div>
+                      <div class="analgesie-row"><span>GCS</span><input type="number" id="analgesieGCSEndbefund" min="3" max="15"></div>
+                      <div class="analgesie-row"><span>SpO2</span><input type="number" id="analgesieSpO2Endbefund"></div>
+                      <div class="analgesie-row"><span>HF</span><input type="number" id="analgesieHFEndbefund"></div>
+                      <div class="analgesie-row"><span>RR</span><input type="text" id="analgesieRREndbefund"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div class="hiddenSection" id="teleNA-section">
                 <hr>
                 <div class="formChild">
@@ -1793,7 +1835,7 @@
                 <hr>
                 <div class="formChild">
                   <div class="formChildBox">
-                    <h5>durch NA</NAv></h5>
+                    <h5>durch NA</h5>
                   </div>
                   <div class="formChildBox">
                     <div class="text-wrapper"> <textarea id="medGabeNA" placeholder="verabreichte Medikation angeben ..."></textarea> </div>

@@ -34,21 +34,10 @@ document.querySelectorAll(".custom-select").forEach((select) => {
 });
 
 function toggleMeasures(sectionId, show) {
-  console.log(`toggleMeasures aufgerufen für: ${sectionId}, Status: ${show}`);
   const section = document.getElementById(sectionId);
-  if (section) {
-    if (show) {
-      section.style.display = "flex";
-      section.style.flexDirection = "column";
-      section.style.width = "100%";
-      section.style.gap = "5px";
-      section.style.flexWrap = "wrap";
-    } else {
-      section.style.display = "none";
-    }
-  } else {
-    console.warn(`Element mit ID "${sectionId}" nicht gefunden.`);
-  }
+  if (!section) return;
+
+  section.classList.toggle("active", show);
 }
 
 function getEinsatztypen() {
@@ -408,7 +397,20 @@ function initTagInput(wrapper) {
 //   }
 // }
 
+const analgesieTrigger = [
+  "Esketamin i.v.",
+  "Paracetamol i.v.",
+  "Methoxyfluran inhalativ",
+  "Esketamin i.n.",
+];
+
 function handleSelection(checkbox) {
+  const checkedAnalgesics = Array.from(
+    document.querySelectorAll('input[name="medVerabreicht"]:checked')
+  ).some((cb) => analgesieTrigger.includes(cb.value));
+
+  toggleMeasures("analgesie-section", checkedAnalgesics);
+
   const container = document.getElementById("selectedMedsList");
   const medName = checkbox.value;
 
@@ -443,6 +445,21 @@ function handleSelection(checkbox) {
   toggleMeasures("azmlVerabreicht-section", anyChecked);
 }
 
+function copyAnalgesieValues(from, to) {
+  const suffixes = ["NRS", "GCS", "SpO2", "HF", "RR"];
+  suffixes.forEach(suffix => {
+      const fromInput = document.getElementById(`analgesie${suffix}${capitalize(from)}`);
+      const toInput = document.getElementById(`analgesie${suffix}${capitalize(to)}`);
+      if (fromInput && toInput) {
+          toInput.value = fromInput.value;
+      }
+  });
+}
+
+function capitalize(text) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
 // news-2 Score
 function calculateNEWS2() {
   let score = 0;
@@ -471,7 +488,7 @@ function calculateNEWS2() {
   news2Output.innerText = score;
   if (score >= 7) {
     news2Output.classList.add("red");
-    news2Aviso.innerText = "&rarr; Aviso"
+    news2Aviso.innerText = "&rarr; Aviso";
   } else {
     news2Output.classList.remove("red");
   }
