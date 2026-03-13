@@ -5,17 +5,14 @@ document.querySelectorAll(".custom-select").forEach((select) => {
 
   // Dropdown öffnen/schließen
   trigger.addEventListener("click", () => {
-    options.style.display =
-      options.style.display === "block" ? "none" : "block";
+    options.style.display = options.style.display === "block" ? "none" : "block";
   });
 
   // Option auswählen
   select.querySelectorAll(".custom-option").forEach((option) => {
     option.addEventListener("click", () => {
       // Vorherige Auswahl entfernen
-      select
-        .querySelectorAll(".custom-option")
-        .forEach((o) => o.classList.remove("selected"));
+      select.querySelectorAll(".custom-option").forEach((o) => o.classList.remove("selected"));
 
       option.classList.add("selected");
       trigger.textContent = option.textContent;
@@ -81,60 +78,35 @@ const navConfig = {
     sssGi: ["SSS", "GI"],
     primary: ["A", "B", "C", "D", "E"],
     secondary: ["SAMP", "LER", "OPQRST"],
-    weitereDetails: [
-      "Transport",
-      "Medikamentengabe",
-      "Notkompetenzen",
-      "Diagnostik",
-    ],
+    weitereDetails: ["Transport", "Medikamentengabe", "Notkompetenzen", "Diagnostik"],
   },
 
   pädiatrisch: {
     sssGi: ["SSS", "PBD"],
     primary: ["A", "B", "C", "D", "E"],
     secondary: ["SAMP", "LER", "OPQRST"],
-    weitereDetails: [
-      "Transport",
-      "Medikamentengabe",
-      "Notkompetenzen",
-      "Diagnostik",
-    ],
+    weitereDetails: ["Transport", "Medikamentengabe", "Notkompetenzen", "Diagnostik"],
   },
 
   geriatrisch: {
     sssGi: ["SSS", "GI", "GEMS"],
     primary: ["A", "B", "C", "D", "E"],
     secondary: ["SAMP", "LER", "OPQRST"],
-    weitereDetails: [
-      "Transport",
-      "Medikamentengabe",
-      "Notkompetenzen",
-      "Diagnostik",
-    ],
+    weitereDetails: ["Transport", "Medikamentengabe", "Notkompetenzen", "Diagnostik"],
   },
 
   traumatologisch: {
     sssGi: ["SSS", "GI"],
     primary: ["x", "A", "B", "C", "D", "E", "Trauma"],
     secondary: ["SAMP", "LER", "OPQRST"],
-    weitereDetails: [
-      "Transport",
-      "Medikamentengabe",
-      "Notkompetenzen",
-      "Diagnostik",
-    ],
+    weitereDetails: ["Transport", "Medikamentengabe", "Notkompetenzen", "Diagnostik"],
   },
 
   traumaGeriatrisch: {
     sssGi: ["SSS", "GI", "GEMS"],
     primary: ["x", "A", "B", "C", "D", "E", "Trauma"],
     secondary: ["SAMP", "LER", "OPQRST", "SPLATT"],
-    weitereDetails: [
-      "Transport",
-      "Medikamentengabe",
-      "Notkompetenzen",
-      "Diagnostik",
-    ],
+    weitereDetails: ["Transport", "Medikamentengabe", "Notkompetenzen", "Diagnostik"],
   },
 };
 
@@ -160,12 +132,7 @@ function toggleNavbar() {
 
   const sssGi = document.querySelector("#sss-gi");
 
-  if (
-    einsatztyp.internistisch ||
-    einsatztyp.traumatologisch ||
-    einsatztyp.geriatrisch ||
-    einsatztyp.pädiatrisch
-  ) {
+  if (einsatztyp.internistisch || einsatztyp.traumatologisch || einsatztyp.geriatrisch || einsatztyp.pädiatrisch) {
     sssGi.classList.remove("hiddenSection");
     primary.classList.remove("hiddenSection");
     secondary.classList.remove("hiddenSection");
@@ -182,17 +149,11 @@ document.addEventListener("click", function (e) {
   const navItem = e.target.closest(".nav-item");
   if (!navItem) return;
 
-  document
-    .querySelectorAll(".nav-item")
-    .forEach((i) => i.classList.remove("active"));
+  document.querySelectorAll(".nav-item").forEach((i) => i.classList.remove("active"));
 
-  document
-    .querySelectorAll(".formContainer")
-    .forEach((c) => c.classList.remove("active"));
+  document.querySelectorAll(".formContainer").forEach((c) => c.classList.remove("active"));
 
-  document
-    .querySelectorAll(".navHeader")
-    .forEach((c) => c.classList.remove("active"));
+  document.querySelectorAll(".navHeader").forEach((c) => c.classList.remove("active"));
 
   const contentId = navItem.id + "-content";
   const content = document.getElementById(contentId);
@@ -251,13 +212,9 @@ function addNavHeader(itemText) {
 
 document.querySelectorAll(".navHeader").forEach((header) => {
   header.addEventListener("click", () => {
-    document
-      .querySelectorAll(".nav-item")
-      .forEach((i) => i.classList.remove("active"));
+    document.querySelectorAll(".nav-item").forEach((i) => i.classList.remove("active"));
 
-    document
-      .querySelectorAll(".formContainer")
-      .forEach((c) => c.classList.remove("active"));
+    document.querySelectorAll(".formContainer").forEach((c) => c.classList.remove("active"));
 
     document.getElementById("primary-content").classList.add("active");
     header.classList.add("active");
@@ -269,13 +226,9 @@ document.getElementById("news2").addEventListener("change", function () {
     addNavItem("#weitereDetails", "NEWS-2");
 
     // Active-Zustände zurücksetzen
-    document
-      .querySelectorAll(".nav-item")
-      .forEach((i) => i.classList.remove("active"));
+    document.querySelectorAll(".nav-item").forEach((i) => i.classList.remove("active"));
 
-    document
-      .querySelectorAll(".formContainer")
-      .forEach((c) => c.classList.remove("active"));
+    document.querySelectorAll(".formContainer").forEach((c) => c.classList.remove("active"));
 
     // Zur Section navigieren
     document.getElementById("news-2-content")?.classList.add("active");
@@ -318,8 +271,7 @@ function initTagInput(wrapper) {
     if (e.key === "ArrowUp") {
       e.preventDefault();
       if (items.length > 0) {
-        selectedSuggestionIndex =
-          (selectedSuggestionIndex - 1 + items.length) % items.length;
+        selectedSuggestionIndex = (selectedSuggestionIndex - 1 + items.length) % items.length;
         highlightSuggestion(items);
       }
       return;
@@ -363,9 +315,7 @@ function initTagInput(wrapper) {
     const query = input.value.toLowerCase();
     suggestionsBox.innerHTML = "";
     if (query.length > 0) {
-      const filtered = whitelist.filter(
-        (item) => item.toLowerCase().startsWith(query) && !tags.includes(item)
-      );
+      const filtered = whitelist.filter((item) => item.toLowerCase().startsWith(query) && !tags.includes(item));
       filtered.forEach((item) => {
         const li = document.createElement("li");
         li.textContent = item;
@@ -436,18 +386,13 @@ function initTagInput(wrapper) {
 //   }
 // }
 
-const analgesieTrigger = [
-  "Esketamin i.v.",
-  "Paracetamol i.v.",
-  "Methoxyfluran inhalativ",
-  "Esketamin i.n.",
-];
+const analgesieTrigger = ["Esketamin i.v.", "Paracetamol i.v.", "Methoxyfluran inhalativ", "Esketamin i.n."];
 
 // medVerabreicht
 function handleSelection(checkbox) {
-  const checkedAnalgesics = Array.from(
-    document.querySelectorAll('input[name="medVerabreicht"]:checked')
-  ).some((cb) => analgesieTrigger.includes(cb.value));
+  const checkedAnalgesics = Array.from(document.querySelectorAll('input[name="medVerabreicht"]:checked')).some((cb) =>
+    analgesieTrigger.includes(cb.value)
+  );
 
   toggleMeasures("analgesie-section", checkedAnalgesics);
 
@@ -476,9 +421,7 @@ function handleSelection(checkbox) {
     const existing = container.querySelector(`[data-med="${medName}"]`);
     if (existing) existing.remove();
   }
-  const allMedCheckboxes = document.querySelectorAll(
-    'input[name="medVerabreicht"]'
-  );
+  const allMedCheckboxes = document.querySelectorAll('input[name="medVerabreicht"]');
 
   const anyChecked = Array.from(allMedCheckboxes).some((cb) => cb.checked);
 
@@ -488,12 +431,8 @@ function handleSelection(checkbox) {
 function copyAnalgesieValues(from, to) {
   const suffixes = ["NRS", "GCS", "SpO2", "HF", "RR"];
   suffixes.forEach((suffix) => {
-    const fromInput = document.getElementById(
-      `analgesie${suffix}${capitalize(from)}`
-    );
-    const toInput = document.getElementById(
-      `analgesie${suffix}${capitalize(to)}`
-    );
+    const fromInput = document.getElementById(`analgesie${suffix}${capitalize(from)}`);
+    const toInput = document.getElementById(`analgesie${suffix}${capitalize(to)}`);
     if (fromInput && toInput) {
       toInput.value = fromInput.value;
     }
@@ -508,15 +447,7 @@ function capitalize(text) {
 function calculateNEWS2() {
   let score = 0;
 
-  const fields = [
-    "newsAf",
-    "newsSättigung",
-    "newsRaumluft",
-    "newsTemperatur",
-    "newsSystBlutdruck",
-    "newsHerzfrequenz",
-    "newsBewusstsein",
-  ];
+  const fields = ["newsAf", "newsSättigung", "newsRaumluft", "newsTemperatur", "newsSystBlutdruck", "newsHerzfrequenz", "newsBewusstsein"];
 
   fields.forEach((name) => {
     const checked = document.querySelector(`input[name="${name}"]:checked`);
@@ -557,19 +488,12 @@ function generateSummary() {
   // #endregion
 
   // #region Einsatzstelle
-  // Neu: custom-select mit hidden input name="einsatzstelle"
-  const einsatzstelleHidden = document.querySelector(
-    'input[name="einsatzstelle"]'
-  );
-  const einsatzstelleValue = einsatzstelleHidden
-    ? einsatzstelleHidden.value
-    : "";
+  const einsatzstelleHidden = document.querySelector('input[name="einsatzstelle"]');
+  const einsatzstelleValue = einsatzstelleHidden ? einsatzstelleHidden.value : "";
   if (einsatzstelleValue) {
     summary += `Einsatzstelle: `;
     if (einsatzstelleValue === "Sonstiges") {
-      const sonstiges = document
-        .getElementById("einsatzstelleSonstiges")
-        ?.value.trim();
+      const sonstiges = document.getElementById("einsatzstelleSonstiges")?.value.trim();
       summary += sonstiges ? sonstiges : "Sonstiges";
     } else {
       summary += einsatzstelleValue;
@@ -579,30 +503,23 @@ function generateSummary() {
 
   // #region Anwesende Kräfte
   // Neu: name="anwesendeKraefte"
-  const anwesendeKraefte = document.querySelectorAll(
-    'input[name="anwesendeKraefte"]:checked'
-  );
+  const anwesendeKraefte = document.querySelectorAll('input[name="anwesendeKraefte"]:checked');
   if (anwesendeKraefte.length > 0) {
-    summary += "<br>Anwesende Kräfte: ";
+    summary += "\nAnwesende Kräfte: ";
     const kraefteTexte = [];
 
     anwesendeKraefte.forEach((checkbox) => {
       if (checkbox.value === "LPD" || checkbox.value === "FW") {
         kraefteTexte.push(checkbox.value);
       } else if (checkbox.value === "RD") {
-        const erste = document
-          .getElementById("rdErsteintreffend")
-          ?.value.trim();
+        const erste = document.getElementById("rdErsteintreffend")?.value.trim();
         const weitere = document.getElementById("rdWeitere")?.value.trim();
         let rdText = "RD";
         if (erste) rdText += `: ersteintreffend: ${erste}`;
-        if (weitere)
-          rdText += erste ? `, weitere: ${weitere}` : `: weitere: ${weitere}`;
+        if (weitere) rdText += erste ? `, weitere: ${weitere}` : `: weitere: ${weitere}`;
         kraefteTexte.push(rdText);
       } else if (checkbox.value === "sonstige") {
-        const sonstige = document
-          .getElementById("sonstigeKraefte")
-          ?.value.trim();
+        const sonstige = document.getElementById("sonstigeKraefte")?.value.trim();
         kraefteTexte.push(sonstige || "sonstige");
       }
     });
@@ -613,11 +530,9 @@ function generateSummary() {
 
   // #region vorbehandelt durch
   // Neu: name="vorbehandelndeKraefte"
-  const vorbehandelt = document.querySelectorAll(
-    'input[name="vorbehandelndeKraefte"]:checked'
-  );
+  const vorbehandelt = document.querySelectorAll('input[name="vorbehandelndeKraefte"]:checked');
   if (vorbehandelt.length > 0) {
-    summary += "<br>Vorbehandlung durch: ";
+    summary += "\nVorbehandlung durch: ";
     vorbehandelt.forEach((checkbox, index) => {
       if (
         checkbox.value === "LPD" ||
@@ -646,7 +561,7 @@ function generateSummary() {
     summary += ` // ${SSSweitere.value.trim()}`;
   }
 
-  summary += "<br>";
+  summary += "\n";
   // #endregion
 
   // #region sichtbare Sections (GI / PBD / GEMS / Trauma)
@@ -658,27 +573,17 @@ function generateSummary() {
 
   // #region GI - Ersteindruck
   if (giSection && window.getComputedStyle(giSection).display !== "none") {
-    const giUnauffaellig = document.querySelector(
-      'input[name="gi-unauffaellig"]:checked'
-    );
+    const giUnauffaellig = document.querySelector('input[name="gi-unauffaellig"]:checked');
     if (giUnauffaellig) {
-      summary += "GI: unauffällig<br>";
+      summary += "GI: unauffällig\n";
     } else {
-      const gesamteindruck = document.querySelector(
-        'input[name="gesamteindruck"]:checked'
-      );
-      const auffinden = document.querySelector(
-        'input[name="auffinden"]:checked'
-      );
-      const bewusstsein = document.querySelector(
-        'input[name="bewusstsein"]:checked'
-      );
+      const gesamteindruck = document.querySelector('input[name="gesamteindruck"]:checked');
+      const auffinden = document.querySelector('input[name="auffinden"]:checked');
+      const bewusstsein = document.querySelector('input[name="bewusstsein"]:checked');
       const atmung = document.querySelector('input[name="atmung"]:checked');
-      const hautCheckboxes = document.querySelectorAll(
-        'input[name="haut"]:checked'
-      );
+      const hautCheckboxes = document.querySelectorAll('input[name="haut"]:checked');
 
-      summary += gesamteindruck ? "GI: " + gesamteindruck.value + "<br>" : "";
+      summary += gesamteindruck ? "GI: " + gesamteindruck.value + "\n" : "";
       summary += auffinden ? "Pat. " + auffinden.value + " angetroffen, " : "";
       summary += bewusstsein ? bewusstsein.value + ", " : "";
       summary += atmung ? "Atmung: " + atmung.value + ", " : "";
@@ -695,58 +600,38 @@ function generateSummary() {
       if (GIweitere && GIweitere.value.trim().length > 0) {
         summary += ` // ${GIweitere.value.trim()}`;
       }
-      summary += "<br>";
+      summary += "\n";
     }
   }
   // #endregion
 
   // #region PBD - Pädiatrisches Beurteilungsdreieck
   if (pbdSection && window.getComputedStyle(pbdSection).display !== "none") {
-    const pbdErscheinungsbild = document.querySelector(
-      'input[name="pbdErscheinungsbild"]:checked'
-    );
+    const pbdErscheinungsbild = document.querySelector('input[name="pbdErscheinungsbild"]:checked');
     const pbdAtmung = document.querySelector('input[name="pbdAtmung"]:checked');
     const pbdHaut = document.querySelector('input[name="pbdHaut"]:checked');
     // Neu: name="pbdAtmungQualitaet", name="pbdHautQualitaet"
-    const pbdAtmungAuffaelligkeiten = document.querySelectorAll(
-      'input[name="pbdAtmungQualitaet"]:checked'
-    );
-    const pbdHautAuffaelligkeiten = document.querySelectorAll(
-      'input[name="pbdHautQualitaet"]:checked'
-    );
+    const pbdAtmungAuffaelligkeiten = document.querySelectorAll('input[name="pbdAtmungQualitaet"]:checked');
+    const pbdHautAuffaelligkeiten = document.querySelectorAll('input[name="pbdHautQualitaet"]:checked');
 
-    summary += "Pädiatrisches Beurteilungsdreieck: <br>";
-    summary += pbdErscheinungsbild
-      ? "Erscheinungsbild: " + pbdErscheinungsbild.value + ", "
-      : "";
+    summary += "Pädiatrisches Beurteilungsdreieck: \n";
+    summary += pbdErscheinungsbild ? "Erscheinungsbild: " + pbdErscheinungsbild.value + ", " : "";
     summary += pbdAtmung ? "Atmung: " + pbdAtmung.value + ", " : "";
-    summary += pbdHaut ? "Haut: " + pbdHaut.value + "<br>" : "";
+    summary += pbdHaut ? "Haut: " + pbdHaut.value + "\n" : "";
 
     if (pbdErscheinungsbild && pbdAtmung && pbdHaut) {
-      if (
-        pbdErscheinungsbild.value === "kritisch" ||
-        pbdAtmung.value === "kritisch" ||
-        pbdHaut.value === "kritisch"
-      ) {
-        summary += "Kind nach PBD kritisch<br>";
+      if (pbdErscheinungsbild.value === "kritisch" || pbdAtmung.value === "kritisch" || pbdHaut.value === "kritisch") {
+        summary += "Kind nach PBD kritisch\n";
       } else {
-        summary += "Kind nach PBD nicht kritisch<br>";
+        summary += "Kind nach PBD nicht kritisch\n";
       }
     }
 
-    const ticlsMuskeltonus = document.querySelector(
-      'input[name="ticlsMuskeltonus"]:checked'
-    );
-    const ticlsInteraktion = document.querySelector(
-      'input[name="ticlsInteraktion"]:checked'
-    );
-    const ticlsConsolability = document.querySelector(
-      'input[name="ticlsConsolability"]:checked'
-    );
+    const ticlsMuskeltonus = document.querySelector('input[name="ticlsMuskeltonus"]:checked');
+    const ticlsInteraktion = document.querySelector('input[name="ticlsInteraktion"]:checked');
+    const ticlsConsolability = document.querySelector('input[name="ticlsConsolability"]:checked');
     const ticlsLook = document.querySelector('input[name="ticlsLook"]:checked');
-    const ticlsSpeech = document.querySelector(
-      'input[name="ticlsSpeech"]:checked'
-    );
+    const ticlsSpeech = document.querySelector('input[name="ticlsSpeech"]:checked');
 
     summary += "TICLS: ";
     summary += ticlsMuskeltonus ? ticlsMuskeltonus.value + ", " : "";
@@ -775,30 +660,26 @@ function generateSummary() {
     if (PBDweitere && PBDweitere.value.trim().length > 0) {
       summary += ` // ${PBDweitere.value.trim()}`;
     }
-    summary += "<br>";
+    summary += "\n";
   }
   // #endregion
 
-  summary += "<br>";
+  summary += "\n";
 
   // #region Primary Assessment - x: bedrohliche Blutung
   // Neu: name="blutung", name="blutungZusatz", id="blutungWeitere"
   const blutung = document.querySelector('input[name="blutung"]:checked');
-  const xUnauffaellig = document.querySelector(
-    'input[name="x-unauffaellig"]:checked'
-  );
+  const xUnauffaellig = document.querySelector('input[name="x-unauffaellig"]:checked');
 
   if (xUnauffaellig) {
     summary += `x: unauffällig`;
-    summary += "<br>";
+    summary += "\n";
   } else if (blutung) {
     summary += `x: ${blutung.value}`;
     if (blutung.value === "Ja") {
-      const maßnahmenBlutung = document.querySelectorAll(
-        'input[name="blutungZusatz"]:checked'
-      );
+      const maßnahmenBlutung = document.querySelectorAll('input[name="blutungZusatz"]:checked');
       if (maßnahmenBlutung.length > 0) {
-        summary += "<br>Maßnahmen: ";
+        summary += "\nMaßnahmen: ";
         maßnahmenBlutung.forEach((checkbox, index) => {
           summary += checkbox.value;
           if (index < maßnahmenBlutung.length - 1) summary += ", ";
@@ -809,15 +690,13 @@ function generateSummary() {
     if (Xweitere && Xweitere.value.trim().length > 0) {
       summary += ` // ${Xweitere.value.trim()}`;
     }
-    summary += "<br>";
+    summary += "\n";
   }
   // #endregion
 
   // #region A - Airway
   // Neu: name="airway", name="airwaymanagement", id="airwayWeitere"
-  const aUnauffaellig = document.querySelector(
-    'input[name="a-unauffaellig"]:checked'
-  );
+  const aUnauffaellig = document.querySelector('input[name="a-unauffaellig"]:checked');
   const airway = document.querySelector('input[name="airway"]:checked');
 
   if (aUnauffaellig) {
@@ -831,43 +710,31 @@ function generateSummary() {
     summary += ` // ${Aweitere.value.trim()}`;
   }
 
-  const maßnahmenAtemweg = document.querySelectorAll(
-    'input[name="airwaymanagement"]:checked'
-  );
+  const maßnahmenAtemweg = document.querySelectorAll('input[name="airwaymanagement"]:checked');
   if (maßnahmenAtemweg.length > 0) {
-    summary += "<br>Maßnahmen: ";
+    summary += "\nMaßnahmen: ";
     maßnahmenAtemweg.forEach((checkbox, index) => {
       summary += checkbox.value;
       if (index < maßnahmenAtemweg.length - 1) summary += ", ";
     });
   }
 
-  summary += "<br>";
+  summary += "\n";
   // #endregion
 
   // #region B - Breathing
   // Neu: id="af", name="atemzugsvolumen", name="thoraxexkursionen", name="auskultation",
   //      name="atemgeräusch", name="halsvenen", name="trachea"
-  const bUnauffaellig = document.querySelector(
-    'input[name="b-unauffaellig"]:checked'
-  );
+  const bUnauffaellig = document.querySelector('input[name="b-unauffaellig"]:checked');
 
   if (bUnauffaellig) {
     summary += `B: unauffällig`;
   } else {
     const atemfrequenz = document.getElementById("af")?.value;
-    const atemzugsvolumen = document.querySelector(
-      'input[name="atemzugsvolumen"]:checked'
-    );
-    const thoraxexkursionen = document.querySelector(
-      'input[name="thoraxexkursionen"]:checked'
-    );
-    const auskultation = document.querySelector(
-      'input[name="auskultation"]:checked'
-    );
-    const atemgeräusch = document.querySelector(
-      'input[name="atemgeräusch"]:checked'
-    );
+    const atemzugsvolumen = document.querySelector('input[name="atemzugsvolumen"]:checked');
+    const thoraxexkursionen = document.querySelector('input[name="thoraxexkursionen"]:checked');
+    const auskultation = document.querySelector('input[name="auskultation"]:checked');
+    const atemgeräusch = document.querySelector('input[name="atemgeräusch"]:checked');
     const halsvenen = document.querySelector('input[name="halsvenen"]:checked');
     const trachea = document.querySelector('input[name="trachea"]:checked');
 
@@ -881,13 +748,8 @@ function generateSummary() {
     summary += trachea ? `${trachea.value}` : "";
 
     // Trauma B - Blutungsräume
-    if (
-      traumaSection &&
-      window.getComputedStyle(traumaSection).display !== "none"
-    ) {
-      const traumaThorax = document.querySelector(
-        'input[name="traumaThorax"]:checked'
-      );
+    if (traumaSection && window.getComputedStyle(traumaSection).display !== "none") {
+      const traumaThorax = document.querySelector('input[name="traumaThorax"]:checked');
       summary += traumaThorax ? `, ${traumaThorax.value}` : "";
 
       // weitere Bemerkungen Trauma B (neu: id="traumaBWeitere")
@@ -905,19 +767,9 @@ function generateSummary() {
   }
 
   // Maßnahmen B (neu: name="b-massnahmen", id="b-massnahmenO2")
-  const maßnahmenB = document.querySelectorAll(
-    'input[name="b-massnahmen"]:checked'
-  );
-  const o2Measures = [
-    "O2-Brille",
-    "O2-Maske",
-    "O2-Vernebler",
-    "assistierte Beatmung",
-    "kontrollierte Beatmung",
-    "etCO2-Nasenbrille",
-  ];
-  const o2GabeMenge =
-    document.getElementById("b-massnahmenO2")?.value.trim() || "";
+  const maßnahmenB = document.querySelectorAll('input[name="b-massnahmen"]:checked');
+  const o2Measures = ["O2-Brille", "O2-Maske", "O2-Vernebler", "assistierte Beatmung", "kontrollierte Beatmung", "etCO2-Nasenbrille"];
+  const o2GabeMenge = document.getElementById("b-massnahmenO2")?.value.trim() || "";
 
   if (maßnahmenB.length > 0) {
     let maßnahmenText = [];
@@ -929,41 +781,31 @@ function generateSummary() {
       if (o2Measures.includes(value)) o2Relevant = true;
     });
 
-    summary += `<br>Maßnahmen: ${maßnahmenText.join(", ")}`;
+    summary += `\nMaßnahmen: ${maßnahmenText.join(", ")}`;
     if (o2Relevant && o2GabeMenge !== "") {
       summary += `, O2-Gabe: ${o2GabeMenge} l/min`;
     }
   }
 
-  summary += "<br>";
+  summary += "\n";
   // #endregion
 
   // #region C - Circulation
   // Neu: name="puls", name="pulsZentral", name="herzrhythmus", name="herzfrequenz",
   //      name="rekapZeit", name="hautfarbe", name="hautbeschaffenheit", name="hauttemperatur"
-  const cUnauffaellig = document.querySelector(
-    'input[name="c-unauffaellig"]:checked'
-  );
+  const cUnauffaellig = document.querySelector('input[name="c-unauffaellig"]:checked');
 
   if (cUnauffaellig) {
     summary += `C: unauffällig`;
   } else {
     const pulsPeripher = document.querySelector('input[name="puls"]:checked');
-    const pulsZentral = document.querySelector(
-      'input[name="pulsZentral"]:checked'
-    );
-    const rhythmus = document.querySelector(
-      'input[name="herzrhythmus"]:checked'
-    );
+    const pulsZentral = document.querySelector('input[name="pulsZentral"]:checked');
+    const rhythmus = document.querySelector('input[name="herzrhythmus"]:checked');
     const hf = document.querySelector('input[name="herzfrequenz"]:checked');
     const rekap = document.querySelector('input[name="rekapZeit"]:checked');
     const hautfarbe = document.querySelector('input[name="hautfarbe"]:checked');
-    const hautbeschaffenheit = document.querySelector(
-      'input[name="hautbeschaffenheit"]:checked'
-    );
-    const hauttemperatur = document.querySelector(
-      'input[name="hauttemperatur"]:checked'
-    );
+    const hautbeschaffenheit = document.querySelector('input[name="hautbeschaffenheit"]:checked');
+    const hauttemperatur = document.querySelector('input[name="hauttemperatur"]:checked');
 
     summary += `C: `;
     summary += pulsPeripher ? `Puls peripher ${pulsPeripher.value}, ` : "";
@@ -976,19 +818,10 @@ function generateSummary() {
     summary += hauttemperatur ? `${hauttemperatur.value}` : "";
 
     // Trauma C - Blutungsräume
-    if (
-      traumaSection &&
-      window.getComputedStyle(traumaSection).display !== "none"
-    ) {
-      const traumaAbdomen = document.querySelector(
-        'input[name="traumaAbdomen"]:checked'
-      );
-      const traumaOberschenkel = document.querySelector(
-        'input[name="traumaOberschenkel"]:checked'
-      );
-      const traumaBecken = document.querySelector(
-        'input[name="traumaBecken"]:checked'
-      );
+    if (traumaSection && window.getComputedStyle(traumaSection).display !== "none") {
+      const traumaAbdomen = document.querySelector('input[name="traumaAbdomen"]:checked');
+      const traumaOberschenkel = document.querySelector('input[name="traumaOberschenkel"]:checked');
+      const traumaBecken = document.querySelector('input[name="traumaBecken"]:checked');
       summary += traumaAbdomen ? `, ${traumaAbdomen.value}` : "";
       summary += traumaOberschenkel ? `, ${traumaOberschenkel.value}` : "";
       summary += traumaBecken ? `, ${traumaBecken.value}` : "";
@@ -1008,13 +841,11 @@ function generateSummary() {
   }
 
   // Maßnahmen C (neu: name="c-massnahmen", name="kiss")
-  const kreislaufMaßnahmen = document.querySelectorAll(
-    'input[name="c-massnahmen"]:checked'
-  );
+  const kreislaufMaßnahmen = document.querySelectorAll('input[name="c-massnahmen"]:checked');
   const kiss = document.querySelectorAll('input[name="kiss"]:checked');
 
   if (kreislaufMaßnahmen.length > 0) {
-    summary += "<br>Maßnahmen: ";
+    summary += "\nMaßnahmen: ";
     kreislaufMaßnahmen.forEach((checkbox, index) => {
       summary += checkbox.value;
       if (index < kreislaufMaßnahmen.length - 1) summary += ", ";
@@ -1028,15 +859,13 @@ function generateSummary() {
     });
   }
 
-  summary += "<br>";
+  summary += "\n";
   // #endregion
 
   // #region D - Disability
   // Neu: name="avpu", name="isokorie", name="pupillengroesse", name="lichtreaktion",
   //      name="mds", name="apss", name="herdblick"
-  const dUnauffaellig = document.querySelector(
-    'input[name="d-unauffaellig"]:checked'
-  );
+  const dUnauffaellig = document.querySelector('input[name="d-unauffaellig"]:checked');
 
   if (dUnauffaellig) {
     summary += `D: unauffällig`;
@@ -1044,12 +873,8 @@ function generateSummary() {
     const avpu = document.querySelector('input[name="avpu"]:checked');
     const gcs = document.getElementById("gcs-result")?.textContent;
     const isokorie = document.querySelector('input[name="isokorie"]:checked');
-    const pupillengröße = document.querySelector(
-      'input[name="pupillengroesse"]:checked'
-    );
-    const lichtreaktion = document.querySelector(
-      'input[name="lichtreaktion"]:checked'
-    );
+    const pupillengröße = document.querySelector('input[name="pupillengroesse"]:checked');
+    const lichtreaktion = document.querySelector('input[name="lichtreaktion"]:checked');
     const mds = document.querySelector('input[name="mds"]:checked');
     const apss = document.querySelector('input[name="apss"]:checked');
     const herdblick = document.querySelector('input[name="herdblick"]:checked');
@@ -1065,27 +890,14 @@ function generateSummary() {
     summary += apss ? `${apss.value}` : "";
 
     // Trauma D
-    if (
-      traumaSection &&
-      window.getComputedStyle(traumaSection).display !== "none"
-    ) {
+    if (traumaSection && window.getComputedStyle(traumaSection).display !== "none") {
       // Neu: name="traumaMILS", name="traumaSchaedel", name="traumaUHG"
-      const traumaMILS = document.querySelector(
-        'input[name="traumaMILS"]:checked'
-      );
-      const traumaSchaedel = document.querySelector(
-        'input[name="traumaSchaedel"]:checked'
-      );
-      const traumaUHG = document.querySelector(
-        'input[name="traumaUHG"]:checked'
-      );
+      const traumaMILS = document.querySelector('input[name="traumaMILS"]:checked');
+      const traumaSchaedel = document.querySelector('input[name="traumaSchaedel"]:checked');
+      const traumaUHG = document.querySelector('input[name="traumaUHG"]:checked');
       // Neu: name="traumaImmo", name="immoIndikation", name="nexus"
-      const traumaImmo = document.querySelector(
-        'input[name="traumaImmo"]:checked'
-      );
-      const immoIndikation = document.querySelector(
-        'input[name="immoIndikation"]:checked'
-      );
+      const traumaImmo = document.querySelector('input[name="traumaImmo"]:checked');
+      const immoIndikation = document.querySelector('input[name="immoIndikation"]:checked');
       const nexus = document.querySelectorAll('input[name="nexus"]:checked');
 
       summary += traumaMILS ? `, ${traumaMILS.value}, ` : "";
@@ -1093,11 +905,8 @@ function generateSummary() {
       summary += traumaUHG ? `${traumaUHG.value}` : "";
 
       if (traumaImmo && traumaImmo.value === "Ja") {
-        summary += "<br>Pat. immobilisiert, Indikation: ";
-        if (
-          immoIndikation &&
-          immoIndikation.value === "Verletzungsmuster / Unfallkinematik"
-        ) {
+        summary += "\nPat. immobilisiert, Indikation: ";
+        if (immoIndikation && immoIndikation.value === "Verletzungsmuster / Unfallkinematik") {
           summary += `${immoIndikation.value}`;
         } else {
           summary += "NEXUS-Kriterien zutreffend: ";
@@ -1122,37 +931,24 @@ function generateSummary() {
     summary += ` // ${Dweitere.value.trim()}`;
   }
 
-  summary += "<br>";
+  summary += "\n";
   // #endregion
 
   // #region E - Environment
   // Neu: id="eLeitsymptom", name="lagerung", id="lagerungSonstige",
   //      name="entscheidung", name="waermeerhalt", id="waermeerhaltSonstiges"
-  const leitsymptom =
-    document.getElementById("eLeitsymptom")?.value.trim() || "";
+  const leitsymptom = document.getElementById("eLeitsymptom")?.value.trim() || "";
   const lagerung = document.querySelector('input[name="lagerung"]:checked');
-  const lagerungSonstige =
-    document.getElementById("lagerungSonstige")?.value.trim() || "";
-  const entscheidung = document.querySelector(
-    'input[name="entscheidung"]:checked'
-  );
-  const waermeerhalt = document.querySelectorAll(
-    'input[name="waermeerhalt"]:checked'
-  );
-  const waermeerhaltSonstiges =
-    document.getElementById("waermeerhaltSonstiges")?.value.trim() || "";
+  const lagerungSonstige = document.getElementById("lagerungSonstige")?.value.trim() || "";
+  const entscheidung = document.querySelector('input[name="entscheidung"]:checked');
+  const waermeerhalt = document.querySelectorAll('input[name="waermeerhalt"]:checked');
+  const waermeerhaltSonstiges = document.getElementById("waermeerhaltSonstiges")?.value.trim() || "";
 
   summary += `E: Leitsymptom: ${leitsymptom}`;
 
-  const waermeerhaltChecked = Array.from(waermeerhalt).filter(
-    (cb) => cb.checked
-  );
+  const waermeerhaltChecked = Array.from(waermeerhalt).filter((cb) => cb.checked);
   if (waermeerhaltChecked.length > 0) {
-    const parts = waermeerhaltChecked
-      .map((cb) =>
-        cb.value === "sonstiges" ? waermeerhaltSonstiges || "" : cb.value
-      )
-      .filter(Boolean);
+    const parts = waermeerhaltChecked.map((cb) => (cb.value === "sonstiges" ? waermeerhaltSonstiges || "" : cb.value)).filter(Boolean);
     if (parts.length > 0) {
       summary += ", Wärmeerhalt: " + parts.join(", ");
     }
@@ -1165,96 +961,72 @@ function generateSummary() {
     }
   }
 
-  summary += "<br><br>";
-  summary += entscheidung
-    ? `Entscheidung nach Primary Assessment: ${entscheidung.value}`
-    : "";
-  summary += "<br><br>";
+  summary += "\n\n";
+  summary += entscheidung ? `Entscheidung nach Primary Assessment: ${entscheidung.value}` : "";
+  summary += "\n\n";
   // #endregion
 
   // #region SAMPLER
   // Neu: name="samplerUnauffaellig", name="samplerNichtErhebbar"
-  const samplerUnauffaellig = document.querySelector(
-    'input[name="samplerUnauffaellig"]:checked'
-  );
-  const samplerNichtErhebbar = document.querySelector(
-    'input[name="samplerNichtErhebbar"]:checked'
-  );
+  const samplerUnauffaellig = document.querySelector('input[name="samplerUnauffaellig"]:checked');
+  const samplerNichtErhebbar = document.querySelector('input[name="samplerNichtErhebbar"]:checked');
 
   // S - Symptome (neu: id="symptome")
   const symptome = document.getElementById("symptome")?.value.trim() || "";
-  summary += `S: ${symptome}<br>`;
+  summary += `S: ${symptome}\n`;
 
   if (samplerNichtErhebbar) {
     // Neu: name="nichtErhebbarGrund", id="samplerNichtErhebbarSonstige"
-    const samplerNichtErhebbarGrund = document.querySelector(
-      'input[name="nichtErhebbarGrund"]:checked'
-    )?.value;
-    const samplerNichtErhebbarSonstige = document
-      .getElementById("samplerNichtErhebbarSonstige")
-      ?.value.trim();
+    const samplerNichtErhebbarGrund = document.querySelector('input[name="nichtErhebbarGrund"]:checked')?.value;
+    const samplerNichtErhebbarSonstige = document.getElementById("samplerNichtErhebbarSonstige")?.value.trim();
 
     if (samplerNichtErhebbarGrund && samplerNichtErhebbarGrund === "sonstige") {
-      summary += `(S)AMPLER nicht erhebbar - ${samplerNichtErhebbarSonstige}<br>`;
+      summary += `(S)AMPLER nicht erhebbar - ${samplerNichtErhebbarSonstige}\n`;
     } else {
-      summary += `(S)AMPLER nicht erhebbar - ${samplerNichtErhebbarGrund}<br>`;
+      summary += `(S)AMPLER nicht erhebbar - ${samplerNichtErhebbarGrund}\n`;
     }
   } else if (!samplerUnauffaellig) {
     // #region A - Allergien
     // Neu: name="allergienStatus", id="allergien"
-    const allergienStatus = document.querySelector(
-      'input[name="allergienStatus"]:checked'
-    );
-    const allergieText =
-      document
-        .getElementById("allergien")
-        ?.value.trim()
-        .replace(/\n+/g, ", ") || "";
+    const allergienStatus = document.querySelector('input[name="allergienStatus"]:checked');
+    const allergieText = document.getElementById("allergien")?.value.trim().replace(/\n+/g, ", ") || "";
     if (allergienStatus) {
       if (allergienStatus.value === "Ja") {
-        summary += `A: ${allergieText || "keine Angabe"}<br>`;
+        summary += `A: ${allergieText || "keine Angabe"}\n`;
       } else {
-        summary += `A: ${allergienStatus.value}<br>`;
+        summary += `A: ${allergienStatus.value}\n`;
       }
     }
     // #endregion
 
     // #region M - Dauermedikation
     // Neu: name="medikationStatus", id="medOutput"
-    const medikationStatus =
-      document.querySelector('input[name="medikationStatus"]:checked')?.value ||
-      "";
-    const medikamenteText =
-      document.querySelector("#medOutput")?.textContent.trim() || "";
+    const medikationStatus = document.querySelector('input[name="medikationStatus"]:checked')?.value || "";
+    const medikamenteText = document.querySelector("#medOutput")?.textContent.trim() || "";
 
     if (medikationStatus) {
       if (medikationStatus === "Ja") {
         if (medikamenteText) {
-          summary += `M: ${medikamenteText}<br>`;
+          summary += `M: ${medikamenteText}\n`;
         }
       } else {
-        summary += `M: ${medikationStatus}<br>`;
+        summary += `M: ${medikationStatus}\n`;
       }
     }
     // #endregion
 
     // #region P - Patientengeschichte
     // Neu: name="patientenStatus", id="patientengeschichteOutput"
-    const patientenStatus =
-      document.querySelector('input[name="patientenStatus"]:checked')?.value ||
-      "";
-    const patientengeschichteText =
-      document
-        .querySelector("#patientengeschichteOutput")
-        ?.textContent.trim() || "";
+    const patientenStatus = document.querySelector('input[name="patientenStatus"]:checked')?.value || "";
+    const patientengeschichteText = document.querySelector("#patientengeschichteOutput")?.textContent.trim() || "";
 
     if (patientenStatus) {
       if (patientenStatus === "Ja") {
         if (patientengeschichteText) {
-          summary += `P: ${patientengeschichteText}<br>`;
+          summary += `P: ${patientengeschichteText}\n`;
         }
       } else {
-        summary += `P: ${patientenStatus}<br>`;
+        summary += `P: ${patientenStatus}\n`;
       }
     }
     // #endregion
@@ -1263,18 +1035,10 @@ function generateSummary() {
     summary += "L: ";
 
     // Mahlzeit (neu: name="mahlzeit", id="mahlzeitDetails", name="mahlzeitStunden")
-    const mahlzeit = document.querySelector(
-      'input[name="mahlzeit"]:checked'
-    )?.value;
-    const mahlzeitText =
-      document
-        .getElementById("mahlzeitDetails")
-        ?.value.trim()
-        .replace(/\n+/g, ", ") || "";
+    const mahlzeit = document.querySelector('input[name="mahlzeit"]:checked')?.value;
+    const mahlzeitText = document.getElementById("mahlzeitDetails")?.value.trim().replace(/\n+/g, ", ") || "";
     const mahlzeitStunden =
-      document.querySelector('input[name="mahlzeitStunden"]')?.value ||
-      document.getElementById("mahlzeit-stunden")?.value ||
-      "";
+      document.querySelector('input[name="mahlzeitStunden"]')?.value || document.getElementById("mahlzeit-stunden")?.value || "";
 
     if (mahlzeit) {
       if (mahlzeit === "normale Nahrungsaufnahme") {
@@ -1285,18 +1049,11 @@ function generateSummary() {
         summary += `Mahlzeit: ${mahlzeit}`;
       }
     }
-    if (mahlzeitStunden)
-      summary += `, letzte Mahlzeit vor ${mahlzeitStunden} Stunden`;
+    if (mahlzeitStunden) summary += `, letzte Mahlzeit vor ${mahlzeitStunden} Stunden`;
 
     // Flüssigkeit (neu: name="fluessigkeit", id="fluessigkeit-details")
-    const fluessigkeit = document.querySelector(
-      'input[name="fluessigkeit"]:checked'
-    )?.value;
-    const fluessigkeitText =
-      document
-        .getElementById("fluessigkeit-details")
-        ?.value.trim()
-        .replace(/\n+/g, ", ") || "";
+    const fluessigkeit = document.querySelector('input[name="fluessigkeit"]:checked')?.value;
+    const fluessigkeitText = document.getElementById("fluessigkeit-details")?.value.trim().replace(/\n+/g, ", ") || "";
 
     if (fluessigkeit) {
       if (fluessigkeit === "normale Flüssigkeitszufuhr") {
@@ -1313,17 +1070,12 @@ function generateSummary() {
     if (stuhl) {
       summary += ", Stuhl: ";
       if (stuhl === "auffällig") {
-        const stuhlQualCheckboxes = document.querySelectorAll(
-          'input[name="stuhlQualitaet"]:checked'
-        );
+        const stuhlQualCheckboxes = document.querySelectorAll('input[name="stuhlQualitaet"]:checked');
         const stuhlQualTextArr = [];
 
         stuhlQualCheckboxes.forEach((cb) => {
           if (cb.value === "sonstige Auffälligkeit") {
-            const sonstText = document
-              .querySelector('textarea[name="stuhlSonstigeDetails"]')
-              ?.value.trim()
-              .replace(/\n+/g, ", ");
+            const sonstText = document.querySelector('textarea[name="stuhlSonstigeDetails"]')?.value.trim().replace(/\n+/g, ", ");
             if (sonstText) stuhlQualTextArr.push(sonstText);
           } else {
             stuhlQualTextArr.push(cb.value);
@@ -1341,17 +1093,12 @@ function generateSummary() {
     if (harn) {
       summary += ", Harn: ";
       if (harn === "auffällig") {
-        const harnQualCheckboxes = document.querySelectorAll(
-          'input[name="harnQualitaet"]:checked'
-        );
+        const harnQualCheckboxes = document.querySelectorAll('input[name="harnQualitaet"]:checked');
         const harnQualTextArr = [];
 
         harnQualCheckboxes.forEach((cb) => {
           if (cb.value === "sonstige Auffälligkeit") {
-            const sonstText = document
-              .querySelector('textarea[name="harnSonstigeDetails"]')
-              ?.value.trim()
-              .replace(/\n+/g, ", ");
+            const sonstText = document.querySelector('textarea[name="harnSonstigeDetails"]')?.value.trim().replace(/\n+/g, ", ");
             if (sonstText) harnQualTextArr.push(sonstText);
           } else {
             harnQualTextArr.push(cb.value);
@@ -1365,33 +1112,25 @@ function generateSummary() {
     }
     // #endregion
 
-    summary += "<br>";
+    summary += "\n";
 
     // #region E - Ereignis (neu: name="ereignis")
-    const ereignis =
-      document.querySelector('textarea[name="ereignis"]')?.value.trim() || "";
+    const ereignis = document.querySelector('textarea[name="ereignis"]')?.value.trim() || "";
     if (ereignis) {
-      summary += `E: ${ereignis}<br>`;
+      summary += `E: ${ereignis}\n`;
     }
     // #endregion
 
     // #region R - Risikofaktoren (neu: name="risikoStatus", name="risiken", name="risikoSonstige")
-    const risikoStatus = document.querySelector(
-      'input[name="risikoStatus"]:checked'
-    )?.value;
+    const risikoStatus = document.querySelector('input[name="risikoStatus"]:checked')?.value;
     if (risikoStatus === "Keine") {
       summary += "R: keine Risikofaktoren";
     } else if (risikoStatus === "nicht erhebbar") {
       summary += "R: nicht erhebbar";
     } else if (risikoStatus === "Ja") {
-      const risikos = document.querySelectorAll(
-        'input[name="risiken"]:checked'
-      );
+      const risikos = document.querySelectorAll('input[name="risiken"]:checked');
       const risikoTextArr = [];
-      const sonstText = document
-        .querySelector('textarea[name="risikoSonstige"]')
-        ?.value.trim()
-        .replace(/\n+/g, ", ");
+      const sonstText = document.querySelector('textarea[name="risikoSonstige"]')?.value.trim().replace(/\n+/g, ", ");
       let includeSonstigeText = false;
 
       risikos.forEach((cb) => {
@@ -1410,74 +1149,53 @@ function generateSummary() {
     }
     // #endregion
 
-    summary += "<br>";
+    summary += "\n";
 
     // #region Secondary - weitere Bemerkungen (neu: name="secondaryBemerkung")
-    const Secweitere =
-      document.querySelector('input[name="secondaryBemerkung"]') ||
-      document.querySelector('[name="secondaryBemerkung"]');
+    const Secweitere = document.querySelector('input[name="secondaryBemerkung"]') || document.querySelector('[name="secondaryBemerkung"]');
     if (Secweitere && Secweitere.value?.trim().length > 0) {
       summary += `Weitere Bemerkungen zu Secondary Assessment: ${Secweitere.value.trim()}`;
-      summary += "<br>";
+      summary += "\n";
     }
     // #endregion
 
     // #region OPQRST (neu: name="onset/provocation/quality/region/nrs/time")
-    const onset =
-      document.querySelector('input[name="onset"]')?.value.trim() || "";
-    const provocation =
-      document.querySelector('input[name="provocation"]')?.value.trim() || "";
-    const quality =
-      document.querySelector('input[name="quality"]')?.value.trim() || "";
-    const region =
-      document.querySelector('input[name="region"]')?.value.trim() || "";
+    const onset = document.querySelector('input[name="onset"]')?.value.trim() || "";
+    const provocation = document.querySelector('input[name="provocation"]')?.value.trim() || "";
+    const quality = document.querySelector('input[name="quality"]')?.value.trim() || "";
+    const region = document.querySelector('input[name="region"]')?.value.trim() || "";
     const scale = document.querySelector('input[name="nrs"]')?.value || "";
-    const time =
-      document.querySelector('input[name="time"]')?.value.trim() || "";
+    const time = document.querySelector('input[name="time"]')?.value.trim() || "";
 
     if (onset || provocation || quality || region || scale || time) {
-      summary += "<br>OPQRST:";
-      summary += onset ? `<br>O: ${onset} / ` : "";
+      summary += "\nOPQRST:";
+      summary += onset ? `\nO: ${onset} / ` : "";
       summary += provocation ? `P: ${provocation} / ` : "";
       summary += quality ? `Q: ${quality} / ` : "";
       summary += region ? `R: ${region} / ` : "";
       summary += scale ? `S: ${scale}/10 / ` : "";
-      summary += time ? `T: ${time}<br>` : "";
+      summary += time ? `T: ${time}\n` : "";
     }
     // #endregion
 
     // #region SPLATT (neu: name="splattSymptoms/splattPrevious/splattLocation/splattActivity/splattTime/splattTrauma")
     const splattSection = document.getElementById("splatt-content");
-    if (
-      splattSection &&
-      window.getComputedStyle(splattSection).display !== "none"
-    ) {
-      summary += "<br>SPLATT:<br>";
+    if (splattSection && window.getComputedStyle(splattSection).display !== "none") {
+      summary += "\nSPLATT:\n";
 
-      const splattSymptoms =
-        document.querySelector('input[name="splattSymptoms"]')?.value.trim() ||
-        "";
-      const splattPrevious =
-        document.querySelector('input[name="splattPrevious"]')?.value.trim() ||
-        "";
-      const splattLocation =
-        document.querySelector('input[name="splattLocation"]')?.value.trim() ||
-        "";
-      const splattActivity =
-        document.querySelector('input[name="splattActivity"]')?.value.trim() ||
-        "";
-      const splattTime =
-        document.querySelector('input[name="splattTime"]')?.value.trim() || "";
-      const splattTrauma =
-        document.querySelector('input[name="splattTrauma"]')?.value.trim() ||
-        "";
+      const splattSymptoms = document.querySelector('input[name="splattSymptoms"]')?.value.trim() || "";
+      const splattPrevious = document.querySelector('input[name="splattPrevious"]')?.value.trim() || "";
+      const splattLocation = document.querySelector('input[name="splattLocation"]')?.value.trim() || "";
+      const splattActivity = document.querySelector('input[name="splattActivity"]')?.value.trim() || "";
+      const splattTime = document.querySelector('input[name="splattTime"]')?.value.trim() || "";
+      const splattTrauma = document.querySelector('input[name="splattTrauma"]')?.value.trim() || "";
 
       summary += splattSymptoms ? `S: ${splattSymptoms} / ` : "";
       summary += splattPrevious ? `P: ${splattPrevious} / ` : "";
       summary += splattLocation ? `L: ${splattLocation} / ` : "";
       summary += splattActivity ? `A: ${splattActivity} / ` : "";
       summary += splattTime ? `T: ${splattTime} / ` : "";
-      summary += splattTrauma ? `T: ${splattTrauma}<br>` : "";
+      summary += splattTrauma ? `T: ${splattTrauma}\n` : "";
     }
     // #endregion
   }
@@ -1485,22 +1203,18 @@ function generateSummary() {
 
   // #region GEMS Diamant
   if (gemsSection && window.getComputedStyle(gemsSection).display !== "none") {
-    summary += "<br>GEMS Diamant:<br>";
+    summary += "\nGEMS Diamant:\n";
 
     // G – Geriatrischer Patient (neu: name="gAnatomie", name="gMobilitaetshilfe")
-    const gAnatomie = document.querySelectorAll(
-      'input[name="gAnatomie"]:checked'
-    );
-    const gHilfsmittel = document.querySelectorAll(
-      'input[name="gMobilitaetshilfe"]:checked'
-    );
+    const gAnatomie = document.querySelectorAll('input[name="gAnatomie"]:checked');
+    const gHilfsmittel = document.querySelectorAll('input[name="gMobilitaetshilfe"]:checked');
     if (gAnatomie.length > 0) {
       summary += "G – Veränderungen: ";
       gAnatomie.forEach((item, index) => {
         summary += item.value;
         if (index < gAnatomie.length - 1) summary += ", ";
       });
-      summary += "<br>";
+      summary += "\n";
     }
     if (gHilfsmittel.length > 0) {
       summary += "Mobilitätshilfen: ";
@@ -1508,13 +1222,11 @@ function generateSummary() {
         summary += item.value;
         if (index < gHilfsmittel.length - 1) summary += ", ";
       });
-      summary += "<br>";
+      summary += "\n";
     }
 
     // E – Environmental Assessment (neu: name="ePatientenzustand", "eUmgebung", "eTemperatur", "eBeleuchtung", "eGeruch", id="geruchAndere")
-    const ePatient = document.querySelector(
-      'input[name="ePatientenzustand"]:checked'
-    );
+    const ePatient = document.querySelector('input[name="ePatientenzustand"]:checked');
     const eUmgebung = document.querySelector('input[name="eUmgebung"]:checked');
     const eTemp = document.querySelector('input[name="eTemperatur"]:checked');
     const eLicht = document.querySelector('input[name="eBeleuchtung"]:checked');
@@ -1530,32 +1242,24 @@ function generateSummary() {
     if (eGeruch && eGeruch.value === "andere" && geruch) {
       summary += `: (${geruch})`;
     }
-    summary += "<br>";
+    summary += "\n";
 
     // M – Medizinisch (neu: name="mNotfallart", "mPolypharmazie", "mMultimorbiditaet", "mErnaehrungszustand")
     const mArt = document.querySelector('input[name="mNotfallart"]:checked');
-    const mPoly = document.querySelector(
-      'input[name="mPolypharmazie"]:checked'
-    );
-    const mMulti = document.querySelector(
-      'input[name="mMultimorbiditaet"]:checked'
-    );
-    const mErnaehrung = document.querySelector(
-      'input[name="mErnaehrungszustand"]:checked'
-    );
+    const mPoly = document.querySelector('input[name="mPolypharmazie"]:checked');
+    const mMulti = document.querySelector('input[name="mMultimorbiditaet"]:checked');
+    const mErnaehrung = document.querySelector('input[name="mErnaehrungszustand"]:checked');
 
     summary += "M – Medizinische Beurteilung: ";
     summary += mArt ? `Art des Notfalls: ${mArt.value}, ` : "";
     summary += mPoly ? `Polypharmazie: ${mPoly.value}, ` : "";
     summary += mMulti ? `Multimorbidität: ${mMulti.value}, ` : "";
     summary += mErnaehrung ? `Ernährungszustand: ${mErnaehrung.value}` : "";
-    summary += "<br>";
+    summary += "\n";
 
     // S – Sozial (neu: name="sAngehoerige", "sDokumente", "sIsolation", "sDepression", "sVernachlaessigung")
     summary += "S – Soziales Umfeld: ";
-    const sKontakt = document.querySelectorAll(
-      'input[name="sAngehoerige"]:checked'
-    );
+    const sKontakt = document.querySelectorAll('input[name="sAngehoerige"]:checked');
     if (sKontakt.length > 0) {
       sKontakt.forEach((item, index) => {
         summary += item.value;
@@ -1564,39 +1268,21 @@ function generateSummary() {
       summary += ", ";
     }
 
-    const sDokumente = document.querySelectorAll(
-      'input[name="sDokumente"]:checked'
-    );
-    const sIsolation = document.querySelector(
-      'input[name="sIsolation"]:checked'
-    );
-    const sDepression = document.querySelector(
-      'input[name="sDepression"]:checked'
-    );
-    const sVernachlaessigung = document.querySelector(
-      'input[name="sVernachlaessigung"]:checked'
-    );
+    const sDokumente = document.querySelectorAll('input[name="sDokumente"]:checked');
+    const sIsolation = document.querySelector('input[name="sIsolation"]:checked');
+    const sDepression = document.querySelector('input[name="sDepression"]:checked');
+    const sVernachlaessigung = document.querySelector('input[name="sVernachlaessigung"]:checked');
     // Note: missbrauch detail field reuses geruchAndere id in new HTML – here we search by context
     const missbrauchSection = document.getElementById("missbrauch-section");
-    const missbrauch =
-      missbrauchSection?.querySelector("input[type='text']")?.value.trim() ||
-      "";
+    const missbrauch = missbrauchSection?.querySelector("input[type='text']")?.value.trim() || "";
 
     summary += sIsolation ? `${sIsolation.value}, ` : "";
-    summary += sDepression
-      ? `Hinweise auf Depression/Suizidalität: ${sDepression.value}, `
-      : "";
-    summary += sVernachlaessigung
-      ? `Hinweise auf Missbrauch/Vernachlässigung: ${sVernachlaessigung.value}`
-      : "";
-    if (
-      sVernachlaessigung &&
-      sVernachlaessigung.value === "Hinweise auf Missbrauch" &&
-      missbrauch
-    ) {
+    summary += sDepression ? `Hinweise auf Depression/Suizidalität: ${sDepression.value}, ` : "";
+    summary += sVernachlaessigung ? `Hinweise auf Missbrauch/Vernachlässigung: ${sVernachlaessigung.value}` : "";
+    if (sVernachlaessigung && sVernachlaessigung.value === "Hinweise auf Missbrauch" && missbrauch) {
       summary += `: (${missbrauch})`;
     }
-    summary += "<br>";
+    summary += "\n";
 
     if (sDokumente.length > 0) {
       summary += "vorhandene Dokumente: ";
@@ -1604,45 +1290,35 @@ function generateSummary() {
         summary += item.value;
         if (index < sDokumente.length - 1) summary += ", ";
       });
-      summary += "<br>";
+      summary += "\n";
     }
 
-    summary += "<br>";
+    summary += "\n";
   }
   // #endregion GEMS
 
   // #region Transport zum Fahrzeug (name="TranspRM" bleibt gleich)
   const transport = document.querySelector('input[name="TranspRM"]:checked');
-  const transportSonstige = document
-    .getElementById("transportSonstige")
-    ?.value.trim();
+  const transportSonstige = document.getElementById("transportSonstige")?.value.trim();
   if (transport) {
-    summary += "<br>Transport zum Fahrzeug: ";
+    summary += "\nTransport zum Fahrzeug: ";
     if (transport.value === "Sonstiges") {
-      summary += `${transportSonstige ? transportSonstige : ""}<br>`;
+      summary += `${transportSonstige ? transportSonstige : ""}\n`;
     } else {
-      summary += `${transport.value}<br>`;
+      summary += `${transport.value}\n`;
     }
   }
   // #endregion
 
   // #region Transport in Klinik (namen gleich geblieben)
   if (transport && transport.value !== "kein Transport") {
-    const transportKlinik = document.querySelector(
-      'input[name="TranspKlinik"]:checked'
-    );
-    const transportSoSi = document.querySelector(
-      'input[name="TranspSoSi"]:checked'
-    );
+    const transportKlinik = document.querySelector('input[name="TranspKlinik"]:checked');
+    const transportSoSi = document.querySelector('input[name="TranspSoSi"]:checked');
     const avisoCheckbox = document.querySelector('input[name="Aviso"]:checked');
     const avisoText = document.getElementById("aviso")?.value.trim();
-    const naBegleitung = document.querySelector(
-      'input[name="naBegleitung"]:checked'
-    );
+    const naBegleitung = document.querySelector('input[name="naBegleitung"]:checked');
 
-    summary += `Transport in Klinik: ${
-      transportKlinik ? transportKlinik.value : ""
-    }`;
+    summary += `Transport in Klinik: ${transportKlinik ? transportKlinik.value : ""}`;
     summary += `, ${transportSoSi ? transportSoSi.value : ""}`;
 
     if (avisoCheckbox) {
@@ -1651,7 +1327,7 @@ function generateSummary() {
     if (naBegleitung) {
       summary += `, Transportbegleitung durch NA`;
     }
-    summary += `<br>`;
+    summary += `\n`;
   }
   // #endregion
 
@@ -1664,49 +1340,34 @@ function generateSummary() {
   if (nkvCheckbox && nkvCheckbox.checked) {
     // Neu: name="nkvErfolgreich", id="nkvPunktionsversuche", name="nkvVenflongröße",
     //      name="nkvPunktionsstelle", id="punktionsstelleSonstiges", name="nkvSpülung"
-    const nkvErfolgreich = document.querySelector(
-      'input[name="nkvErfolgreich"]:checked'
-    );
+    const nkvErfolgreich = document.querySelector('input[name="nkvErfolgreich"]:checked');
     const nkvVersuche = document.getElementById("nkvPunktionsversuche")?.value;
-    const nkvGrößeElements = document.querySelectorAll(
-      'input[name="nkvVenflongröße"]:checked'
-    );
+    const nkvGrößeElements = document.querySelectorAll('input[name="nkvVenflongröße"]:checked');
     const nkvGrößeValues = Array.from(nkvGrößeElements).map((cb) => cb.value);
 
-    const punktionsstelleElements = document.querySelectorAll(
-      'input[name="nkvPunktionsstelle"]:checked'
-    );
-    const punktionsstelleValues = Array.from(punktionsstelleElements).map(
-      (cb) => {
-        if (cb.value === "sonstige") {
-          const sonstigeText = document
-            .getElementById("punktionsstelleSonstiges")
-            ?.value.trim();
-          return sonstigeText ? sonstigeText : "";
-        }
-        return cb.value;
+    const punktionsstelleElements = document.querySelectorAll('input[name="nkvPunktionsstelle"]:checked');
+    const punktionsstelleValues = Array.from(punktionsstelleElements).map((cb) => {
+      if (cb.value === "sonstige") {
+        const sonstigeText = document.getElementById("punktionsstelleSonstiges")?.value.trim();
+        return sonstigeText ? sonstigeText : "";
       }
-    );
+      return cb.value;
+    });
 
-    const nkvSpülung = document.querySelector(
-      'input[name="nkvSpülung"]:checked'
-    );
+    const nkvSpülung = document.querySelector('input[name="nkvSpülung"]:checked');
 
-    summary += `<br>Notfallkompetenz NKV:<br>`;
+    summary += `\nNotfallkompetenz NKV:\n`;
     summary += nkvErfolgreich ? `Erfolgreich: ${nkvErfolgreich.value}, ` : "";
     summary += nkvVersuche ? `Punktionsversuche: ${nkvVersuche}, ` : "";
     summary += nkvGrößeValues.length > 0 ? `${nkvGrößeValues.join("/")}, ` : "";
-    summary +=
-      punktionsstelleValues.length > 0
-        ? `${punktionsstelleValues.join("/")}, `
-        : "";
-    summary += nkvSpülung ? `${nkvSpülung.value}<br>` : "";
+    summary += punktionsstelleValues.length > 0 ? `${punktionsstelleValues.join("/")}, ` : "";
+    summary += nkvSpülung ? `${nkvSpülung.value}\n` : "";
 
     // NKV - weitere Bemerkungen (neu: id="nkvWeitereBemerkungen")
     const NKVweitere = document.getElementById("nkvWeitereBemerkungen");
     if (NKVweitere && NKVweitere.value.trim().length > 0) {
       summary += ` // ${NKVweitere.value.trim()}`;
-      summary += "<br>";
+      summary += "\n";
     }
   }
 
@@ -1716,44 +1377,26 @@ function generateSummary() {
     //      name="nkiSpatelgröße", id="nkiZahnreihe", id="nkiEtCo2",
     //      name="nkiPulmo", name="nkiEpigastrium",
     //      id="nkiTubusfixierung", id="nkiGänsegurgel", id="nkiBakterienfilter", id="nkiZahnstatus"
-    const nkiErfolgreich = document.querySelector(
-      'input[name="nkiErfolgreich"]:checked'
-    )?.value;
-    const nkiVersuche = document.getElementById(
-      "nkiInbutbationsversuche"
-    )?.value;
+    const nkiErfolgreich = document.querySelector('input[name="nkiErfolgreich"]:checked')?.value;
+    const nkiVersuche = document.getElementById("nkiInbutbationsversuche")?.value;
     const nkiUhrzeit = document.getElementById("nkiUhrzeit")?.value;
-    const laryngoskopie = document.querySelector(
-      'input[name="nkiLaryngoskopie"]:checked'
-    )?.value;
-    const cormackLehane = document.querySelector(
-      'input[name="nkiCormack"]:checked'
-    )?.value;
-    const tubusgröße = document.querySelector(
-      'input[name="nkiTubusgröße"]:checked'
-    )?.value;
-    const spatelgröße = document.querySelector(
-      'input[name="nkiSpatelgröße"]:checked'
-    )?.value;
+    const laryngoskopie = document.querySelector('input[name="nkiLaryngoskopie"]:checked')?.value;
+    const cormackLehane = document.querySelector('input[name="nkiCormack"]:checked')?.value;
+    const tubusgröße = document.querySelector('input[name="nkiTubusgröße"]:checked')?.value;
+    const spatelgröße = document.querySelector('input[name="nkiSpatelgröße"]:checked')?.value;
     const zahnreihe = document.getElementById("nkiZahnreihe")?.value;
     const etCO2 = document.getElementById("nkiEtCo2")?.value;
-    const lagekontrollePulmo = document.querySelector(
-      'input[name="nkiPulmo"]:checked'
-    )?.value;
-    const lagekontrolleEpigastrium = document.querySelector(
-      'input[name="nkiEpigastrium"]:checked'
-    )?.value;
+    const lagekontrollePulmo = document.querySelector('input[name="nkiPulmo"]:checked')?.value;
+    const lagekontrolleEpigastrium = document.querySelector('input[name="nkiEpigastrium"]:checked')?.value;
     const tubusFixierung = document.getElementById("nkiTubusfixierung");
     const gaensegurgel = document.getElementById("nkiGänsegurgel");
     const bakterienfilter = document.getElementById("nkiBakterienfilter");
     const zahnstatus = document.getElementById("nkiZahnstatus");
     const ETIweitere = document.getElementById("nkiWeitereBemerkungen");
 
-    summary += `<br>Notfallkompetenz NKI:<br>`;
+    summary += `\nNotfallkompetenz NKI:\n`;
     if (nkiErfolgreich === "Ja") {
-      summary += nkiVersuche
-        ? `NKI beim ${nkiVersuche}. Versuch auf Sicht erfolgreich, `
-        : "";
+      summary += nkiVersuche ? `NKI beim ${nkiVersuche}. Versuch auf Sicht erfolgreich, ` : "";
     } else if (nkiErfolgreich === "Nein") {
       summary += "Anwendung NKI nicht erfolgreich. ";
     }
@@ -1766,97 +1409,75 @@ function generateSummary() {
     summary += etCO2 ? `init. etCO2 ${etCO2}mmHg, ` : "";
     summary += lagekontrolleEpigastrium ? `${lagekontrolleEpigastrium}, ` : "";
     summary += lagekontrollePulmo ? `${lagekontrollePulmo}` : "";
-    summary +=
-      tubusFixierung && tubusFixierung.checked
-        ? `, ${tubusFixierung.value}`
-        : "";
-    summary +=
-      gaensegurgel && gaensegurgel.checked ? `, ${gaensegurgel.value}` : "";
-    summary +=
-      bakterienfilter && bakterienfilter.checked
-        ? `, ${bakterienfilter.value}`
-        : "";
+    summary += tubusFixierung && tubusFixierung.checked ? `, ${tubusFixierung.value}` : "";
+    summary += gaensegurgel && gaensegurgel.checked ? `, ${gaensegurgel.value}` : "";
+    summary += bakterienfilter && bakterienfilter.checked ? `, ${bakterienfilter.value}` : "";
     summary += zahnstatus && zahnstatus.checked ? `, ${zahnstatus.value}` : "";
     if (ETIweitere && ETIweitere.value.trim().length > 0) {
       summary += ` // ${ETIweitere.value.trim()}`;
-      summary += "<br>";
+      summary += "\n";
     }
   }
 
   if (nivCheckbox && nivCheckbox.checked) {
     // Neu: name="nivMaskengröße", id="peep", id="asb", id="pMax", id="nivWeitereBemerkungen"
-    const maskengröße = document.querySelector(
-      'input[name="nivMaskengröße"]:checked'
-    );
+    const maskengröße = document.querySelector('input[name="nivMaskengröße"]:checked');
     const peep = document.getElementById("peep")?.value;
     const asb = document.getElementById("asb")?.value;
     const pMax = document.getElementById("pMax")?.value;
 
-    summary += `<br>NIV durch NKI laut SOP BRW und Arzneimittelliste nach Indikation, Aufklärung und Ausschluss aller Kontraindikationen.<br>`;
+    summary += `\nNIV durch NKI laut SOP BRW und Arzneimittelliste nach Indikation, Aufklärung und Ausschluss aller Kontraindikationen.\n`;
     summary += maskengröße ? `NIV-Maskengröße: ${maskengröße.value}, ` : "";
     summary += peep ? `Beatmungsparameter: PEEP: ${peep}, ` : "";
     summary += asb ? `ΔASB: ${asb}, ` : "";
-    summary += pMax ? `pMax: ${pMax}<br>` : "";
+    summary += pMax ? `pMax: ${pMax}\n` : "";
 
     const NIVweitere = document.getElementById("nivWeitereBemerkungen");
     if (NIVweitere && NIVweitere.value.trim().length > 0) {
       summary += ` // ${NIVweitere.value.trim()}`;
-      summary += "<br>";
+      summary += "\n";
     }
   }
   // #endregion
 
   // #region Medikamente verabreicht
   // Neu: alle Medikamente unter name="medVerabreicht", NA-Med unter id="medGabeNA"
-  const medikamentengabeContent = document.getElementById(
-    "medikamentengabe-content"
-  );
+  const medikamentengabeContent = document.getElementById("medikamentengabe-content");
 
-  if (
-    medikamentengabeContent &&
-    window.getComputedStyle(medikamentengabeContent).display !== "none"
-  ) {
+  if (medikamentengabeContent && window.getComputedStyle(medikamentengabeContent).display !== "none") {
     // AZML 1 + AZML 2 Medikamente (nicht Tele-NA)
     const verabreichteMeds = document.querySelectorAll(
       '#azml1-section input[name="medVerabreicht"]:checked, #azml2-section input[name="medVerabreicht"]:checked'
     );
     // Tele-NA Medikamente
-    const verabreichteMedTeleNa = document.querySelectorAll(
-      '#teleNA-section input[name="medVerabreicht"]:checked'
-    );
+    const verabreichteMedTeleNa = document.querySelectorAll('#teleNA-section input[name="medVerabreicht"]:checked');
     // NA-Medikamente (Freitext, neu: id="medGabeNA")
     const medGabeNA = document.getElementById("medGabeNA");
     const weitereMedText = medGabeNA ? medGabeNA.value.trim() : "";
 
     if (verabreichteMeds.length > 0 && weitereMedText.length > 0) {
       summary +=
-        "<br>Medikamentengabe laut SOP BRW und Arzneimittelliste nach Indikation, Aufklärung, Einverständnis und Ausschluss aller Kontraindikationen. Verabreichte Medikamente:<br>";
+        "\nMedikamentengabe laut SOP BRW und Arzneimittelliste nach Indikation, Aufklärung, Einverständnis und Ausschluss aller Kontraindikationen. Verabreichte Medikamente:\n";
       verabreichteMeds.forEach((cb) => {
-        summary += `- ${cb.value}<br>`;
+        summary += `- ${cb.value}\n`;
       });
-      summary += `<br>Medikamentengabe durch NA:<br>- ${weitereMedText.replace(
-        /(?:\s+,\s*|,\s+|\r?\n)+/g,
-        "\n- "
-      )}`;
-      summary += "<br>";
+      summary += `\nMedikamentengabe durch NA:\n- ${weitereMedText.replace(/(?:\s+,\s*|,\s+|\r?\n)+/g, "\n- ")}`;
+      summary += "\n";
     } else if (verabreichteMeds.length > 0) {
       summary +=
-        "<br>Medikamentengabe laut SOP BRW und Arzneimittelliste nach Indikation, Aufklärung, Einverständnis und Ausschluss aller Kontraindikationen. Verabreichte Medikamente:<br>";
+        "\nMedikamentengabe laut SOP BRW und Arzneimittelliste nach Indikation, Aufklärung, Einverständnis und Ausschluss aller Kontraindikationen. Verabreichte Medikamente:\n";
       verabreichteMeds.forEach((cb) => {
-        summary += `- ${cb.value}<br>`;
+        summary += `- ${cb.value}\n`;
       });
     } else if (weitereMedText.length > 0) {
-      summary += `<br>Medikamentengabe durch NA:<br>- ${weitereMedText.replace(
-        /(?:\s+,\s*|,\s+|\r?\n)+/g,
-        "\n- "
-      )}`;
-      summary += "<br>";
+      summary += `\nMedikamentengabe durch NA:\n- ${weitereMedText.replace(/(?:\s+,\s*|,\s+|\r?\n)+/g, "\n- ")}`;
+      summary += "\n";
     }
 
     if (verabreichteMedTeleNa.length > 0) {
-      summary += "<br>Medikamentengabe nach Freigabe durch Tele-NA:<br>";
+      summary += "\nMedikamentengabe nach Freigabe durch Tele-NA:\n";
       verabreichteMedTeleNa.forEach((cb) => {
-        summary += `- ${cb.value}<br>`;
+        summary += `- ${cb.value}\n`;
       });
     }
   }
@@ -1865,12 +1486,9 @@ function generateSummary() {
   // #region Analgesie (IDs bleiben gleich)
   const analgesieSection = document.getElementById("analgesie-section");
   const körpergewicht = document.getElementById("analgesieKGew")?.value.trim();
-  if (
-    analgesieSection &&
-    window.getComputedStyle(analgesieSection).display !== "none"
-  ) {
-    summary += "<br>Analgesie:<br>";
-    summary += `geschätztes Körpergewicht: ${körpergewicht}kg<br>`;
+  if (analgesieSection && window.getComputedStyle(analgesieSection).display !== "none") {
+    summary += "\nAnalgesie:\n";
+    summary += `geschätztes Körpergewicht: ${körpergewicht}kg\n`;
 
     function getAnalgesieBlock(titel, suffix) {
       const fields = [
@@ -1887,24 +1505,19 @@ function generateSummary() {
         if (value) values.push(`${f.label}: ${value}`);
       });
 
-      const inhalationsField = document.getElementById(
-        `analgesieInhalationen${suffix}`
-      );
-      if (
-        inhalationsField &&
-        window.getComputedStyle(inhalationsField).display !== "none"
-      ) {
+      const inhalationsField = document.getElementById(`analgesieInhalationen${suffix}`);
+      if (inhalationsField && window.getComputedStyle(inhalationsField).display !== "none") {
         const inhalationen = inhalationsField.value.trim();
         if (inhalationen) values.push(`Inhalationen: ${inhalationen}`);
       }
 
-      return `<br>${titel}: ${values.join(" / ")}`;
+      return `\n${titel}: ${values.join(" / ")}`;
     }
 
     summary += getAnalgesieBlock("Erstbefund", "Erstbefund");
     summary += getAnalgesieBlock("5 Minuten nach Applikation", "5min");
     summary += getAnalgesieBlock("Endbefund", "Endbefund");
-    summary += "<br>";
+    summary += "\n";
   }
   // #endregion
 
@@ -1913,80 +1526,60 @@ function generateSummary() {
   // NEWS-2 Score: id="news2Aviso" (Ausgabe-Element)
   const diagnostikContent = document.getElementById("diagnostik-content");
 
-  if (
-    diagnostikContent &&
-    window.getComputedStyle(diagnostikContent).display !== "none"
-  ) {
-    const ekgVal = document.getElementById("ekg")?.value?.trim();
-    const bgaVal = document.getElementById("bga")?.value?.trim();
-    const ibdVal = document.getElementById("ibd")?.value?.trim();
-    const ultraschallVal = document
-      .getElementById("ultraschall")
-      ?.value?.trim();
-    const weitereDiagnostikVal = document
-      .getElementById("weitereDiagnostik")
-      ?.value?.trim();
+  if (diagnostikContent && window.getComputedStyle(diagnostikContent).display !== "none") {
+    const ekg = document.getElementById("cbEkg");
+    const bga = document.getElementById("cbBga");
+    const ibd = document.getElementById("cbIbd");
+    const ultraschall = document.getElementById("cbUltraschall");
+    const weitereDiagnostik = document.getElementById("cbWeitere");
+
+    const ekgValue = document.getElementById("ekg")?.value.trim();
+    const bgaValue = document.getElementById("bga")?.value.trim();
+    const ibdValue = document.getElementById("ibd")?.value.trim();
+    const ultraschallValue = document.getElementById("ultraschall")?.value.trim();
+    const weitereDiagnostikValue = document.getElementById("weitereDiagnostik")?.value.trim();
 
     // NEWS-2 Score aus dem Ausgabe-Span (neu: id="news2Aviso" statt "news2Score1")
     const news2Element = document.getElementById("news2Aviso");
     const news2 = news2Element ? news2Element.innerText?.trim() : "";
     // Alternativ: aus news-2-content falls sichtbar
     const news2Content = document.getElementById("news-2-content");
-    const news2Visible =
-      news2Content && window.getComputedStyle(news2Content).display !== "none";
+    const news2Visible = news2Content && window.getComputedStyle(news2Content).display !== "none";
 
-    if (
-      ekgVal ||
-      (news2Visible && news2 !== "") ||
-      bgaVal ||
-      ibdVal ||
-      ultraschallVal ||
-      weitereDiagnostikVal
-    ) {
-      summary += "<br>Erweiterte Diagnostik:<br>";
+    if (ekg || (news2Visible && news2 !== "") || bga || ibd || ultraschall || weitereDiagnostik) {
+      summary += "\nErweiterte Diagnostik:\n";
 
-      if (ekgVal) summary += `EKG: ${ekgVal}<br>`;
-      if (news2Visible && news2 !== "") summary += `NEWS-2 Score:${news2}<br>`;
-      if (bgaVal) summary += `BGA: ${bgaVal}<br>`;
-      if (ibdVal) summary += `IBD: ${ibdVal}<br>`;
-      if (ultraschallVal) summary += `Ultraschall: ${ultraschallVal}<br>`;
-      if (weitereDiagnostikVal) summary += `${weitereDiagnostikVal}<br>`;
+      if (ekgValue) summary += `EKG: ${ekgValue}\n`;
+      if (news2Visible && news2 !== "") summary += `NEWS-2 Score:${news2}\n`;
+      if (bgaValue) summary += `BGA: ${bgaValue}\n`;
+      if (ibdValue) summary += `IBD: ${ibdValue}\n`;
+      if (ultraschallValue) summary += `Ultraschall: ${ultraschallValue}\n`;
+      if (weitereDiagnostikValue) summary += `${weitereDiagnostikValue}\n`;
     }
   }
   // #endregion
 
   // Ausgabe
-  let textSummary = summary.replace(/<br>/g, "\n").replace(/<br><br>/g, "\n\n");
+  let textSummary = summary.replace(/\n/g, "<br>").replace(/\n\n/g, "<br><br>");
 
-  document
-    .querySelectorAll(".nav-item")
-    .forEach((i) => i.classList.remove("active"));
+  document.querySelectorAll(".nav-item").forEach((i) => i.classList.remove("active"));
 
-  document
-    .querySelectorAll(".formContainer")
-    .forEach((c) => c.classList.remove("active"));
+  document.querySelectorAll(".formContainer").forEach((c) => c.classList.remove("active"));
 
-  document
-    .querySelectorAll(".navHeader")
-    .forEach((c) => c.classList.remove("active"));
+  document.querySelectorAll(".navHeader").forEach((c) => c.classList.remove("active"));
 
   document.getElementById("summary-content").classList.add("active");
-  document.getElementById("ausgabeSummary").innerHTML =
-    textSummary || "Keine Daten ausgewählt.";
+  document.getElementById("ausgabeSummary").innerHTML = textSummary || "Keine Daten ausgewählt.";
   addNavHeader("Dokumentation");
   document.getElementById("dokumentationHeader").classList.add("active");
+
+  // ".active" Steuerung für Nav Element
   const summaryNav = document.getElementById("dokumentationHeader");
   if (summaryNav && !summaryNav._listenerAdded) {
     summaryNav.addEventListener("click", () => {
-      document
-        .querySelectorAll(".nav-item")
-        .forEach((i) => i.classList.remove("active"));
-      document
-        .querySelectorAll(".formContainer")
-        .forEach((c) => c.classList.remove("active"));
-      document
-        .querySelectorAll(".navHeader")
-        .forEach((c) => c.classList.remove("active"));
+      document.querySelectorAll(".nav-item").forEach((i) => i.classList.remove("active"));
+      document.querySelectorAll(".formContainer").forEach((c) => c.classList.remove("active"));
+      document.querySelectorAll(".navHeader").forEach((c) => c.classList.remove("active"));
       summaryNav.classList.add("active");
       document.getElementById("summary-content").classList.add("active");
     });
