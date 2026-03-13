@@ -11,7 +11,7 @@
       <h1>Einsatzdokumentation</h1>
       <nav>
         <ul>
-          <li id="dokumentationGenerieren">Dokumentation generieren</li>  <!-- bc: #462346 Abendstimmung // hover: #AAAAFA Flieder -->
+          <li id="dokumentationGenerieren" onclick="generateSummary()">Dokumentation generieren</li>  <!-- bc: #462346 Abendstimmung // hover: #AAAAFA Flieder -->
           <li id="Startseite">Startseite</li> <!-- bc: #462346 Abendstimmung // hover: #AAAAFA Flieder -->
           <li id="eingabenZurücksetzen">Alle Eingaben zurücksetzen</li> <!-- bc: #462346 Abendstimmung // hover: #AAAAFA Flieder -->
         </ul>
@@ -22,10 +22,10 @@
       <div class="container"> <!-- bc: #F3F1EF Nebelgrau leicht -->
         <div class="navbar">
           <ul class="navItem">
-            <li id="sss-gi">SSS & GI</li>
-            <li id="primary">Primary Assessment</li>
-            <li id="secondary">Secondary Assessment</li>
-            <li id="weitereDetails">weitere Details</li>
+            <li id="sss-gi"><span class="navHeader">SSS & GI</span></li>
+            <li id="primary"><span class="navHeader">Primary Assessment</span></li>
+            <li id="secondary"><span class="navHeader">Secondary Assessment</span></li>
+            <li id="weitereDetails"><span class="navHeader">weitere Details</span></li>
           </ul>
         </div>
         <div class="contentContainer">
@@ -545,6 +545,76 @@
                   <div class="radio-wrapper"><label for="sVernachlaessigung-1"><input type="radio" name="sVernachlaessigung" id="sVernachlaessigung-1" value="keine Hinweise" onclick="toggleMeasures('missbrauch-section', false)"> keine Hinweise</label></div>
                   <div class="radio-wrapper"><label for="sVernachlaessigung-2"><input type="radio" name="sVernachlaessigung" id="sVernachlaessigung-2" value="mangelnde Pflege" onclick="toggleMeasures('missbrauch-section', false)"> mangelnde Pflege</label></div>
                   <div class="radio-wrapper"><label for="sVernachlaessigung-3"><input type="radio" name="sVernachlaessigung" id="sVernachlaessigung-3" value="Hinweise auf Missbrauch" onclick="toggleMeasures('missbrauch-section', true)"> Hinweise auf Missbrauch</label></div>
+                </div>
+              </div>
+            </div>
+            <div class="formContainer" id="primary-content">
+              <div class="formChild">
+                <div class="formChildBox">
+                  <h5>ABCDE</h5>
+                </div>
+                <div class="formChildBox unauffaellig">
+                  <div class="checkbox-wrapper unauffaellig">
+                    <label for="abcde-unauffaellig-1">
+                      <input type="checkbox" name="abcde-unauffaellig" id="abcde-unauffaellig-1" value="abcdeUnauffällig"> unauffällig
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="formChild">
+                <div class="formChildBox">
+                  <h5>Airway</h5>
+                </div>
+                <div class="formChildBox unauffaellig">
+                  <div class="checkbox-wrapper unauffaellig">
+                    <label for="airway-unauffaellig-1">
+                      <input type="checkbox" name="airway-unauffaellig" id="airway-unauffaellig-1" value="airwayUnauffällig"> unauffällig
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="formChild">
+                <div class="formChildBox">
+                  <h5>Breathing</h5>
+                </div>
+                <div class="formChildBox unauffaellig">
+                  <div class="checkbox-wrapper unauffaellig">
+                    <label for="breathing-unauffaellig-1">
+                      <input type="checkbox" name="breathing-unauffaellig" id="breathing-unauffaellig-1" value="breathingUnauffällig"> unauffällig
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="formChild">
+                <div class="formChildBox">
+                  <h5>Circulation</h5>
+                </div>
+                <div class="formChildBox unauffaellig">
+                  <div class="checkbox-wrapper unauffaellig">
+                    <label for="circulation-unauffaellig-1">
+                      <input type="checkbox" name="circulation-unauffaellig" id="circulation-unauffaellig-1" value="circulationUnauffällig"> unauffällig
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="formChild">
+                <div class="formChildBox">
+                  <h5>Disability</h5>
+                </div>
+                <div class="formChildBox unauffaellig">
+                  <div class="checkbox-wrapper unauffaellig">
+                    <label for="disability-unauffaellig-1">
+                      <input type="checkbox" name="disability-unauffaellig" id="disability-unauffaellig-1" value="disabilityUnauffällig"> unauffällig
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="formChild">
+                <div class="formChildBox">
+                  <h5>Environment</h5>
+                </div>
+                <div class="formChildBox">
+                  <div class="text-wrapper"><input type="text" name="eLeitsymtpom" id="eLeitsymptom" placeholder="Leitsymptom angeben"></div>
                 </div>
               </div>
             </div>
@@ -1634,7 +1704,7 @@
               </div>
             </div>  
             
-            <div class="formContainer active" id="medikamentengabe-content"> <!-- Medikamentengabe -->
+            <div class="formContainer" id="medikamentengabe-content"> <!-- Medikamentengabe -->
               <div class="formChild">
                 <div class="formChildBox">
                   <h5>verabreichte Medikation</h5>
@@ -2294,6 +2364,10 @@
                   <div class="radio-wrapper"><label><input type="radio" name="newsBewusstsein" value="1"> neu aufgetretene Verwirrung (oder Desorientierung / Agitation), reagiert nur auf Stimme / Schmerz, nicht ansprechbar</label></div>
                 </div>
               </div>
+            </div>
+
+            <div class="formContainer" id="summary-content">
+              <div class="formChild" id="ausgabeSummary"></div>
             </div>
           </div>
         </div>
