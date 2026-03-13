@@ -221,7 +221,7 @@ document.querySelectorAll(".navHeader").forEach((header) => {
   });
 });
 
-document.getElementById("news2").addEventListener("change", function () {
+document.getElementById("news2")?.addEventListener("change", function () {
   if (this.checked) {
     addNavItem("#weitereDetails", "NEWS-2");
 
@@ -468,6 +468,17 @@ function calculateNEWS2() {
     news2Output.classList.remove("red");
   }
   return score;
+}
+
+// GCS
+function calculateGCS() {
+  const eyes = document.querySelector('input[name="gcs-eyes"]:checked');
+  const verbal = document.querySelector('input[name="gcs-verbal"]:checked');
+  const motor = document.querySelector('input[name="gcs-motor"]:checked');
+
+  let gcsTotal = parseInt(eyes.value) + parseInt(verbal.value) + parseInt(motor.value);
+
+  document.getElementById("gcs-result").textContent = gcsTotal;
 }
 
 document.addEventListener("change", function (e) {
@@ -1445,13 +1456,12 @@ function generateSummary() {
   const medikamentengabeContent = document.getElementById("medikamentengabe-content");
 
   if (medikamentengabeContent && window.getComputedStyle(medikamentengabeContent).display !== "none") {
-    // AZML 1 + AZML 2 Medikamente (nicht Tele-NA)
     const verabreichteMeds = document.querySelectorAll(
       '#azml1-section input[name="medVerabreicht"]:checked, #azml2-section input[name="medVerabreicht"]:checked'
     );
-    // Tele-NA Medikamente
+
     const verabreichteMedTeleNa = document.querySelectorAll('#teleNA-section input[name="medVerabreicht"]:checked');
-    // NA-Medikamente (Freitext, neu: id="medGabeNA")
+
     const medGabeNA = document.getElementById("medGabeNA");
     const weitereMedText = medGabeNA ? medGabeNA.value.trim() : "";
 
@@ -1459,7 +1469,9 @@ function generateSummary() {
       summary +=
         "\nMedikamentengabe laut SOP BRW und Arzneimittelliste nach Indikation, Aufklärung, Einverständnis und Ausschluss aller Kontraindikationen. Verabreichte Medikamente:\n";
       verabreichteMeds.forEach((cb) => {
-        summary += `- ${cb.value}\n`;
+        const details = document.querySelector(`#selectedMedsList [data-med="${cb.value}"] input[type="text"]`)?.value.trim();
+        summary += `- ${cb.value}`;
+        summary += details ? ` (${details})\n` : "\n";
       });
       summary += `\nMedikamentengabe durch NA:\n- ${weitereMedText.replace(/(?:\s+,\s*|,\s+|\r?\n)+/g, "\n- ")}`;
       summary += "\n";
@@ -1467,7 +1479,9 @@ function generateSummary() {
       summary +=
         "\nMedikamentengabe laut SOP BRW und Arzneimittelliste nach Indikation, Aufklärung, Einverständnis und Ausschluss aller Kontraindikationen. Verabreichte Medikamente:\n";
       verabreichteMeds.forEach((cb) => {
-        summary += `- ${cb.value}\n`;
+        const details = document.querySelector(`#selectedMedsList [data-med="${cb.value}"] input[type="text"]`)?.value.trim();
+        summary += `- ${cb.value}`;
+        summary += details ? ` (${details})\n` : "\n";
       });
     } else if (weitereMedText.length > 0) {
       summary += `\nMedikamentengabe durch NA:\n- ${weitereMedText.replace(/(?:\s+,\s*|,\s+|\r?\n)+/g, "\n- ")}`;
@@ -1477,7 +1491,9 @@ function generateSummary() {
     if (verabreichteMedTeleNa.length > 0) {
       summary += "\nMedikamentengabe nach Freigabe durch Tele-NA:\n";
       verabreichteMedTeleNa.forEach((cb) => {
-        summary += `- ${cb.value}\n`;
+        const details = document.querySelector(`#selectedMedsList [data-med="${cb.value}"] input[type="text"]`)?.value.trim();
+        summary += `- ${cb.value}`;
+        summary += details ? ` (${details})\n` : "\n";
       });
     }
   }
@@ -1486,7 +1502,7 @@ function generateSummary() {
   // #region Analgesie (IDs bleiben gleich)
   const analgesieSection = document.getElementById("analgesie-section");
   const körpergewicht = document.getElementById("analgesieKGew")?.value.trim();
-  if (analgesieSection && window.getComputedStyle(analgesieSection).display !== "none") {
+  if (analgesieSection && analgesieSection.classList.contains("active")) {
     summary += "\nAnalgesie:\n";
     summary += `geschätztes Körpergewicht: ${körpergewicht}kg\n`;
 
@@ -1511,7 +1527,7 @@ function generateSummary() {
         if (inhalationen) values.push(`Inhalationen: ${inhalationen}`);
       }
 
-      return `\n${titel}: ${values.join(" / ")}`;
+      return `\n${titel}: ${values.join(", ")}`;
     }
 
     summary += getAnalgesieBlock("Erstbefund", "Erstbefund");
