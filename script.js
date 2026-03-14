@@ -487,6 +487,561 @@ document.addEventListener("change", function (e) {
   }
 });
 
+// =============================================================================
+// removeErrorHighlights
+// =============================================================================
+function removeErrorHighlights() {
+  document.querySelectorAll(".error").forEach((el) => el.classList.remove("error"));
+}
+
+// =============================================================================
+// validateForm
+// =============================================================================
+function validateForm() {
+  removeErrorHighlights();
+  let missingFields = [];
+
+  const requiredFields = [
+    { name: "sicherheit", label: "SSS Sicherheit", type: "radio" },
+    { name: "einsatzstelle-type", label: "SSS Einsatzstelle", type: "radio" },
+    { name: "AWfrei", label: "A Atemwege", type: "radio" },
+    { name: "AF", label: "B Atemfrequenz", type: "text" },
+    { name: "AZV", label: "B Atemzugsvolumen", type: "radio" },
+    { name: "Thoraxexkursionen", label: "B Thoraxexkursionen", type: "radio" },
+    { name: "Auskultation", label: "B Auskultation", type: "radio" },
+    { name: "Atemgeräusch", label: "B Atemgeräusch", type: "radio" },
+    { name: "Halsvenen", label: "B Halsvenen", type: "radio" },
+    { name: "Trachea", label: "B Trachea", type: "radio" },
+    { name: "PulsPeripher", label: "C Puls peripher", type: "radio" },
+    { name: "PulsRhythmus", label: "C Puls Rhythmus", type: "radio" },
+    { name: "HF", label: "C Herzfrequenz", type: "radio" },
+    { name: "RekapZeit", label: "C Rekapzeit", type: "radio" },
+    { name: "Hautfarbe", label: "C Hautfarbe", type: "radio" },
+    { name: "Hautbeschaffenheit", label: "C Hautbeschaffenheit", type: "radio" },
+    { name: "Hauttemperatur", label: "C Hauttemperatur", type: "radio" },
+    { name: "AVPU", label: "D AVPU", type: "radio" },
+    { name: "gcs-eyes", label: "D GCS - Augenöffnung", type: "radio" },
+    { name: "gcs-verbal", label: "D GCS - Verbale Reaktion", type: "radio" },
+    { name: "gcs-motor", label: "D GCS - Motorische Reaktion", type: "radio" },
+    { name: "Isokorie", label: "D Isokorie", type: "radio" },
+    { name: "Pupillengröße", label: "D Pupillengröße", type: "radio" },
+    { name: "Lichtreaktion", label: "D Lichtreaktion", type: "radio" },
+    { name: "Herdblick", label: "D Herdblick", type: "radio" },
+    { name: "MDS", label: "D MDS", type: "radio" },
+    { name: "APSS", label: "D APSS", type: "radio" },
+    { name: "Entscheidung", label: "E Entscheidung kritisch/nicht kritisch", type: "radio" },
+    { name: "Leitsymptom", label: "E Leitsymptom", type: "text" },
+    { name: "suspKörperstellen", label: "E suspekte Körperstellen", type: "radio" },
+    { name: "Symptome", label: "SAMPLER (S) Symptome", type: "text" },
+    { name: "Allergien", label: "SAMPLER (A)", type: "radio" },
+    { name: "Mahlzeit", label: "SAMPLER (L) Mahlzeit", type: "radio" },
+    { name: "Flüssigkeit", label: "SAMPLER (L) Flüssigkeit", type: "radio" },
+    { name: "Stuhl", label: "SAMPLER (L) Stuhl", type: "radio" },
+    { name: "Harn", label: "SAMPLER (L) Harn", type: "radio" },
+    { name: "Ereignis", label: "SAMPLER (E)", type: "text" },
+    { name: "Risikofaktoren", label: "SAMPLER (R)", type: "checkbox" },
+    { name: "TranspRM", label: "Transport zum Fahrzeug", type: "radio" },
+  ];
+
+  requiredFields.forEach((field) => {
+    if (field.type === "radio") {
+      const element = document.querySelector(`input[name="${field.name}"]:checked`);
+      if (!element) {
+        missingFields.push(field.label);
+        document.getElementsByName(field.name).forEach((r) => r.classList.add("error"));
+      }
+    } else if (field.type === "checkbox") {
+      const elements = document.querySelectorAll(`input[name="${field.name}"]:checked`);
+      if (elements.length === 0) {
+        missingFields.push(field.label);
+        document.querySelectorAll(`input[name="${field.name}"]`).forEach((el) => el.classList.add("error"));
+      }
+    } else if (field.type === "text") {
+      const textField = document.getElementById(field.name);
+      if (!textField || textField.value.trim() === "") {
+        missingFields.push(field.label);
+        if (textField) textField.classList.add("error");
+      }
+    }
+  });
+
+  const toggleSections = [
+    {
+      sectionId: "internistisch-section",
+      label: "SSS & GI - Ersteindruck",
+      inputSelectors: [
+        "input[name='gesamteindruck']:checked",
+        "input[name='auffinden']:checked",
+        "input[name='bewusstsein']:checked",
+        "input[name='atmung']:checked",
+        "input[name='haut']:checked",
+      ],
+    },
+    {
+      sectionId: "paediatrische-section",
+      label: "SSS & GI - Pädiatrisches Beurteilungsdreieck",
+      inputSelectors: [
+        "input[name='pbdErscheinungsbild']:checked",
+        "input[name='pbdAtmung']:checked",
+        "input[name='pbdHaut']:checked",
+        "input[name='ticlsMuskeltonus']:checked",
+        "input[name='ticlsInteraktion']:checked",
+        "input[name='ticlsConsolability']:checked",
+        "input[name='ticlsLook']:checked",
+        "input[name='ticlsSpeech']:checked",
+      ],
+    },
+    {
+      sectionId: "geriatrische-section",
+      label: "SSS & GI - GEMS Diamant",
+      inputSelectors: [
+        "input[name='gAnatomie']:checked",
+        "input[name='ePatientenzustand']:checked",
+        "input[name='eUmgebung']:checked",
+        "input[name='eTemperatur']:checked",
+        "input[name='eBeleuchtung']:checked",
+        "input[name='eGeruch']:checked",
+        "input[name='mPolypharmazie']:checked",
+        "input[name='mMultimorbidität']:checked",
+        "input[name='mErnährungszustand']:checked",
+        "input[name='sIsolation']:checked",
+        "input[name='sDepression']:checked",
+        "input[name='sVernachlässigung']:checked",
+      ],
+    },
+    { sectionId: "privat-section", label: "SSS Einsatzstelle privat", radioName: "einsatzstelle-privat" },
+    { sectionId: "öffentlich-section", label: "SSS Einsatzstelle öffentlich", radioName: "einsatzstelle-öffentlich" },
+    { sectionId: "blutung-section", label: "x Maßnahmen Blutung", checkboxName: "MaßnahmenBlutung" },
+    { sectionId: "airway-section", label: "A Maßnahmen Airway", checkboxName: "AWMGM" },
+    { sectionId: "O2-section", label: "B Maßnahmen O2-Gabe", numberInputId: "O2-Gabe" },
+    { sectionId: "KISS-section", label: "C Details KISS", checkboxName: "KISS" },
+    { sectionId: "nexus-section", label: "D Details NEXUS", checkboxName: "NEXUS" },
+    { sectionId: "suspect-section", label: "E Suspekte Körperstellen", textInputId: "suspekte Körperstellen" },
+    { sectionId: "samplerNichtErhebbar-section", label: "SAMPLER nicht erhebbar - Begründung", radioName: "nichtErhebbarGrund" },
+    { sectionId: "allergy-section", label: "SAMPLER (A) Details", textInputId: "Allergien" },
+    { sectionId: "mahlzeit-section", label: "SAMPLER (L) Mahlzeit", textInputId: "Mahlzeit" },
+    { sectionId: "flüssigkeit-section", label: "SAMPLER (L) Flüssigkeit", textInputId: "Flüssigkeit" },
+    { sectionId: "stuhl-section", label: "SAMPLER (L) Stuhl", checkboxName: "StuhlQualität" },
+    { sectionId: "stuhlSonstige-section", label: "SAMPLER (L) Stuhl sonstige Auffälligkeiten", textInputId: "StuhlQualität" },
+    { sectionId: "harn-section", label: "SAMPLER (L) Harn", checkboxName: "HarnQualität" },
+    { sectionId: "harnSonstige-section", label: "SAMPLER (L) Harn sonstige Auffälligkeiten", textInputId: "HarnQualität" },
+    { sectionId: "risk-section", label: "SAMPLER (R) Risikofaktoren", checkboxName: "Risikofaktoren" },
+    {
+      sectionId: "NKV-section",
+      label: "Notfallkompetenz NKV",
+      inputSelectors: [
+        "input[name='NKVerfolgreich']:checked",
+        "#nkvVersuche",
+        "input[name='nkvGröße']:checked",
+        "input[name='punktionsstelle']:checked",
+      ],
+    },
+    { sectionId: "punktionsstelleSonstiges-section", label: "NKV sonstige Punktionsstelle", textInputId: "punktionsstelle" },
+    {
+      sectionId: "NKI-section",
+      label: "endotracheale Intubation",
+      inputSelectors: [
+        "input[name='NKIerfolgreich']:checked",
+        "#nkiVersuche",
+        "input[name='Laryngoskopie']:checked",
+        "input[name='CL']:checked",
+        "input[name='nkiGröße']:checked",
+        "input[name='spatelGröße']:checked",
+        "#zahnreihe",
+        "#etCo2",
+        "input[name='lagekontrolleTubusPulmo']:checked",
+        "input[name='lagekontrolleTubusEpigastrium']:checked",
+      ],
+    },
+    {
+      sectionId: "NIV-section",
+      label: "Nicht-invasive Beatmung",
+      inputSelectors: ["input[name='nivMaskengröße']:checked", "#PEEP", "#ASB", "#pMax"],
+    },
+    {
+      sectionId: "transport-section",
+      label: "Transport in Klinik",
+      inputSelectors: ["input[name='TranspKlinik']:checked", "input[name='TranspSoSi']:checked"],
+    },
+  ];
+
+  toggleSections.forEach((section) => {
+    const sectionElement = document.getElementById(section.sectionId);
+    if (!sectionElement) return;
+
+    const isVisible = sectionElement.classList.contains("active") || window.getComputedStyle(sectionElement).display !== "none";
+
+    if (!isVisible) return;
+
+    let sectionHasError = false;
+
+    if (section.radioName) {
+      const selected = document.querySelector(`input[name="${section.radioName}"]:checked`);
+      if (!selected) {
+        missingFields.push(section.label + " (eine Option auswählen)");
+        sectionHasError = true;
+      }
+    }
+
+    if (section.textInputId) {
+      const textInput = document.getElementById(section.textInputId);
+      if (!textInput || textInput.value.trim() === "") {
+        missingFields.push(section.label + " (Textfeld ausfüllen)");
+        sectionHasError = true;
+      }
+    }
+
+    if (section.numberInputId) {
+      const numInput = document.getElementById(section.numberInputId);
+      if (!numInput || numInput.value.trim() === "") {
+        missingFields.push(section.label + " (Feld ausfüllen)");
+        sectionHasError = true;
+      }
+    }
+
+    if (section.checkboxName) {
+      const checkboxes = document.querySelectorAll(`input[name="${section.checkboxName}"]:checked`);
+      if (checkboxes.length === 0) {
+        missingFields.push(section.label + " (mindestens eine Option auswählen)");
+        sectionHasError = true;
+      }
+    }
+
+    if (section.inputSelectors) {
+      const allFilled = section.inputSelectors.every((selector) => {
+        const input = document.querySelector(selector);
+        return input && (input.type === "radio" || input.type === "checkbox" ? input.checked : input.value.trim() !== "");
+      });
+      if (!allFilled) {
+        missingFields.push(section.label + " (alle Pflichtfelder ausfüllen)");
+        sectionHasError = true;
+      }
+    }
+
+    if (sectionHasError) sectionElement.classList.add("error");
+  });
+
+  if (missingFields.length > 0) {
+    alert("Bitte füllen Sie die folgenden Pflichtfelder aus:\n\n" + missingFields.join("\n"));
+    return false;
+  }
+
+  return true;
+}
+
+// =============================================================================
+// DOMContentLoaded – Unauffällig-Logik
+// =============================================================================
+document.addEventListener("DOMContentLoaded", function () {
+  function safeSet(selector, value) {
+    const el = document.querySelector(selector);
+    if (el) el.checked = value;
+  }
+
+  function setUnauffaelligValues(section, isChecked) {
+    // ABCDE – löst A/B/C/D einzeln aus
+    if (section === "abcde") {
+      ["airway", "breathing", "circulation", "disability"].forEach((sub) => {
+        const cb = document.querySelector(`input[name='${sub}-unauffaellig']`);
+        if (cb) {
+          cb.checked = isChecked;
+          cb.dispatchEvent(new Event("change"));
+        }
+      });
+      const abcdeCb = document.querySelector("input[name='abcde-unauffaellig']");
+      if (abcdeCb) abcdeCb.checked = isChecked;
+      safeSet("input[name='entscheidung'][value='NICHT KRITISCH']", isChecked);
+      safeSet("input[name='suspekt'][value='keine weiteren Auffälligkeiten']", isChecked);
+
+      const traumaChecked = document.querySelector("input[name='einsatzkategorie'][value='Traumatologischer Patient']")?.checked;
+      if (traumaChecked) {
+        const traumaCb = document.querySelector("input[name='trauma-unauffaellig']");
+        if (traumaCb) {
+          traumaCb.checked = isChecked;
+          traumaCb.dispatchEvent(new Event("change"));
+        }
+        safeSet("input[name='blutung'][value='Nein']", isChecked);
+      }
+    }
+
+    // A – Airway
+    if (section === "airway") {
+      safeSet("input[name='airway'][value='Atemwege frei']", isChecked);
+    }
+
+    // B – Breathing
+    if (section === "breathing") {
+      const paediatricChecked = document.querySelector("input[name='einsatzkategorie'][value='Pädiatrischer Patient']")?.checked;
+      const afField = document.getElementById("af");
+      if (afField) afField.value = isChecked && !paediatricChecked ? "12" : "";
+      safeSet("input[name='atemzugsvolumen'][value='suffizient']", isChecked);
+      safeSet("input[name='thoraxexkursionen'][value='seitengleich']", isChecked);
+      safeSet("input[name='auskultation'][value='seitengleich']", isChecked);
+      safeSet("input[name='atemgeräusch'][value='vesikuläres AG']", isChecked);
+      safeSet("input[name='halsvenen'][value='HV nicht gestaut']", isChecked);
+      safeSet("input[name='trachea'][value='Trachea mittelständig']", isChecked);
+    }
+
+    // C – Circulation
+    if (section === "circulation") {
+      safeSet("input[name='puls'][value='gut tastbar']", isChecked);
+      safeSet("input[name='herzrhythmus'][value='rhythmisch']", isChecked);
+      safeSet("input[name='herzfrequenz'][value='normofrequent']", isChecked);
+      safeSet("input[name='rekapZeit'][value='< 2 Sekunden']", isChecked);
+      safeSet("input[name='hautfarbe'][value='rosig']", isChecked);
+      safeSet("input[name='hautbeschaffenheit'][value='trocken']", isChecked);
+      safeSet("input[name='hauttemperatur'][value='warm']", isChecked);
+    }
+
+    // D – Disability
+    if (section === "disability") {
+      safeSet("input[name='avpu'][value='Alert']", isChecked);
+      safeSet("input[name='gcs-eyes'][value='4']", isChecked);
+      safeSet("input[name='gcs-verbal'][value='5']", isChecked);
+      safeSet("input[name='gcs-motor'][value='6']", isChecked);
+      safeSet("input[name='isokorie'][value='isokor']", isChecked);
+      safeSet("input[name='pupillengroesse'][value='mittelweit']", isChecked);
+      safeSet("input[name='lichtreaktion'][value='prompte Lichtreaktion']", isChecked);
+      safeSet("input[name='herdblick'][value='kein Herdblick']", isChecked);
+      safeSet("input[name='mds'][value='MDS unauffällig']", isChecked);
+      safeSet("input[name='apss'][value='APSS negativ']", isChecked);
+      if (isChecked) {
+        calculateGCS();
+      } else {
+        resetGCS();
+      }
+    }
+
+    // Trauma
+    if (section === "trauma") {
+      safeSet("input[name='traumaMILS'][value='keine MILS durchgeführt']", isChecked);
+      safeSet("input[name='traumaThorax'][value='Thorax stabil']", isChecked);
+      safeSet("input[name='traumaAbdomen'][value='Abdomen weich']", isChecked);
+      safeSet("input[name='traumaOberschenkel'][value='Oberschenkel stabil']", isChecked);
+      safeSet("input[name='traumaBecken'][value='Becken stabil']", isChecked);
+      safeSet("input[name='traumaMILS'][value='keine MILS durchgeführt']", isChecked);
+      safeSet("input[name='traumaSchaedel'][value='kein Sturz auf den Schädel']", isChecked);
+      safeSet("input[name='traumaUHG'][value='Unfallhergang erinnerlich']", isChecked);
+    }
+
+    // GI – Gesamteindruck
+    if (section === "gi") {
+      safeSet("input[name='gesamteindruck'][value='nicht kritisch']", isChecked);
+      safeSet("input[name='auffinden'][value='sitzend']", isChecked);
+      safeSet("input[name='bewusstsein'][value='wach']", isChecked);
+      safeSet("input[name='atmung'][value='unauffällig']", isChecked);
+      safeSet("input[name='haut'][value='rosig']", isChecked);
+    }
+
+    // Pädiatrie – PBD
+    if (section === "paediatrie") {
+      safeSet("input[name='pbdErscheinungsbild'][value='nicht kritisch']", isChecked);
+      safeSet("input[name='pbdAtmung'][value='nicht kritisch']", isChecked);
+      safeSet("input[name='pbdHaut'][value='kritisch']", isChecked); // HTML hat value="kritisch" für "nicht kritisch" Option
+      safeSet("input[name='ticlsMuskeltonus'][value='Muskeltonus gegeben']", isChecked);
+      safeSet("input[name='ticlsInteraktion'][value='interagiert mit Umgebung']", isChecked);
+      safeSet("input[name='ticlsConsolability'][value='Kind lässt sich trösten']", isChecked);
+      safeSet("input[name='ticlsLook'][value='Kind hat klaren Blick']", isChecked);
+      safeSet("input[name='ticlsSpeech'][value='Kind spricht altersgemäß']", isChecked);
+    }
+
+    // SAMPLER – unauffällig
+    if (section === "sampler") {
+      safeSet("input[name='allergienStatus'][value='Keine']", isChecked);
+      safeSet("input[name='medikationStatus'][value='Keine']", isChecked);
+      safeSet("input[name='patientenStatus'][value='Keine']", isChecked);
+      safeSet("input[name='mahlzeit'][value='normale Nahrungsaufnahme']", isChecked);
+      safeSet("input[name='fluessigkeit'][value='normale Flüssigkeitszufuhr']", isChecked);
+      safeSet("input[name='stuhl'][value='unauffällig']", isChecked);
+      safeSet("input[name='harn'][value='unauffällig']", isChecked);
+      safeSet("input[name='risikoStatus'][value='Keine']", isChecked);
+    }
+
+    // SAMPLER – nicht erhebbar
+    if (section === "samplerNichtErhebbar") {
+      safeSet("input[name='allergienStatus'][value='nicht erhebbar']", isChecked);
+      safeSet("input[name='medikationStatus'][value='nicht erhebbar']", isChecked);
+      safeSet("input[name='patientenStatus'][value='nicht erhebbar']", isChecked);
+      safeSet("input[name='mahlzeit'][value='nicht erhebbar']", isChecked);
+      safeSet("input[name='fluessigkeit'][value='nicht erhebbar']", isChecked);
+      safeSet("input[name='stuhl'][value='nicht erhebbar']", isChecked);
+      safeSet("input[name='harn'][value='nicht erhebbar']", isChecked);
+      safeSet("input[name='risikoStatus'][value='nicht erhebbar']", isChecked);
+    }
+
+    // Geriatrie – GEMS
+    if (section === "geriatrie") {
+      ["keine anatomischen / physiologischen Veränderungen", "keine kognitiven Veränderungen", "keine Kommunikationseinschränkung"].forEach(
+        (value) => {
+          safeSet(`input[name='gAnatomie'][value='${value}']`, isChecked);
+        }
+      );
+      safeSet("input[name='ePatientenzustand'][value='gepflegt']", isChecked);
+      safeSet("input[name='eUmgebung'][value='sauber']", isChecked);
+      safeSet("input[name='eTemperatur'][value='angemessen']", isChecked);
+      safeSet("input[name='eBeleuchtung'][value='ausreichend']", isChecked);
+      safeSet("input[name='eGeruch'][value='unauffällig']", isChecked);
+      safeSet("input[name='mPolypharmazie'][value='nein']", isChecked);
+      safeSet("input[name='mMultimorbiditaet'][value='nein']", isChecked);
+      safeSet("input[name='mErnaehrungszustand'][value='guter Ernährungszustand']", isChecked);
+      safeSet("input[name='sIsolation'][value='regelmäßiger Kontakt zu Angehörigen']", isChecked);
+      safeSet("input[name='sDepression'][value='keine Hinweise']", isChecked);
+      safeSet("input[name='sVernachlaessigung'][value='keine Hinweise']", isChecked);
+    }
+  }
+
+  // Mapping: checkbox name im HTML → section key in setUnauffaelligValues
+  const unauffaelligMap = [
+    // primary-content
+    { name: "abcde-unauffaellig", section: "abcde" },
+    { name: "airway-unauffaellig", section: "airway", mirror: "a-unauffaellig" },
+    { name: "breathing-unauffaellig", section: "breathing", mirror: "b-unauffaellig" },
+    { name: "circulation-unauffaellig", section: "circulation", mirror: "c-unauffaellig" },
+    { name: "disability-unauffaellig", section: "disability", mirror: "d-unauffaellig" },
+
+    // section-eigene Checkboxen
+    { name: "a-unauffaellig", section: "airway", mirror: "airway-unauffaellig" },
+    { name: "b-unauffaellig", section: "breathing", mirror: "breathing-unauffaellig" },
+    { name: "c-unauffaellig", section: "circulation", mirror: "circulation-unauffaellig" },
+    { name: "d-unauffaellig", section: "disability", mirror: "disability-unauffaellig" },
+    { name: "x-unauffaellig", section: "x" },
+    { name: "trauma-unauffaellig", section: "trauma" },
+    { name: "gi-unauffaellig", section: "gi" },
+    { name: "samplerUnauffaellig", section: "sampler" },
+    { name: "samplerNichtErhebbar", section: "samplerNichtErhebbar" },
+  ];
+
+  unauffaelligMap.forEach(({ name, section, mirror }) => {
+    document.querySelectorAll(`input[name='${name}']`).forEach((cb) => {
+      cb.addEventListener("change", function () {
+        setUnauffaelligValues(section, this.checked);
+
+        if (mirror) {
+          document.querySelectorAll(`input[name='${mirror}']`).forEach((mirrorCb) => {
+            mirrorCb.checked = this.checked;
+          });
+        }
+      });
+    });
+  });
+});
+
+// =============================================================================
+// resetGCS
+// =============================================================================
+function resetGCS() {
+  document.querySelectorAll("input[name='gcs-eyes']").forEach((i) => (i.checked = false));
+  document.querySelectorAll("input[name='gcs-verbal']").forEach((i) => (i.checked = false));
+  document.querySelectorAll("input[name='gcs-motor']").forEach((i) => (i.checked = false));
+  document.getElementById("gcs-result").textContent = "";
+}
+
+// =============================================================================
+// getLeitsymptom + ABCDEUnauffällig Button
+// =============================================================================
+function getLeitsymptom() {
+  const leitsymptom = prompt("Leitsymptom eingeben:");
+  const lsEContent = document.getElementById("leitsymptom");
+  const lsSampler = document.getElementById("symptome");
+  if (leitsymptom) {
+    if (lsEContent) lsEContent.value = leitsymptom;
+    if (lsSampler) lsSampler.innerHTML = leitsymptom;
+  }
+}
+
+document.getElementById("abcde-unauffaellig-1")?.addEventListener("click", function () {
+  getLeitsymptom();
+  this.disabled = true;
+});
+
+// =============================================================================
+// copyRest
+// =============================================================================
+function copyRest() {
+  const el = document.getElementById("ausgabeSummary");
+  const text = el ? el.innerText : "";
+  const rest = text.length > 2008 ? text.slice(2008) : "";
+
+  if (!rest) {
+    const fb = document.getElementById("copyFeedback");
+    if (fb) fb.textContent = "Text ist kürzer als 2009 Zeichen.";
+    return;
+  }
+
+  navigator.clipboard
+    .writeText(rest)
+    .then(() => {
+      const fb = document.getElementById("copyFeedback");
+      if (fb) fb.textContent = "Restlicher Text ab Zeichen 2009 wurde kopiert.";
+    })
+    .catch(() => {
+      const fb = document.getElementById("copyFeedback");
+      if (fb) fb.textContent = "Fehler beim Kopieren. Bitte manuell kopieren.";
+    });
+}
+
+// =============================================================================
+// requiredFieldDefaults + activateAllRequiredFieldsForAdminTest
+// =============================================================================
+const requiredFieldDefaults = [
+  { name: "einsatzkategorie", type: "radio", value: "Internistischer Patient" },
+  { name: "sicherheit", type: "radio", value: "BO sicher" },
+  { name: "einsatzstelle", type: "custom-select", value: "Wohnung" },
+  { name: "gi-unauffaellig", type: "checkbox", value: "GIUnauffällig" },
+  { name: "airway-unauffaellig", type: "checkbox", value: "airwayUnauffällig" },
+  { name: "breathing-unauffaellig", type: "checkbox", value: "breathingUnauffällig" },
+  { name: "circulation-unauffaellig", type: "checkbox", value: "circulationUnauffällig" },
+  { name: "disability-unauffaellig", type: "checkbox", value: "disabilityUnauffällig" },
+  { name: "entscheidung", type: "radio", value: "NICHT KRITISCH" },
+  { name: "leitsymptom", type: "text", value: "Thoraxschmerz" },
+  { name: "suspekt", type: "radio", value: "keine weiteren Auffälligkeiten" },
+  { name: "samplerUnauffaellig", type: "checkbox", value: "unauffällig" },
+  { name: "symptome", type: "text", value: "Thoraxschmerz" },
+  { name: "ereignis", type: "text", value: "Thoraxschmerz" },
+  { name: "transpRM", type: "radio", value: "kein Transport" },
+];
+
+function activateAllRequiredFieldsForAdminTest() {
+  requiredFieldDefaults.forEach((field) => {
+    if (field.type === "radio" || field.type === "checkbox") {
+      const input = document.querySelector(`input[name="${field.name}"][value="${field.value}"]`);
+      if (input) {
+        input.checked = true;
+        input.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+    } else if (field.type === "text" || field.type === "number") {
+      const input = document.getElementById(field.name);
+      if (input) input.value = field.value;
+    } else if (field.type === "custom-select") {
+      const hiddenInput = document.querySelector(`input[name="${field.name}"]`);
+      if (hiddenInput) hiddenInput.value = field.value;
+
+      const trigger = document.querySelector(`[data-name="${field.name}"] .custom-select-trigger`);
+      if (trigger) trigger.textContent = field.value;
+
+      const option = document.querySelector(`[data-name="${field.name}"] .custom-option[data-value="${field.value}"]`);
+      if (option) {
+        document.querySelectorAll(`[data-name="${field.name}"] .custom-option`).forEach((o) => o.classList.remove("selected"));
+        option.classList.add("selected");
+      }
+    }
+  });
+
+  document.querySelectorAll('input[type="text"]:not([disabled])').forEach((input) => {
+    if (input.offsetParent !== null && input.value.trim() === "") input.value = "Testeintrag";
+  });
+
+  document.querySelectorAll('input[type="number"]:not([disabled])').forEach((input) => {
+    if (input.offsetParent !== null && input.value.trim() === "") input.value = "1";
+  });
+
+  document.querySelectorAll("textarea").forEach((input) => {
+    if (input.offsetParent !== null && input.value.trim() === "") input.value = "Testtext";
+  });
+
+  alert("Alle definierten Pflichtfelder wurden für den Admin-Test automatisch ausgefüllt.");
+}
+
 // generateSummary()
 function generateSummary() {
   let summary = "";
@@ -583,37 +1138,30 @@ function generateSummary() {
   // #endregion
 
   // #region GI - Ersteindruck
-  if (giSection && window.getComputedStyle(giSection).display !== "none") {
-    const giUnauffaellig = document.querySelector('input[name="gi-unauffaellig"]:checked');
-    if (giUnauffaellig) {
-      summary += "GI: unauffällig\n";
-    } else {
-      const gesamteindruck = document.querySelector('input[name="gesamteindruck"]:checked');
-      const auffinden = document.querySelector('input[name="auffinden"]:checked');
-      const bewusstsein = document.querySelector('input[name="bewusstsein"]:checked');
-      const atmung = document.querySelector('input[name="atmung"]:checked');
-      const hautCheckboxes = document.querySelectorAll('input[name="haut"]:checked');
+  const gesamteindruck = document.querySelector('input[name="gesamteindruck"]:checked');
+  const auffinden = document.querySelector('input[name="auffinden"]:checked');
+  const bewusstsein = document.querySelector('input[name="bewusstsein"]:checked');
+  const atmung = document.querySelector('input[name="atmung"]:checked');
+  const hautCheckboxes = document.querySelectorAll('input[name="haut"]:checked');
 
-      summary += gesamteindruck ? "GI: " + gesamteindruck.value + "\n" : "";
-      summary += auffinden ? "Pat. " + auffinden.value + " angetroffen, " : "";
-      summary += bewusstsein ? bewusstsein.value + ", " : "";
-      summary += atmung ? "Atmung: " + atmung.value + ", " : "";
-      if (hautCheckboxes.length > 0) {
-        summary += "Haut: ";
-        hautCheckboxes.forEach((checkbox, index) => {
-          summary += checkbox.value;
-          if (index < hautCheckboxes.length - 1) summary += ", ";
-        });
-      }
-
-      // GI - weitere Bemerkungen (neu: id="giSonstige")
-      const GIweitere = document.getElementById("giSonstige");
-      if (GIweitere && GIweitere.value.trim().length > 0) {
-        summary += ` // ${GIweitere.value.trim()}`;
-      }
-      summary += "\n";
-    }
+  summary += gesamteindruck ? "GI: " + gesamteindruck.value + "\n" : "";
+  summary += auffinden ? "Pat. " + auffinden.value + " angetroffen, " : "";
+  summary += bewusstsein ? bewusstsein.value + ", " : "";
+  summary += atmung ? "Atmung: " + atmung.value + ", " : "";
+  if (hautCheckboxes.length > 0) {
+    summary += "Haut: ";
+    hautCheckboxes.forEach((checkbox, index) => {
+      summary += checkbox.value;
+      if (index < hautCheckboxes.length - 1) summary += ", ";
+    });
   }
+
+  // GI - weitere Bemerkungen (neu: id="giSonstige")
+  const GIweitere = document.getElementById("giSonstige");
+  if (GIweitere && GIweitere.value.trim().length > 0) {
+    summary += ` // ${GIweitere.value.trim()}`;
+  }
+  summary += "\n";
   // #endregion
 
   // #region PBD - Pädiatrisches Beurteilungsdreieck

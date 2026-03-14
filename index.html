@@ -14,6 +14,8 @@
           <li id="dokumentationGenerieren" onclick="generateSummary()">Dokumentation generieren</li>  <!-- bc: #462346 Abendstimmung // hover: #AAAAFA Flieder -->
           <li id="Startseite">Startseite</li> <!-- bc: #462346 Abendstimmung // hover: #AAAAFA Flieder -->
           <li id="eingabenZurücksetzen">Alle Eingaben zurücksetzen</li> <!-- bc: #462346 Abendstimmung // hover: #AAAAFA Flieder -->
+          <!--Administrator Button für schnelles Auswählen aller Pflichtfelder-->    
+          <li id="adminButton" onclick="activateAllRequiredFieldsForAdminTest()">ADMIN: alle Pflichtfelder auswählen</li>
         </ul>
       </nav>
     </header>
@@ -166,9 +168,9 @@
                   <h5>Gesamteindruck</h5>
                 </div>
                 <div class="formChildBox">
-                  <div class="radio-wrapper"><label for="gesamteindruck-1"><input type="radio" id="gesamteindruck-1" name="gesamteindruck" value="kritisch"> kritisch</label></div>
-                  <div class="radio-wrapper"><label for="gesamteindruck-2"><input type="radio" id="gesamteindruck-2" name="gesamteindruck" value="potentiell kritisch"> potentiell kritisch</label></div>
                   <div class="radio-wrapper"><label for="gesamteindruck-3"><input type="radio" id="gesamteindruck-3" name="gesamteindruck" value="nicht kritisch"> nicht kritisch</label></div>
+                  <div class="radio-wrapper"><label for="gesamteindruck-2"><input type="radio" id="gesamteindruck-2" name="gesamteindruck" value="potentiell kritisch"> potentiell kritisch</label></div>
+                  <div class="radio-wrapper"><label for="gesamteindruck-1"><input type="radio" id="gesamteindruck-1" name="gesamteindruck" value="kritisch"> kritisch</label></div>
                 </div>
               </div>
               <div class="formChild" id="auffinden">
@@ -318,11 +320,6 @@
                 </div>
               </div>
             </div>
-            <!-- (.radio-wrapper>label[for="blutung-$"]>input:radio#blutung-$[name="blutung"][value])*2 -->
-            <!-- (.checkbox-wrapper>label[for="blutung-$"]>input:checkbox#blutung-$[name="blutung"][value])*2 -->
-            <!-- .formChild#blutungZusatz>.formChildBox>h5^.formChildBox -->
-            <!-- <div class="text-wrapper"><input type="text" name="blutungWeitere" id="blutungWeitere" placeholder="Text eingeben"></div> -->
-            <!-- .hiddenSection#section>div -->
 
             <div class="formContainer lessSpace" id="gems-content"> <!-- GEMS -->
               <div class="formChild"> <!-- Veränderung der Anatomie / Physiologie / Kognition / Kommunikation-->
@@ -548,6 +545,7 @@
                 </div>
               </div>
             </div>
+
             <div class="formContainer" id="primary-content">
               <div class="formChild">
                 <div class="formChildBox">
@@ -609,15 +607,8 @@
                   </div>
                 </div>
               </div>
-              <div class="formChild">
-                <div class="formChildBox">
-                  <h5>Environment</h5>
-                </div>
-                <div class="formChildBox">
-                  <div class="text-wrapper"><input type="text" name="eLeitsymtpom" id="eLeitsymptom" placeholder="Leitsymptom angeben"></div>
-                </div>
-              </div>
             </div>
+
             <div class="formContainer" id="x-content"> <!-- x - critical bleeding -->
               <div class="formChild" id="x-unauffaellig">
                 <div class="formChildBox"></div>
@@ -661,6 +652,7 @@
                 </div>
               </div>
             </div>
+
             <div class="formContainer" id="a-content"> <!-- A - Airway -->
               <div class="formChild" id="a-unauffaellig">
                 <div class="formChildBox"></div>
@@ -677,9 +669,9 @@
                   <h5>Atemwege</h5>
                 </div>
                 <div class="formChildBox">
-                  <div class="radio-wrapper"><label for="airway-1"><input type="radio" name="airway" id="airway-1" value="frei"> frei</label></div>
-                  <div class="radio-wrapper"><label for="airway-2"><input type="radio" name="airway" id="airway-2" value="gefährdet"> gefährdet</label></div>
-                  <div class="radio-wrapper"><label for="airway-2"><input type="radio" name="airway" id="airway-2" value="verlegt"> verlegt</label></div>
+                  <div class="radio-wrapper"><label for="airway-1"><input type="radio" name="airway" id="airway-1" value="Atemwege frei"> frei</label></div>
+                  <div class="radio-wrapper"><label for="airway-2"><input type="radio" name="airway" id="airway-2" value="Atemwege gefährdet"> gefährdet</label></div>
+                  <div class="radio-wrapper"><label for="airway-2"><input type="radio" name="airway" id="airway-2" value="Atemwege verlegt"> verlegt</label></div>
                 </div>
               </div>
               <div class="formChild" id="airwaymanagement">
@@ -709,6 +701,7 @@
                 </div>
               </div>
             </div>
+            
             <div class="formContainer" id="b-content"> <!-- B - Breathing -->
               <div class="formChild" id="b-unauffaellig">
                 <div class="formChildBox"></div>
@@ -820,6 +813,7 @@
                 </div>
               </div>
             </div>
+            
             <div class="formContainer" id="c-content"> <!-- C - Circulation -->
               <div class="formChild" id="c-unauffaellig">
                 <div class="formChildBox"></div>
@@ -936,6 +930,7 @@
                 </div>
               </div>
             </div>
+            
             <div class="formContainer" id="d-content"> <!-- D - Disability -->
 
               <!-- Unauffällig -->
@@ -1036,17 +1031,23 @@
                 </div>
               </div>
             
-              <!-- APSS / MDS -->
-              <div class="formChild" id="d-apss-mds">
+              <!-- APSS -->
+              <div class="formChild" id="d-apss">
                 <div class="formChildBox">
-                  <h5>APSS / MDS</h5>
+                  <h5>APSS</h5>
                 </div>
                 <div class="formChildBox">
                   <div class="radio-wrapper"><label for="apss-1"><input type="radio" name="apss" id="apss-1" value="APSS negativ"> APSS negativ</label></div>
                   <div class="radio-wrapper"><label for="apss-2"><input type="radio" name="apss" id="apss-2" value="APSS positiv"> APSS positiv</label></div>
-            
-                  <br>
-            
+                </div>
+              </div>
+
+              <!-- MDS -->
+              <div class="formChild" id="d-mds">
+                <div class="formChildBox">
+                  <h5>MDS</h5>
+                </div>
+                <div class="formChildBox">
                   <div class="radio-wrapper"><label for="mds-1"><input type="radio" name="mds" id="mds-1" value="MDS unauffällig"> MDS unauffällig</label></div>
                   <div class="radio-wrapper"><label for="mds-2"><input type="radio" name="mds" id="mds-2" value="MDS auffällig"> MDS auffällig</label></div>
                 </div>
@@ -1065,6 +1066,7 @@
               </div>
             
             </div>
+
             <div class="formContainer" id="e-content"> <!-- E - Environment -->
 
               <!-- Entscheidung -->
@@ -1169,6 +1171,7 @@
               </div>
             
             </div>
+            
             <div class="formContainer" id="trauma-content"> <!-- Trauma -->
 
               <!-- Unauffällig -->
