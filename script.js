@@ -1165,25 +1165,24 @@ function generateSummary() {
   // #endregion
 
   // #region PBD - Pädiatrisches Beurteilungsdreieck
-  if (pbdSection && window.getComputedStyle(pbdSection).display !== "none") {
-    const pbdErscheinungsbild = document.querySelector('input[name="pbdErscheinungsbild"]:checked');
-    const pbdAtmung = document.querySelector('input[name="pbdAtmung"]:checked');
-    const pbdHaut = document.querySelector('input[name="pbdHaut"]:checked');
-    // Neu: name="pbdAtmungQualitaet", name="pbdHautQualitaet"
-    const pbdAtmungAuffaelligkeiten = document.querySelectorAll('input[name="pbdAtmungQualitaet"]:checked');
-    const pbdHautAuffaelligkeiten = document.querySelectorAll('input[name="pbdHautQualitaet"]:checked');
+  const pbdErscheinungsbild = document.querySelector('input[name="pbdErscheinungsbild"]:checked');
+  const pbdAtmung = document.querySelector('input[name="pbdAtmung"]:checked');
+  const pbdHaut = document.querySelector('input[name="pbdHaut"]:checked');
+  
+  const pbdAtmungAuffaelligkeiten = document.querySelectorAll('input[name="pbdAtmungQualitaet"]:checked');
+  const pbdHautAuffaelligkeiten = document.querySelectorAll('input[name="pbdHautQualitaet"]:checked');
 
+  
+  if (pbdErscheinungsbild && pbdAtmung && pbdHaut) {
     summary += "Pädiatrisches Beurteilungsdreieck: \n";
     summary += pbdErscheinungsbild ? "Erscheinungsbild: " + pbdErscheinungsbild.value + ", " : "";
     summary += pbdAtmung ? "Atmung: " + pbdAtmung.value + ", " : "";
     summary += pbdHaut ? "Haut: " + pbdHaut.value + "\n" : "";
 
-    if (pbdErscheinungsbild && pbdAtmung && pbdHaut) {
-      if (pbdErscheinungsbild.value === "kritisch" || pbdAtmung.value === "kritisch" || pbdHaut.value === "kritisch") {
-        summary += "Kind nach PBD kritisch\n";
-      } else {
-        summary += "Kind nach PBD nicht kritisch\n";
-      }
+    if (pbdErscheinungsbild.value === "kritisch" || pbdAtmung.value === "kritisch" || pbdHaut.value === "kritisch") {
+      summary += "Kind nach PBD kritisch\n";
+    } else {
+      summary += "Kind nach PBD nicht kritisch\n";
     }
 
     const ticlsMuskeltonus = document.querySelector('input[name="ticlsMuskeltonus"]:checked');
@@ -1191,14 +1190,14 @@ function generateSummary() {
     const ticlsConsolability = document.querySelector('input[name="ticlsConsolability"]:checked');
     const ticlsLook = document.querySelector('input[name="ticlsLook"]:checked');
     const ticlsSpeech = document.querySelector('input[name="ticlsSpeech"]:checked');
-
+  
     summary += "TICLS: ";
     summary += ticlsMuskeltonus ? ticlsMuskeltonus.value + ", " : "";
     summary += ticlsInteraktion ? ticlsInteraktion.value + ", " : "";
     summary += ticlsConsolability ? ticlsConsolability.value + ", " : "";
     summary += ticlsLook ? ticlsLook.value + ", " : "";
     summary += ticlsSpeech ? ticlsSpeech.value : "";
-
+  
     if (pbdAtmungAuffaelligkeiten.length > 0) {
       summary += " // Atmung Auffälligkeiten: ";
       pbdAtmungAuffaelligkeiten.forEach((checkbox, index) => {
@@ -1221,9 +1220,8 @@ function generateSummary() {
     }
     summary += "\n";
   }
-  // #endregion
 
-  summary += "\n";
+  // #endregion
 
   // #region Primary Assessment - x: bedrohliche Blutung
   // Neu: name="blutung", name="blutungZusatz", id="blutungWeitere"
